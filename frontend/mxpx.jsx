@@ -1,11 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
-import * as SessionApiUtils from './util/session_api_util';
+import Root from './components/root';
+import * as SessionApiUtils from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let root = document.getElementById('root');
-    let store = configureStore();
+    
+    let store;
+    if (window.currentUser) {
+        const preloadedState = {
+            entities: {
+                users: { [window.currentUser.id]: window.currentUser }
+            },
+            session: { currentUserId: window.currentUser.id }
+        };
+        store = configureStore(preloadedState);
+        delete window.currentUser;
+    } else {
+        store = configureStore();
+    }
 
     // TESTING START //
 
@@ -20,5 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
     // TESTING END//
 
-    ReactDOM.render(<h1>mxpx.nyc</h1>, root)
+    ReactDOM.render(<Root store={store}/>, root)
 });
