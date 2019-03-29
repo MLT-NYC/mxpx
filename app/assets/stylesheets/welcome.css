@@ -1,4 +1,7 @@
-
+.welcomeHeader{
+    height: 100%;
+    width: 100%;
+}
 
 .headerImage {
     width: 100%;
@@ -12,52 +15,65 @@
 .navBar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid red;
+    align-content: flex-end;
+    justify-content: flex-start;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
+    /* border: 1px solid red; */
+}
+
+.logo {
+    margin: 0px 25px 4px 20px;
+    display: flex;
+    align-items: center;
+    height: 90px;
+    /* border: 1px solid red; */
 }
 
 .nav-left {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    margin: 10px 0px 10px 10px;
-    width: 80%;
-    height: 100%;
-    border: 1px solid red;
+    width: 40%;
+    height: 90px;
+    /* border: 1px solid red; */
 }
 
-.logo {
-    margin: 0px 10px 4px;
-}
-
-.navBar-splash {
+.navBar-splash-item {
     margin: 0px 10px;
 }
 
 .nav-right {
     display: flex;
+    justify-content: flex-end;
+    width: 60%;
+    /* border: 1px solid red; */
+
+}
+
+.welcomeButtons {
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 0px;
-    width: 20%;
+    width: 30%;
     height: 70px;
-    border: 1px solid red;
     font-size: 14;
+    /* border: 1px solid red; */
 
 };
 
 .logInButton {
     padding: 0px 0px 0px 30px;  
-    width: 60%;
+    width: 67px;
     
 }
 
 .logInButton:visited {
     color: white;
+    width: 67px;
 }
  
 .signUpButton {
@@ -65,10 +81,59 @@
     justify-content: center;
     align-items: center;
     color: white;
+    font-weight: bold;
     background: #0099E5;
     margin: 10px 0px 10px 30px;
     padding: 0px 15px;
     height: 36px;
-    width: 30%;
+    width: 70px;
     border-radius: 25px;
+}
+
+.signUpButton:hover {
+    background-color: #00aaff;
+}
+
+.welcomeMessages {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin: 270px 0px;
+    /* width: 100%; */
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    /* border: 1px solid red; */
+
+}
+
+.titleMessage {
+    text-align: center;
+    font-size: 48px;
+    /* border: 1px solid red; */
+}
+
+.subtitleMessage {
+    text-align: center;
+    font-size: 24px;
+    /* border: 1px solid red; */
+}
+
+.joinButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    background: #0099E5;
+    height: 55px;
+    width: 170px;
+    border-radius: 50px;
+    /* border: 1px solid red; */
+}
+
+.joinButton:hover {
+    background-color: #00aaff;
 }
