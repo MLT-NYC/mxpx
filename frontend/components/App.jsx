@@ -7,8 +7,7 @@ import LogInContainer from './welcome/login_form_container';
 import SignUpContainer from './welcome/signup_form_container';
 
 const App = () => (
-    <div>
-        <h1>mxpx</h1>
+    <div>        
         <Switch>
             <Route exact path='/' component={WelcomeContainer} />
             <AuthRoute exact path='/login' component={LogInContainer} />

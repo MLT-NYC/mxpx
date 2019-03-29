@@ -18,11 +18,30 @@ class Welcome extends React.Component {
             );
         } else {
             return (
-                <div>
-                    <Link to={'/login'}><button>Log in</button></Link>
-                    <br/>
-                    <Link to={'/signup'}><button>Sign up</button></Link>
-                </div>
+                <>
+                    
+                    <nav className='navBar'>
+                        
+                        <div className='nav-left'>
+                            <h1 className='logo'>mxpx</h1>
+                            <div className='navBar-splash'>Discover</div>
+                            <div className='navBar-splash'>Licensing</div>
+                            <div className='navBar-splash'>Memberships</div>
+                            <div className='navBar-splash'>Quests</div>
+                            <div className='navBar-splash'>Studio</div>
+                            <div className='navBar-splash'>Blog</div>
+                        </div>
+
+                        <div className='nav-right'>
+                            <Link to={'/login'} className='logInButton'>Log in</Link>
+                            <Link to={'/signup'} className='signUpButton'>Sign up</Link>
+                        </div>
+
+                    </nav>
+
+                    <div className='headerImage'></div>
+
+                </>
             )
         };
 
