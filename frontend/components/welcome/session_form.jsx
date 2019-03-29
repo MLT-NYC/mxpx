@@ -20,6 +20,12 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
+    demoSubmit(e) {
+        e.preventDefault();
+
+        
+    }
+
     update(field){
         return e => this.setState({
             [field]: e.target.value
@@ -32,12 +38,6 @@ class SessionForm extends React.Component {
     
     render() {
 
-        // if (this.props.errors.length > 0){
-        //     let errors = this.props.errors.map( (error, idx) => {
-
-        //     });
-        // }
-
         return (
             <div>
                 <h4>{this.props.formType}</h4>
@@ -47,7 +47,9 @@ class SessionForm extends React.Component {
                     <input type="password" value={this.state.password} onChange={this.update('password')} />
                     <h5>Password</h5>
                     <input type="submit" value="Submit" />
+                    <div onClick={this.props.logInDemo}>Demo Log In</div>
                 </form>
+
                 <ul>
                     {this.props.errors}
                 </ul>

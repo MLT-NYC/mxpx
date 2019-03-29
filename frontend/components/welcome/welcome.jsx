@@ -12,16 +12,16 @@ class Welcome extends React.Component {
         if (this.props.currentUser){
             return (
                 <div>
-                    <h4>Welcome, {this.props.currentUser.name}</h4>
+                    <h4>Welcome, {this.props.currentUser.email}</h4>
                     <button onClick={this.props.logOut}>Log out</button>
                 </div>
             );
         } else {
             return (
                 <div>
-                    <Link to={'/login'}>Log in</Link>
+                    <Link to={'/login'}><button>Log in</button></Link>
                     <br/>
-                    <Link to={'/signup'}>Sign up</Link>
+                    <Link to={'/signup'}><button>Sign up</button></Link>
                 </div>
             )
         };

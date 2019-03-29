@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
             log_in(@user)
             render 'api/users/show'
         else
-            render json: @user.errors.full_messages, status: 400
+            render json: ['Invalid Email/Password'], status: 400
         end
     end
 
