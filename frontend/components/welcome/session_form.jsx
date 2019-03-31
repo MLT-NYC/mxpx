@@ -37,24 +37,60 @@ class SessionForm extends React.Component {
     }
     
     render() {
+        let formHeading;
+        let navLink;
+
+        if (this.props.formType === 'Sign up') {
+            formHeading = 'Join mxpx';
+            navLink = <Link to={'/login'} className='sessionLogInButton'>Log in</Link>;
+        } else if (this.props.formType === 'Log in') {
+            formHeading = 'Log in to mxpx';
+            navLink = <Link to={'/signup'} className='sessionSignUpButton'>Sign up</Link>;
+        }
 
         return (
-            <div>
-                <h4>{this.props.formType}</h4>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.email} onChange={this.update('email')} />
-                    <h5>Email</h5>
-                    <input type="password" value={this.state.password} onChange={this.update('password')} />
-                    <h5>Password</h5>
-                    <input type="submit" value="Submit" />
-                    <div onClick={this.props.logInDemo}>Demo Log In</div>
-                </form>
+            <>
+                <div className='sessionFormPage'>
+                    <nav className='sessionNavBar'>
+                        <Link to={'/'} className='sessionLogo'>mxpx</Link>
+                        <div className='sessionNav-left'>
+                            <div className='navBar-session-item'>Discover</div>
+                            <div className='navBar-session-item'>About</div>
+                            <div className='navBar-session-item'>Studio</div>
+                        </div>
+                        
+                        <div className='sessionNav-right'>
+                            {/* <div className='sessionSearch'>
+                            </div> */}
+                            <div>
+                                {navLink}
+                            </div>
+                        </div>
+                    </nav>
 
-                <ul>
-                    {this.props.errors}
-                </ul>
-                
-            </div>
+                    <div className='sessionFormBox'>
+                        <form className='sessionForm' onSubmit={this.handleSubmit}>
+                            <h3 className='sessionFormHeading'>
+                                {formHeading}
+                            </h3>
+
+                            <h5 className='sessionTitle'>Email</h5>
+                            <input className='sessionInput' type="text" value={this.state.email} onChange={this.update('email')} />
+
+                            <h5 className='sessionTitle'>Password</h5>
+                            <input className='sessionInput' type="password" value={this.state.password} onChange={this.update('password')} />
+                            <br/>
+                            <input className='sessionSubmit' type="submit" value={this.props.formType} />
+                            <div className='sessionDemoLogIn' onClick={this.props.logInDemo}>Demo Log In
+                            </div>
+                        </form>
+                    </div>
+
+                        <ul className='sessionErrors'>
+                            {this.props.errors}
+                        </ul>
+                </div>
+            </>
         );
 
     }

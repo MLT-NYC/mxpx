@@ -9,7 +9,7 @@
     background-size: 1450px;
     background-image: url("https://assetcdn.500px.org/assets/static_pages/home/cover_bg-121d68d0f30118182be4f9ada6c2c502.jpg");
     position: absolute;
-    z-index: -1;
+    z-index: 0;
 }
 
 .navBar {
@@ -20,15 +20,16 @@
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    /* position: fixed; */
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
 .logo {
-    margin: 0px 25px 4px 20px;
+    margin: 0px 25px 4px 25px;
     display: flex;
     align-items: center;
     height: 90px;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
@@ -38,6 +39,7 @@
     align-items: center;
     width: 40%;
     height: 90px;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
@@ -49,6 +51,7 @@
     display: flex;
     justify-content: flex-end;
     width: 60%;
+    z-index: 1;
     /* border: 1px solid red; */
 
 }
@@ -100,9 +103,9 @@
     align-content: center;
     flex-direction: column;
     margin: 270px 0px;
-    /* width: 100%; */
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+    z-index: 1;
     /* border: 1px solid red; */
 
 }
@@ -110,12 +113,14 @@
 .titleMessage {
     text-align: center;
     font-size: 48px;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
 .subtitleMessage {
     text-align: center;
     font-size: 24px;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
@@ -131,6 +136,7 @@
     height: 55px;
     width: 170px;
     border-radius: 50px;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
