@@ -51,10 +51,24 @@ class SessionForm extends React.Component {
             navLink = <Link to={'/signup'} className='sessionSignUpButton'>Sign up</Link>;
         }
 
+        let sessionTitleClass;
+        let sessionInputClass;
+        if (this.props.errors.length === 0) {
+            sessionTitleClass = 'sessionTitle';
+            sessionInputClass = 'sessionInput';
+        } else {
+            sessionTitleClass = 'sessionTitle-error';
+            sessionInputClass = 'sessionInput-error';
+        }
+
         return (
             <>
                 <div className='sessionFormPage'>
 
+                    <div className='sessionErrorContainer'>
+                        <ErrorMessage className='session-error' errors={this.props.errors} />   
+                    </div>
+                
                     <NavBar navLink={navLink}/>
 
                     <div className='sessionFormBox'>
@@ -63,11 +77,11 @@ class SessionForm extends React.Component {
                                 {formHeading}
                             </h3>
 
-                            <h5 className='sessionTitle'>Email</h5>
-                            <input className='sessionInput' type="text" value={this.state.email} onChange={this.update('email')} />
+                            <h5 className={sessionTitleClass}>Email</h5>
+                            <input className={sessionInputClass} type="text" value={this.state.email} onChange={this.update('email')} />
 
-                            <h5 className='sessionTitle'>Password</h5>
-                            <input className='sessionInput' type="password" value={this.state.password} onChange={this.update('password')} />
+                            <h5 className={sessionTitleClass}>Password</h5>
+                            <input className={sessionInputClass} type="password" value={this.state.password} onChange={this.update('password')} />
                             <br/>
                             <input className='sessionSubmit' type="submit" value={this.props.formType} />
                             <div className='sessionDemoLogIn' onClick={this.props.logInDemo}>Demo Log In
@@ -75,7 +89,6 @@ class SessionForm extends React.Component {
                         </form>
                     </div>
 
-                    <ErrorMessage errors={this.props.errors}/>
             
                 </div>
             </>

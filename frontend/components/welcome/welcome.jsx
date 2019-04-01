@@ -12,7 +12,9 @@ class Welcome extends React.Component {
         if (this.props.currentUser){
             return (
                 <div>
-                    <h4>Welcome, {this.props.currentUser.email}</h4>
+                    <div className='greetingContainer'>
+                        Welcome, {this.props.currentUser.email}
+                    </div>
                     <button onClick={this.props.logOut}>Log out</button>
                 </div>
             );
@@ -20,8 +22,8 @@ class Welcome extends React.Component {
             return (
                 <>
                     <div className='welcomeHeader'> 
-                        <div className='headerImage'>
-                        </div>
+                        <img className='headerImage'>
+                        </img>
 
                         <nav className='navBar'>
                             <h1 className='logo'>mxpx</h1>

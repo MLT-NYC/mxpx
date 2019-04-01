@@ -1,0 +1,49 @@
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    padding: 5px 5px 5px 5px;
+    background: #ff4c4c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    height: 50px;
+    margin-top: -5px;
+    top: -60px;
+    transition: top .5s linear;
+    border-radius: 4px;
+}
+
+.errorMessage {
+    margin: 0px 10px 14px 10px;
+}
+
+.closeError {
+    display: flex;
+    margin: 14px 10px;
+    color: darkred;
+}
+
+.closeError:hover {
+    cursor: pointer;
+}
+
+/* .greetingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    padding: 5px 5px 5px 5px;
+    background: #ff4c4c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    height: 50px;
+    margin-top: -5px;
+    top: -60px;
+    transition: top .5s linear;
+    border-radius: 4px;
+} */

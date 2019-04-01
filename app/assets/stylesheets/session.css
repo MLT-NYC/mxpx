@@ -1,3 +1,11 @@
+.sessionErrorContainer {
+    display: flex;
+    /* align-items: flex-start; */
+    justify-content: center;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
 .sessionLogInButton {
     display: flex;
     justify-content: center;
@@ -67,6 +75,13 @@
     margin-bottom: 2px;
 }
 
+.sessionTitle-error {
+    color: #ff4c4c;
+    font-size: 14px;
+    font-weight: lighter;
+    margin-bottom: 2px;
+}
+
 .sessionInput {
     height: 40px;
     width: 100%;
@@ -74,8 +89,16 @@
     font-size: 14px;
     color: #525558;
     border-radius: 3px;
-    border: 1px solid rgba(185,193,199,0.5);
-    
+    border: 1px solid rgba(185,193,199,0.5); 
+}
+.sessionInput-error {
+    height: 40px;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #525558;
+    border-radius: 3px;
+    border: 1px solid #ff4c4c;
 }
 
 
