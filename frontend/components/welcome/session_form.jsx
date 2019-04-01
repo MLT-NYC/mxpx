@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import NavBar from '../navbar/navbar';
+import ErrorMessage from '../notification/error_message';
+
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -51,22 +54,8 @@ class SessionForm extends React.Component {
         return (
             <>
                 <div className='sessionFormPage'>
-                    <nav className='sessionNavBar'>
-                        <Link to={'/'} className='sessionLogo'>mxpx</Link>
-                        <div className='sessionNav-left'>
-                            <div className='navBar-session-item'>Discover</div>
-                            <div className='navBar-session-item'>About</div>
-                            <div className='navBar-session-item'>Studio</div>
-                        </div>
-                        
-                        <div className='sessionNav-right'>
-                            {/* <div className='sessionSearch'>
-                            </div> */}
-                            <div>
-                                {navLink}
-                            </div>
-                        </div>
-                    </nav>
+
+                    <NavBar navLink={navLink}/>
 
                     <div className='sessionFormBox'>
                         <form className='sessionForm' onSubmit={this.handleSubmit}>
@@ -86,9 +75,8 @@ class SessionForm extends React.Component {
                         </form>
                     </div>
 
-                        <ul className='sessionErrors'>
-                            {this.props.errors}
-                        </ul>
+                    <ErrorMessage errors={this.props.errors}/>
+            
                 </div>
             </>
         );
