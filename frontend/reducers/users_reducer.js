@@ -1,6 +1,11 @@
 import { 
     RECEIVE_CURRENT_USER
-    } from '../actions/session_actions';
+} from '../actions/session_actions';
+import {
+    RECEIVE_PICTURE,
+    REMOVE_PICTURE
+} from '../actions/pictures_actions';
+
 import merge from 'lodash/merge';
 
 const usersReducer = (oldState = {}, action) => {
@@ -9,6 +14,20 @@ const usersReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState = merge({}, oldState, {[action.currentUser.id]: action.currentUser});
+            return newState;
+        case RECEIVE_PICTURE:
+            newState = merge({}, oldState);
+            if (newState[action.picture.photographer_id].pictureIds) {
+                newState[action.picture.photographer_id].pictureIds.push(action.picture.id);
+            } else {
+                newState[action.picture.photographer_id].pictureIds = [action.picture.id];
+            }
+            return newState;
+        case REMOVE_PICTURE:
+            newState = merge({}, oldState);
+            let pictureIds = newState[action.picture.photographer_id].pictureIds;
+            let newPictureIds = pictureIds.filter(pictureId => pictureId != action.picture.id);
+            newState[action.picture.photographer_id].pictureIds = newPictureIds;
             return newState;
         default:
             return oldState;

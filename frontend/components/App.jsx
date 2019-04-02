@@ -5,6 +5,7 @@ import {AuthRoute} from '../util/route_util';
 import WelcomeContainer from './welcome/welcome_container';
 import LogInContainer from './welcome/login_form_container';
 import SignUpContainer from './welcome/signup_form_container';
+import ProfileContainer from './profile/profile_container';
 
 const App = () => (
     <div>        
@@ -12,6 +13,7 @@ const App = () => (
             <Route exact path='/' component={WelcomeContainer} />
             <AuthRoute exact path='/login' component={LogInContainer} />
             <AuthRoute exact path='/signup' component={SignUpContainer} />
+            <Route path='/' component={ProfileContainer}/>
         </Switch>
     </div>
 );

@@ -23,12 +23,6 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
-    demoSubmit(e) {
-        e.preventDefault();
-
-        
-    }
-
     update(field){
         return e => this.setState({
             [field]: e.target.value

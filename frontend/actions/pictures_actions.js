@@ -18,7 +18,7 @@ const receivePicture = picture => ({
 
 const removePicture = picture => ({
     type: REMOVE_PICTURE,
-    pictureId: picture.id
+    picture: picture
 });
 
 const receivePictureErrors = (errors) => ({

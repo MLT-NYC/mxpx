@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import * as SessionApiUtils from './actions/session_actions';
+import * as SessionAPIActions from './actions/session_actions';
+import * as PicturesAPIActions from './actions/pictures_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let root = document.getElementById('root');
@@ -23,10 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // TESTING START //
 
-    // action creators
-    window.signUp = SessionApiUtils.signUp;
-    window.logIn = SessionApiUtils.logIn;
-    window.logOut = SessionApiUtils.logOut;
+    // session action creators
+    window.signUp = SessionAPIActions.signUp;
+    window.logIn = SessionAPIActions.logIn;
+    window.logOut = SessionAPIActions.logOut;
+    // pictures action creators
+    window.fetchPictures = PicturesAPIActions.fetchPictures;
+    window.fetchPicture = PicturesAPIActions.fetchPicture;
+    window.createPicture = PicturesAPIActions.createPicture;
+    window.updatePicture = PicturesAPIActions.updatePicture;
+    window.deletePicture = PicturesAPIActions.deletePicture;
 
     // state
     window.store = store;

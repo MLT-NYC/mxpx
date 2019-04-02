@@ -1,22 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfileContainer from '../profile/profile_container';
 
 class Welcome extends React.Component {
-
-    componentDidMount() {
-
-    }
 
     render() { 
 
         if (this.props.currentUser){
             return (
-                <div>
-                    <div className='greetingContainer'>
-                        Welcome, {this.props.currentUser.email}
-                    </div>
-                    <button onClick={this.props.logOut}>Log out</button>
-                </div>
+                <ProfileContainer />
             );
         } else {
             return (

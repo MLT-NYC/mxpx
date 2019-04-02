@@ -5,9 +5,71 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            showMenu: false,
+        }
+
+        this.showMenu = this.showMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
+    }
+
+    showMenu(e) {
+        e.preventDefault();
+
+        this.setState({showMenu: true}, () => {
+            document.addEventListener('click', this.closeMenu);
+        });
+    }
+
+    closeMenu(e) {
+        if (!this.dropdownMenu.contains(e.target)) {
+            this.setState({ showMenu: false }, () => {
+                document.removeEventListener('click', this.closeMenu);
+            });
+        }
     }
 
     render() {
+        let rightItems;
+        if (this.props.currentUser) {
+            rightItems = (
+                <div>
+                    <div onClick={this.showMenu}>
+                        Show menu
+                    </div>
+
+                    {
+                        this.state.showMenu
+                        ? (
+                            <div 
+                                className="dropdownMenu"
+                                ref={(element) => {
+                                    this.dropdownMenu = element;
+                                }}
+                        >
+                                <div className='dropdownMenuItem'>My profile</div>
+                                <div className='dropdownMenuItem'>My Stats</div>
+                                <div className='dropdownMenuItem'>My Galleries</div>
+                                <div className='dropdownMenuItem'>My liked pictures</div>
+                                <div className='dropdownMenuItem'>Manage pictures</div>
+                                <div className='dropdownMenuItem'>Memberships</div>
+                                <div className='dropdownMenuItem'>My Settings</div>
+                                <div className='dropdownMenuItem'>Support</div>
+                                <div className='dropdownMenuItem'>{this.props.navLink}</div>
+                            </div>
+                        )
+                        : (
+                            null
+                        )
+                    }
+
+                    <div className='pictureFormIcon'>+</div>
+                
+                </div>
+            )
+        } else {
+            rightItems = this.props.navLink;
+        }
 
         return (
             <nav className='sessionNavBar'>
@@ -21,8 +83,8 @@ class NavBar extends React.Component {
                 <div className='sessionNav-right'>
                     {/* <div className='sessionSearch'>
                                     </div> */}
-                    <div>
-                        {this.props.navLink}
+                    <div className="rightItems">
+                        {rightItems}
                     </div>
                 </div>
             </nav>

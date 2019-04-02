@@ -2,17 +2,18 @@ class Api::PicturesController < ApplicationController
 
     def show
         @picture = Picture.find(params[:id])
+        render 'api/pictures/show'
     end 
     
     def index
         @pictures = Picture.all
+        render json: @pictures
     end
 
     def create
         @picture = current_user.pictures.new(picture_params)
 
         if @picture.save
-            #make this JBuilder in views
             render 'api/pictures/show'
         else
             render json: @picture.errors.full_messages, status: 400
@@ -23,7 +24,6 @@ class Api::PicturesController < ApplicationController
         @picture = current_user.pictures.find(params[:id])
         if @picture
             @picture.update_attributes(picture_params)
-            #make this JBuilder in views
             render 'api/pictures/show'
         else
             render json: @picture.errors.full_messages, status: 400
@@ -31,10 +31,10 @@ class Api::PicturesController < ApplicationController
     end
 
     def destroy
-        picture = current_user.pictures.find(params[:id])
-        picture.destroy
-        
-        render json: {id: picture.id}
+        @picture = current_user.pictures.find(params[:id])
+        render 'api/pictures/show'
+        @picture.destroy
+
     end
 
     private
