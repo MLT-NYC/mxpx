@@ -31,14 +31,14 @@ class PictureForm extends React.Component {
         let pictureTitleClass;
         let pictureInputClass;
         if (this.props.errors.length === 0) {
-            sessionTitleClass = 'newPictureTitle';
-            sessionInputClass = 'newPictureInput';
+            pictureTitleClass = 'newPictureTitle';
+            pictureInputClass = 'newPictureInput';
         } else {
-            sessionTitleClass = 'newPictureTitle-error';
-            sessionInputClass = 'newPictureInput-error';
+            pictureTitleClass = 'newPictureTitle-error';
+            pictureInputClass = 'newPictureInput-error';
         }
 
-
+ 
         return (
             <>
                 <NavBar currentUser={this.props.currentUser}
