@@ -5,10 +5,10 @@
 
 .headerImage {
     width: 100%;
-    height: 900px;
-    background-size: 1450px;
+    height: 100%;
+    /* background-size: 1450px; */
     background-image: url("https://assetcdn.500px.org/assets/static_pages/home/cover_bg-121d68d0f30118182be4f9ada6c2c502.jpg");
-    position: absolute;
+    position: fixed;
     z-index: 0;
 }
 

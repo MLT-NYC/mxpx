@@ -30,49 +30,63 @@ class NavBar extends React.Component {
     }
 
     render() {
+
         let rightItems;
+        let navBarClassName;
         if (this.props.currentUser) {
+            navBarClassName = 'profileNavBar';
             rightItems = (
-                <div>
-                    <div onClick={this.showMenu}>
+                <div className='dropdownMenuContainer'>
+
+
+                    <input type="text" className='search'/>
+
+                    <div onClick={this.showMenu} className='dropdownMenuHeader'>
                         Show menu
                     </div>
 
                     {
                         this.state.showMenu
                         ? (
-                            <div 
+                            <>
+                                <div className='dropdownMenuSquare'></div>
+                                <div 
                                 className="dropdownMenu"
                                 ref={(element) => {
                                     this.dropdownMenu = element;
                                 }}
-                        >
-                                <div className='dropdownMenuItem'>My profile</div>
-                                <div className='dropdownMenuItem'>My Stats</div>
-                                <div className='dropdownMenuItem'>My Galleries</div>
-                                <div className='dropdownMenuItem'>My liked pictures</div>
-                                <div className='dropdownMenuItem'>Manage pictures</div>
-                                <div className='dropdownMenuItem'>Memberships</div>
-                                <div className='dropdownMenuItem'>My Settings</div>
-                                <div className='dropdownMenuItem'>Support</div>
-                                <div className='dropdownMenuItem'>{this.props.navLink}</div>
-                            </div>
+                                >
+                                    <div className='dropdownMenuItem-1'>My profile</div>
+                                    <div className='dropdownMenuItem-2'>My Stats</div>
+                                    <div className='dropdownMenuItem-3'>My Galleries</div>
+                                    <div className='dropdownMenuItem-4'>My liked pictures</div>
+                                    <div className='dropdownMenuItem-5'>Manage pictures</div>
+                                    <div className='dropdownMenuItem-6'>Memberships</div>
+                                    <div className='dropdownMenuItem-7'>My Settings</div>
+                                    <div className='dropdownMenuItem-8'>Support</div>
+                                    <div className='dropdownMenuItem-9'>{this.props.navLink}</div>
+                                </div>
+                            </>
                         )
                         : (
                             null
-                        )
-                    }
+                            )
+                        }
 
-                    <div className='pictureFormIcon'>+</div>
+                   
+                    <div className='messageSendIcon'><i className="far fa-paper-plane"></i></div>
+                    <div className='notificationIcon'><i className="far fa-bell"></i></div>
+                    <div className='pictureCreateIcon'><i class="fas fa-plus"></i></div>
                 
                 </div>
             )
         } else {
+            navBarClassName = 'sessionNavBar';
             rightItems = this.props.navLink;
         }
 
         return (
-            <nav className='sessionNavBar'>
+            <nav className={navBarClassName}>
                 <Link to={'/'} className='sessionLogo'>mxpx</Link>
                 <div className='sessionNav-left'>
                     <div className='navBar-session-item'>Discover</div>
@@ -81,8 +95,6 @@ class NavBar extends React.Component {
                 </div>
 
                 <div className='sessionNav-right'>
-                    {/* <div className='sessionSearch'>
-                                    </div> */}
                     <div className="rightItems">
                         {rightItems}
                     </div>

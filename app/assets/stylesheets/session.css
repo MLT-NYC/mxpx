@@ -1,3 +1,8 @@
+.sessionFormPage {
+    background-color: #f7f8fa;
+    height: 1000px;
+    /* bottom: 0; */
+}
 .sessionErrorContainer {
     display: flex;
     /* align-items: flex-start; */
