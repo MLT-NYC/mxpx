@@ -8,7 +8,8 @@ class PictureForm extends React.Component {
         this.state = {
             title: '',
             description: '',
-            imgFile: null
+            imgFile: null,
+            imgUrl: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,13 +22,17 @@ class PictureForm extends React.Component {
         const picture = new FormData();
         picture.append('picture[title]', this.state.title);
         picture.append('picture[description]', this.state.description);
-        picture.append('picture[image]', this.state.imgFile);
+
+        if (this.state.imgFile) {
+            picture.append('picture[image]', this.state.imgFile);
+        }
 
         this.props.createPicture(picture);
         this.setState({
             title: '',
             description: '',
-            imgFile: null
+            imgFile: null,
+            imgUrl: null
         });
     }
 
@@ -40,9 +45,16 @@ class PictureForm extends React.Component {
     handleFile(e) {
         e.preventDefault();
 
-        this.setState({ 
-            imgFile: e.target.files[0] 
-        });
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = () => {
+            this.setState({imgFile: file, imgUrl: fileReader.result});
+        };
+
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
     }
 
     render() {
@@ -56,6 +68,12 @@ class PictureForm extends React.Component {
             pictureInputClass = 'newPictureInput-error';
         }
 
+        let preview;
+        if (this.state.imgUrl){
+            preview = <img src={this.state.imgUrl} />
+        } else{
+            preview = null;
+        }
  
         return (
             <>
@@ -67,6 +85,9 @@ class PictureForm extends React.Component {
                 </div>
 
                 <div className='newPictureFormContainer'>
+                    <h3>Preview</h3>
+                    {preview}
+
                     <form className='newPictureForm' onSubmit={this.handleSubmit}>
                         <h3 className='newPictureFormHeading'>
                         </h3>
