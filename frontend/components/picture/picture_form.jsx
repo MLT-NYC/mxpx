@@ -7,17 +7,28 @@ class PictureForm extends React.Component {
 
         this.state = {
             title: '',
-            description: ''
+            description: '',
+            imgFile: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        const picture = Object.assign({}, this.state);
+        const picture = new FormData();
+        picture.append('picture[title]', this.state.title);
+        picture.append('picture[description]', this.state.description);
+        picture.append('picture[image]', this.state.imgFile);
+
         this.props.createPicture(picture);
+        this.setState({
+            title: '',
+            description: '',
+            imgFile: null
+        });
     }
 
     update(field) {
@@ -26,8 +37,15 @@ class PictureForm extends React.Component {
         });
     }
 
-    render() {
+    handleFile(e) {
+        e.preventDefault();
 
+        this.setState({ 
+            imgFile: e.target.files[0] 
+        });
+    }
+
+    render() {
         let pictureTitleClass;
         let pictureInputClass;
         if (this.props.errors.length === 0) {
@@ -59,7 +77,7 @@ class PictureForm extends React.Component {
                         <h5 className={pictureTitleClass}>Description</h5>
                         <textarea className={pictureInputClass} type='text' value={this.state.description} onChange={this.update('description')}></textarea>
 
-                        <input className={pictureInputClass} className='newPictureInput' type="file"/>
+                        <input className={pictureInputClass} onChange={this.handleFile} type="file"/>
 
                         <input className='newPictureSubmit' type="submit" value='Submit'/>
                     </form>

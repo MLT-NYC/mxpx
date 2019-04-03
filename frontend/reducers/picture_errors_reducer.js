@@ -9,6 +9,7 @@ const pictureErrorsReducer = (oldState = [], action) => {
 
     switch(action.type){
         case RECEIVE_PICTURE_ERRORS:
+        debugger
             return action.errors.responseJSON;
         case RECEIVE_PICTURE:
             return [];

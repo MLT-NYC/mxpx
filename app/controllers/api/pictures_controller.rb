@@ -7,7 +7,7 @@ class Api::PicturesController < ApplicationController
     
     def index
         @pictures = Picture.all
-        render json: @pictures
+        render :index
     end
 
     def create
@@ -39,7 +39,7 @@ class Api::PicturesController < ApplicationController
 
     private
     def picture_params
-        params.require(:picture).permit(:img_url, :title, :description)
+        params.require(:picture).permit(:image, :title, :description)
     end
 
 end
