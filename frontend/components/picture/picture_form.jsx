@@ -70,7 +70,7 @@ class PictureForm extends React.Component {
 
         let preview;
         if (this.state.imgUrl){
-            preview = <img src={this.state.imgUrl} />
+            preview = <img className='newPicturePreview' src={this.state.imgUrl} />
         } else{
             preview = null;
         }
@@ -85,7 +85,7 @@ class PictureForm extends React.Component {
                 </div>
 
                 <div className='newPictureFormContainer'>
-                    <h3>Preview</h3>
+                    
                     {preview}
 
                     <form className='newPictureForm' onSubmit={this.handleSubmit}>
@@ -98,8 +98,10 @@ class PictureForm extends React.Component {
                         <h5 className={pictureTitleClass}>Description</h5>
                         <textarea className={pictureInputClass} type='text' value={this.state.description} onChange={this.update('description')}></textarea>
 
-                        <input className={pictureInputClass} onChange={this.handleFile} type="file"/>
-
+                        <label className='selectPictureButton'>Select
+                            <input className={pictureInputClass} onChange={this.handleFile} type="file"/>
+                        </label>
+        
                         <input className='newPictureSubmit' type="submit" value='Submit'/>
                     </form>
                 </div>

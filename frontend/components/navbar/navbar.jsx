@@ -22,11 +22,9 @@ class NavBar extends React.Component {
     }
 
     closeMenu(e) {
-        if (!this.dropdownMenu.contains(e.target)) {
-            this.setState({ showMenu: false }, () => {
-                document.removeEventListener('click', this.closeMenu);
-            });
-        }
+        this.setState({ showMenu: false }, () => {
+            document.removeEventListener('click', this.closeMenu);
+        });
     }
 
     render() {
@@ -51,12 +49,7 @@ class NavBar extends React.Component {
                             <>
                                 <div className='dropdownMenuSquare'></div>
                                 
-                                <div 
-                                className="dropdownMenu"
-                                ref={(element) => {
-                                    this.dropdownMenu = element;
-                                }}
-                                >
+                                <div className="dropdownMenu">
                                     <div className='dropdownMenuItem-1'>My profile</div>
                                     <div className='dropdownMenuItem-2'>My Stats</div>
                                     <div className='dropdownMenuItem-3'>My Galleries</div>
