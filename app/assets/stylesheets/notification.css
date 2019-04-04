@@ -1,7 +1,7 @@
 .errorContainer {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     position: fixed;
     padding: 5px 5px 5px 5px;
     background: #ff4c4c;
@@ -9,11 +9,11 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
-    height: 50px;
     margin-top: -5px;
-    top: -60px;
+    top: -70px;
     transition: top .5s linear;
     border-radius: 4px;
+    z-index: 1;
 }
 
 .errorMessage {
@@ -30,3 +30,6 @@
     cursor: pointer;
 }
 
+.multipleErrors {
+    list-style: none;
+}

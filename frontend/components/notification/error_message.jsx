@@ -19,10 +19,18 @@ class ErrorMessage extends React.Component {
             style = {top: '0'};
         }
 
+        let errors = this.props.errors;
+
+        if (errors.length > 1){
+            errors = errors.map((error, idx) => {
+                return <li key={idx} className='multipleErrors'>{error}</li>
+            })
+        }
+
         return (
             <div className='errorContainer' style={style}>
                 <ul className='errorMessage'>
-                    {this.props.errors}
+                    {errors}
                 </ul>
                 <div className='closeError' onClick={()=> this.setState({showErrors: false})}>
                     x

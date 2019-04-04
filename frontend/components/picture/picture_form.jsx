@@ -1,6 +1,8 @@
 import React from 'react';
 import NavBar from '../navbar/navbar';
 
+import ErrorMessage from '../notification/error_message';
+
 class PictureForm extends React.Component {
     constructor(props){
         super(props);
@@ -10,11 +12,30 @@ class PictureForm extends React.Component {
             description: '',
             imgFile: null,
             imgUrl: null
+            // showModal: true
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+
+        // this.showModal = this.showModal.bind(this);
+        // this.closeModal = this.closeModal.bind(this);
     }
+
+    // showModal(e) {
+    //     e.preventDefault();
+
+    //     this.setState({showModal: true}, () => {
+    //         document.addEventListener('click', this.closeModal);
+    //     });
+    // }
+
+    // closeModal(e) {
+    //     this.setState({showModal: false}, () => {
+    //         document.removeEventListener('click', this.closeModal);
+    //     });
+    // }
+
 
     handleSubmit(e) {
         e.preventDefault();
@@ -57,15 +78,21 @@ class PictureForm extends React.Component {
         }
     }
 
-    render() {
+    render() {        
         let pictureTitleClass;
         let pictureInputClass;
+        let pictureTitleInputClass;
+        let pictureDescriptionInputClass;
         if (this.props.errors.length === 0) {
             pictureTitleClass = 'newPictureTitle';
             pictureInputClass = 'newPictureInput';
+            pictureTitleInputClass = 'newTitlePictureInput';
+            pictureDescriptionInputClass = 'newDescriptionPictureInput';
         } else {
             pictureTitleClass = 'newPictureTitle-error';
             pictureInputClass = 'newPictureInput-error';
+            pictureTitleInputClass = 'newTitlePictureInput-error';
+            pictureDescriptionInputClass = 'newDescriptionPictureInput-error';
         }
 
         let preview;
@@ -74,6 +101,15 @@ class PictureForm extends React.Component {
         } else{
             preview = null;
         }
+
+        // let modal;
+        // if (this.state.showModal){
+        //     modal = (<>
+        //         <label className='selectPictureButton'>Select
+        //                 <input className={pictureInputClass} onChange={this.handleFile} type="file" />
+        //         </label>
+        //     </>)
+        // }
  
         return (
             <>
@@ -82,28 +118,47 @@ class PictureForm extends React.Component {
                 />  
                 <div className='newPictureFormPage'>
 
-                </div>
+                    <div className='pictureErrorContainer'>
+                        <ErrorMessage className='picture-error' errors={this.props.errors} />
+                    </div>
 
-                <div className='newPictureFormContainer'>
-                    
-                    {preview}
+                    <div className='newPictureFormContainer'>
+                        
+                        <div className='newPictureFormContainer-left'>
+                            {preview}
+                            <label className='selectPictureButton'>
+                                <div className='selectPictureButton-plus'><i className="fas fa-plus"></i></div>
+                                <div>Add more pictures</div>
+                                <input className={pictureInputClass} onChange={this.handleFile} type="file" />
+                            </label>
+                        </div>
+                        
+                        <div className='newPictureFormContainer-right'>
+                            <form className='newPictureForm' onSubmit={this.handleSubmit}>
 
-                    <form className='newPictureForm' onSubmit={this.handleSubmit}>
-                        <h3 className='newPictureFormHeading'>
-                        </h3>
+                                <div className='newPictureFormContainer-right-top'>
+                                    <input className='newPictureSubmit' type="submit" value='Submit'/>
+                                </div>
 
-                        <h5 className={pictureTitleClass}>Title</h5>
-                        <input className={pictureInputClass} type="text" value={this.state.title} onChange={this.update('title')}/>
+                                <div className='newPictureFormContainer-right-bottom'>
+                                    <div className='newPictureFormHeading'>Edit
+                                    </div>
 
-                        <h5 className={pictureTitleClass}>Description</h5>
-                        <textarea className={pictureInputClass} type='text' value={this.state.description} onChange={this.update('description')}></textarea>
+                                    <div className={pictureTitleClass}>Title</div>
+                                    <input className={pictureTitleInputClass} type="text" value={this.state.title} onChange={this.update('title')}/>
 
-                        <label className='selectPictureButton'>Select
-                            <input className={pictureInputClass} onChange={this.handleFile} type="file"/>
-                        </label>
-        
-                        <input className='newPictureSubmit' type="submit" value='Submit'/>
-                    </form>
+                                    <div className={pictureTitleClass}>Description</div>
+                                    <textarea className={pictureDescriptionInputClass} type='text' value={this.state.description} onChange={this.update('description')}></textarea>
+                                </div>
+
+                
+                            </form>
+                        </div>
+
+                        {/* {modal} */}
+
+
+                    </div>
                 </div>
             </>
         )

@@ -83,6 +83,7 @@
     align-items: center;
     width: 70%;
     color: #222222;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 

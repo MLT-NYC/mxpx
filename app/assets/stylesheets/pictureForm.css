@@ -1,21 +1,209 @@
+.newPictureFormPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
+.pictureErrorContainer {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+}
+
+.newPictureFormContainer {
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 90%;
+    width: 90%;
+    background-color: #f7f8fa;
+    border: 1px solid #eeeff2;
+}
+
+.newPictureFormContainer-left {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
 input[type="file"] {
     clip: rect(0, 0, 0, 0);
     padding: 0;
     position: absolute;
-    }
+}
 
 .selectPictureButton {
     display: flex;
-    background: #34BF49;
-    border-radius: 20px;
-    color: #fff;
-    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f8fa;
+    color: #b9c1c7;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16pt;
-    height: 60px;
-    width: 65px;
+    font-size: 17px;
+    cursor: pointer;
+    height: 250px;
+    width: 250px;
+    margin: 20px 0px 0px 20px;
+    border: 2px solid #b9c1c7;
+    
 }
 
-.selectPictureButton:hover {
-    background: #41cb56;
+.selectPictureButton-plus {
+    font-size: 17pt;
+    margin-bottom: 5px;
 }
+
+.newPicturePreview {
+    max-height: 250px;
+    margin: 20px 0px 0px 20px;
+    border: 3px solid #0099e5;
+    border-radius: 3px;
+}
+
+.newPictureFormContainer-right {
+    display: flex;
+    background-color: white;
+    border-left: 1px solid #eeeff2;
+    width: 340px;
+    height: 100%;
+}
+
+.newPictureForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between;
+    width: 100%;
+    height: 40%;
+}
+
+.newPictureFormContainer-right-top{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 13px 0px 13px 0px;
+    border-bottom: 1px solid #eeeff2;
+}
+
+.newPictureSubmit {
+    border: #34BF49;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+    background: #34BF49;
+    padding: 0;
+    height: 40px;
+    width: calc(100% - 20px);
+    border-radius: 3px;
+}
+
+.newPictureSubmit:hover {
+    background: #41cb56;
+    cursor: pointer;
+}
+
+.newPictureFormContainer-right-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    height: 275px;
+    border-bottom: 1px solid #eeeff2;
+}
+
+.newPictureFormHeading {
+    /* border: 1px solid red; */
+    font-size: 18px;
+    color: #222222;
+    margin: 0;
+    padding: 10px 0px 10px;
+    width: calc(100% - 30px);
+    
+}
+
+.newPictureTitle {
+    color: #0099e5;
+    font-size: 14px;
+    /* border: 1px solid red; */
+    width: calc(100% - 30px);
+    margin: 0;
+    margin-bottom: 7px;
+    /* margin-bottom: -20px; */
+}
+
+.newPictureTitle-error {
+    color: #ff4c4c;
+    font-size: 14px;
+    /* border: 1px solid red; */
+    width: calc(100% - 30px);
+    margin: 0;
+    margin-bottom: 7px;
+    /* margin-bottom: -20px; */
+}
+
+.newPictureInput {
+    width: calc(100% - 30px);
+    height: 40px;
+    font-size: 12px;
+    padding: 0;
+    border: 1px solid #eeeff2;
+    outline: none;
+    resize: none;
+}
+
+    
+.newTitlePictureInput {
+    width: calc(100% - 30px);
+    height: 38px;
+    font-size: 12px;
+    padding: 0;
+    border: 1px solid #eeeff2;
+    outline: none;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.newTitlePictureInput-error {
+    width: calc(100% - 30px);
+    height: 38px;
+    font-size: 12px;
+    padding: 0;
+    border: 1px solid #ff4c4c;
+    outline: none;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.newDescriptionPictureInput {
+    width: calc(100% - 30px);
+    height: 110px;
+    font-size: 12px;
+    padding: 0;
+    border: 1px solid #eeeff2;
+    outline: none;
+    resize: none;
+}
+
+.newDescriptionPictureInput-error {
+    width: calc(100% - 30px);
+    height: 110px;
+    font-size: 12px;
+    padding: 0;
+    border: 1px solid #ff4c4c;
+    outline: none;
+    resize: none;
+}
+
+
+
