@@ -3,9 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    position: fixed;
+    left: 5vw;
+    top: 8vh;
+    height: 88vh;
+    width: 90vw;
     /* border: 1px solid red; */
 }
 
@@ -20,8 +22,8 @@
     display: flex;
     flex-direction: row;
     font-family: Arial, Helvetica, sans-serif;
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     background-color: #f7f8fa;
     border: 1px solid #eeeff2;
 }
@@ -167,10 +169,12 @@ input[type="file"] {
     width: calc(100% - 30px);
     height: 38px;
     font-size: 12px;
-    padding: 0;
+    padding: 0px 5px 0px 5px;
     border: 1px solid #eeeff2;
+    color: #666;
     outline: none;
     resize: none;
+    border-radius: 3px;
     margin-bottom: 10px;
 }
 
@@ -178,10 +182,12 @@ input[type="file"] {
     width: calc(100% - 30px);
     height: 38px;
     font-size: 12px;
-    padding: 0;
+    padding: 0px 5px 0px 5px;
     border: 1px solid #ff4c4c;
+    color: #666;
     outline: none;
     resize: none;
+    border-radius: 3px;
     margin-bottom: 10px;
 }
 
@@ -189,9 +195,11 @@ input[type="file"] {
     width: calc(100% - 30px);
     height: 110px;
     font-size: 12px;
-    padding: 0;
+    padding: 15px 5px 15px 5px;
     border: 1px solid #eeeff2;
+    color: #666;
     outline: none;
+    border-radius: 3px;
     resize: none;
 }
 
@@ -199,11 +207,20 @@ input[type="file"] {
     width: calc(100% - 30px);
     height: 110px;
     font-size: 12px;
-    padding: 0;
+    padding: 15px 5px 15px 5px;
     border: 1px solid #ff4c4c;
+    color: #666;
     outline: none;
+    border-radius: 3px;
     resize: none;
 }
 
-
-
+.modal {
+    background-color: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

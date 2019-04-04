@@ -71,7 +71,7 @@ class NavBar extends React.Component {
                     <div className='messageSendIcon'><i className="far fa-paper-plane"></i></div>
                     <div className='notificationIcon'><i className="far fa-bell"></i></div>
                     {/* <div className='pictureCreateIcon'><i className="fas fa-plus"></i></div> */}
-                    <Link to='/pictures/new' className='pictureCreateIcon'><i className="fas fa-plus"></i></Link>
+                    <Link to='/pictures/new' onClick={this.props.toggleShowForm} className='pictureCreateIcon'><i className="fas fa-plus"></i></Link>
                 
                 </div>
             )

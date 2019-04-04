@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import PictureForm from './picture_form';
+import PictureNew from './picture_new';
 import { createPicture, clearPictureErrors } from '../../actions/pictures_actions';
 import { logOut } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => {
     });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PictureForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PictureNew));

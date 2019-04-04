@@ -37,6 +37,10 @@ class PictureForm extends React.Component {
     // }
 
 
+    componentDidMount() {
+        this.props.clearPictureErrors();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
@@ -48,12 +52,13 @@ class PictureForm extends React.Component {
             picture.append('picture[image]', this.state.imgFile);
         }
 
-        this.props.createPicture(picture);
-        this.setState({
-            title: '',
-            description: '',
-            imgFile: null,
-            imgUrl: null
+        this.props.createPicture(picture).then(() => {
+            this.setState({
+                title: '',
+                description: '',
+                imgFile: null,
+                imgUrl: null
+            });
         });
     }
 
@@ -113,9 +118,7 @@ class PictureForm extends React.Component {
  
         return (
             <>
-                <NavBar currentUser={this.props.currentUser}
-                    navLink={<div onClick={this.props.logOut}>Log out</div>}
-                />  
+                
                 <div className='newPictureFormPage'>
 
                     <div className='pictureErrorContainer'>
