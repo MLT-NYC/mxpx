@@ -12,6 +12,8 @@ class Profile extends React.Component {
                 <NavBar currentUser={this.props.currentUser} 
                 navLink={<div onClick={this.props.logOut}>Log out</div>}
                 />    
+
+                {/* <h1>Test</h1> */}
             </div>
         )
     }

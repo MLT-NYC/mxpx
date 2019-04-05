@@ -8,18 +8,16 @@ const mapStateToProps = state => {
     let currentUserId = state.session.currentUserId;
     let currentUser = state.entities.users[currentUserId];
 
-    let errors = state.errors.pictureForm;
+    // let errors = state.errors.pictureForm;
 
     return ({
-        currentUser: currentUser,
-        errors: errors
+        currentUser: currentUser
     });
 };
 
 const mapDispatchToProps = dispatch => {
     return ({
         createPicture: picture => dispatch(createPicture(picture)),
-        clearPictureErrors: () => dispatch(clearPictureErrors()),
         logOut: () => dispatch(logOut())
     });
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../navbar/navbar';
 
 import ErrorMessage from '../notification/error_message';
 
@@ -12,30 +11,11 @@ class PictureForm extends React.Component {
             description: '',
             imgFile: null,
             imgUrl: null
-            // showModal: true
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
-
-        // this.showModal = this.showModal.bind(this);
-        // this.closeModal = this.closeModal.bind(this);
     }
-
-    // showModal(e) {
-    //     e.preventDefault();
-
-    //     this.setState({showModal: true}, () => {
-    //         document.addEventListener('click', this.closeModal);
-    //     });
-    // }
-
-    // closeModal(e) {
-    //     this.setState({showModal: false}, () => {
-    //         document.removeEventListener('click', this.closeModal);
-    //     });
-    // }
-
 
     componentDidMount() {
         this.props.clearPictureErrors();
@@ -106,15 +86,6 @@ class PictureForm extends React.Component {
         } else{
             preview = null;
         }
-
-        // let modal;
-        // if (this.state.showModal){
-        //     modal = (<>
-        //         <label className='selectPictureButton'>Select
-        //                 <input className={pictureInputClass} onChange={this.handleFile} type="file" />
-        //         </label>
-        //     </>)
-        // }
  
         return (
             <>
@@ -157,9 +128,6 @@ class PictureForm extends React.Component {
                 
                             </form>
                         </div>
-
-                        {/* {modal} */}
-
 
                     </div>
                 </div>

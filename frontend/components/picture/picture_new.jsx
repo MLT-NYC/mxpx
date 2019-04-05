@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../navbar/navbar';
 import PictureFormContainer from '../picture/picture_form_container';
+import PictureShowContainer from '../picture/picture_show_container';
 
 class PictureNew extends React.Component {
     constructor(props){
@@ -42,6 +43,7 @@ class PictureNew extends React.Component {
                 
                 {modal}
 
+                <PictureShowContainer toggleShowForm={this.toggleShowForm}/>
             </>
         )
     }
