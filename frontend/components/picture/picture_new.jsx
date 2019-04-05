@@ -43,7 +43,7 @@ class PictureNew extends React.Component {
                 
                 {modal}
 
-                <PictureShowContainer toggleShowForm={this.toggleShowForm}/>
+                <PictureShowContainer className='pictureShowContainer' toggleShowForm={this.toggleShowForm}/>
             </>
         )
     }

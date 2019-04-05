@@ -27,7 +27,7 @@ class PictureShow extends React.Component {
                     </div>
 
                     <div className='pictureShowPage-left-bottom'>
-
+                        <h3 className='pictureShowPage-left-bottom-title'>PHOTOS</h3>
                     </div>
                 </div>
 
@@ -36,11 +36,11 @@ class PictureShow extends React.Component {
 
                     </div>
 
-                    <div className='pictureShowPage-mid-bottom'>
-                        <ul>
-                            {pictures}
-                        </ul>
-                    </div>
+                  
+                    <ul className='pictureShowPage-mid-bottom'>
+                        {pictures}
+                    </ul>
+            
                 </div>
 
                 <div className='pictureShowPage-right'>
