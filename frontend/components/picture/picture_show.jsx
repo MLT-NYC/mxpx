@@ -10,18 +10,28 @@ class PictureShow extends React.Component {
         super(props);
 
         this.state = {
-            editForm: false
+            editForm: false,
+            activeIndex: null
         };
 
         this.toggleEditForm = this.toggleEditForm.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     toggleEditForm() {
         const { editForm } = this.state;
-
+        // debugger
         this.setState({
             editForm: !editForm
         });
+    }
+
+    handleClick(index) {
+        this.setState({
+            activeIndex: index
+        });
+
+        this.toggleEditForm();
     }
 
     componentDidMount(){
@@ -30,6 +40,19 @@ class PictureShow extends React.Component {
 
     render(){
 
+        let pictureCount = this.props.pictures.length;
+
+        let pictures = this.props.pictures.map((picture, index) => {
+            const className = this.state.activeIndex === index && this.state.editForm ? 'pictureShowItem-active' : 'pictureShowItem';  
+            return (
+                    <Link to={`/pictures/new/${picture.id}/edit`} 
+                        key={index} 
+                        onClick={this.handleClick.bind(this, index)}>
+                            <img className={className}src={picture.img_url}/>
+                    </Link>
+            )
+        });
+
         let editModal;
         if (this.state.editForm){
             editModal = (
@@ -37,13 +60,30 @@ class PictureShow extends React.Component {
                     <PictureEditContainer />
                 </>
             )
+        } else {
+            editModal = (
+                <>
+                    <form className='pictureEditForm-mock'>
+                        <div className='pictureEditFormTitle-mock'>Edit
+                        </div>
+
+                        <div className='pictureEditSubmitFields-mock'>
+                            <div className='pictureEditInputHeadings-mock'>Title</div>
+                            <input className='pictureEditTitleInput-mock' type="text" readOnly value='Untitled Photo'/>
+
+                            <div className='pictureEditInputHeadings-mock'>Description</div>
+                            <textarea className='pictureEditDescriptionInput-mock' type='text' readOnly value='Tell us more about your beautiful photo'></textarea>
+                        </div>
+
+                        <div className='pictureEditSubmitContainer-mock'>
+                            <input type="pictureEditSubmit-mock" type='submit' readOnly value='Save' />
+                        </div>
+                    </form>
+
+                    <div className='pictureEditDeleteButton-mock'>Delete this Picture</div>
+                </>
+            )
         }
-    
-        let pictures = this.props.pictures.map(picture => {
-            return <PictureShowItem key={picture.id} picture={picture} toggleEditForm={this.toggleEditForm}/> 
-        });
-       
-        let pictureCount = this.props.pictures.length;
 
         return (
             <div className='pictureShowPage'>
@@ -72,8 +112,12 @@ class PictureShow extends React.Component {
                 </div>
 
                 <div className='pictureShowPage-right'>
+                    <div className='pictureShowPage-right-top'>
+
+                    </div>
+
                     {editModal}
-                    {/* <PictureEditContainer /> */}
+
                 </div>
 
             </div>

@@ -24,12 +24,17 @@ body {
     margin: 0;
 }
 
-html, body, #root {
-    /* background-color: green; */
-    /* background-color: #f7f8fa; */
-}
-
 ul {
     margin: 0;
     padding: 0;
 }
+
+/* makes uppermost tag take up the full size of the browser */
+html, body, #root, .App {
+    height: 100%;
+}
+
+.App {
+    display: flex;
+}
+/*  */

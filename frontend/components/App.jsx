@@ -11,7 +11,7 @@ import PictureNewContainer from './picture/picture_new_container';
 import PictureEditContainer from './picture/picture_edit_container';
 
 const App = () => (
-    <div>        
+    <div className="outterMost">        
         <Switch>
             <Route exact path='/' component={WelcomeContainer} />
             <AuthRoute exact path='/login' component={LogInContainer} />

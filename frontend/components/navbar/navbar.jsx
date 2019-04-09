@@ -58,8 +58,7 @@ class NavBar extends React.Component {
                                     <div className='dropdownMenuItem-6'>Memberships</div>
                                     <div className='dropdownMenuItem-7'>My Settings</div>
                                     <div className='dropdownMenuItem-8'>Support</div>
-                                        {this.props.navLink}
-                                    {/* <div className='dropdownMenuItem-9'>{this.props.navLink}</div> */}
+                                    {this.props.navLink}
                                 </div>
                             </>
                         )
