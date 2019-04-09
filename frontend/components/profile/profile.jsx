@@ -13,7 +13,7 @@ class Profile extends React.Component {
                 navLink={<div onClick={this.props.logOut}>Log out</div>}
                 />    
 
-                {/* <h1>Test</h1> */}
+                <h1>Test</h1>
             </div>
         )
     }

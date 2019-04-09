@@ -3,10 +3,25 @@ import { Link } from 'react-router-dom';
 
 import PictureShowItem from './picture_show_item';
 
+import PictureEditContainer from './picture_edit_container';
+
 class PictureShow extends React.Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            editForm: false
+        };
+
+        this.toggleEditForm = this.toggleEditForm.bind(this);
+    }
+
+    toggleEditForm() {
+        const { editForm } = this.state;
+
+        this.setState({
+            editForm: !editForm
+        });
     }
 
     componentDidMount(){
@@ -14,9 +29,21 @@ class PictureShow extends React.Component {
     }
 
     render(){
+
+        let editModal;
+        if (this.state.editForm){
+            editModal = (
+                <>
+                    <PictureEditContainer />
+                </>
+            )
+        }
+    
         let pictures = this.props.pictures.map(picture => {
-            return <PictureShowItem key={picture.id} picture={picture}/> 
+            return <PictureShowItem key={picture.id} picture={picture} toggleEditForm={this.toggleEditForm}/> 
         });
+       
+        let pictureCount = this.props.pictures.length;
 
         return (
             <div className='pictureShowPage'>
@@ -33,7 +60,8 @@ class PictureShow extends React.Component {
 
                 <div className='pictureShowPage-mid'>
                     <div className='pictureShowPage-mid-top'>
-
+                        <div className='pictureShowPage-mid-top-title'>Public</div> 
+                        <span className='pictureShowPage-mid-top-count'>{`${pictureCount} Photos`}</span>
                     </div>
 
                   
@@ -44,7 +72,8 @@ class PictureShow extends React.Component {
                 </div>
 
                 <div className='pictureShowPage-right'>
-
+                    {editModal}
+                    {/* <PictureEditContainer /> */}
                 </div>
 
             </div>

@@ -8,6 +8,7 @@ import SignUpContainer from './welcome/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import PictureFormContainer from './picture/picture_form_container';
 import PictureNewContainer from './picture/picture_new_container';
+import PictureEditContainer from './picture/picture_edit_container';
 
 const App = () => (
     <div>        
@@ -15,9 +16,10 @@ const App = () => (
             <Route exact path='/' component={WelcomeContainer} />
             <AuthRoute exact path='/login' component={LogInContainer} />
             <AuthRoute exact path='/signup' component={SignUpContainer} />
-            <ProtectedRoute exact path='/pictures/new' component={PictureNewContainer} />
+            <ProtectedRoute  path='/pictures/new' component={PictureNewContainer} />
             <Route path='/' component={ProfileContainer}/>
         </Switch>
+            {/* <Route exact path='/pictures/new/:pictureId/edit' component={PictureEditContainer} /> */}
     </div>
 );
 

@@ -17,10 +17,13 @@ const usersReducer = (oldState = {}, action) => {
             return newState;
         case RECEIVE_PICTURE:
             newState = merge({}, oldState);
-            if (newState[action.picture.photographer_id].pictureIds) {
-                newState[action.picture.photographer_id].pictureIds.push(action.picture.id);
+            let pictureIdsArr = newState[action.picture.photographer_id].pictureIds;
+            if (pictureIdsArr) {
+                if (!pictureIdsArr.includes(action.picture.id)) {
+                    pictureIdsArr.push(action.picture.id);
+                }
             } else {
-                newState[action.picture.photographer_id].pictureIds = [action.picture.id];
+                pictureIdsArr = [action.picture.id];
             }
             return newState;
         case REMOVE_PICTURE:
