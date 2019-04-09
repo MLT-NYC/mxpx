@@ -6,7 +6,8 @@ class PictureEdit extends React.Component {
 
         this.state = {
             title: '',
-            description: ''
+            description: '',
+            id: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,16 +18,28 @@ class PictureEdit extends React.Component {
         this.props.fetchPicture(this.props.pictureId).then((success) => {
             this.setState({
                 title: success.picture.title,
-                description: success.picture.description
+                description: success.picture.description,
+                id: success.picture.id
             });
         });
+    }
+
+    componentDidUpdate(prevProps) {
+        // debugger
+        if (parseInt(prevProps.location.pathname.split('/')[3], 10) !== parseInt(this.props.location.pathname.split('/')[3], 10) ) {
+            this.props.fetchPicture(parseInt(this.props.location.pathname.split('/')[3], 10))
+                .then((success) => this.setState({
+                    title: success.picture.title,
+                    description: success.picture.description,
+                    id: success.picture.id
+                }));
+        }
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        picture = this.state;
-
+        let picture = this.state;
         this.props.updatePicture(picture);
     }
 

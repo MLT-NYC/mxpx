@@ -21,7 +21,9 @@ class Api::PicturesController < ApplicationController
     end
 
     def update
+        # debugger
         @picture = current_user.pictures.find(params[:id])
+        # debugger
         if @picture
             @picture.update_attributes(picture_params)
             render 'api/pictures/show'
