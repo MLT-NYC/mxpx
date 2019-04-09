@@ -10,7 +10,7 @@ class Profile extends React.Component {
         return (
             <div>
                 <NavBar currentUser={this.props.currentUser} 
-                navLink={<div onClick={this.props.logOut}>Log out</div>}
+                    navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
                 />    
 
                 <h1>Test</h1>

@@ -7,7 +7,6 @@ import {
 const pictureErrorsReducer = (oldState = [], action) => {
     Object.freeze(oldState);
 
-    // debugger
     switch(action.type){
         case RECEIVE_PICTURE_ERRORS:
             return action.errors.responseJSON;
