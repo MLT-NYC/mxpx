@@ -18,7 +18,7 @@ class PictureShow extends React.Component {
 
     toggleEditForm() {
         const { editForm } = this.state;
-        // debugger
+
         this.setState({
             editForm: !editForm
         });

@@ -14,7 +14,6 @@ class PictureEdit extends React.Component {
     }
     
     componentDidMount() {
-        // debugger
         this.props.fetchPicture(this.props.pictureId).then((success) => {
             this.setState({
                 title: success.picture.title,
@@ -25,7 +24,6 @@ class PictureEdit extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
         if (parseInt(prevProps.location.pathname.split('/')[3], 10) !== parseInt(this.props.location.pathname.split('/')[3], 10) ) {
             this.props.fetchPicture(parseInt(this.props.location.pathname.split('/')[3], 10))
                 .then((success) => this.setState({

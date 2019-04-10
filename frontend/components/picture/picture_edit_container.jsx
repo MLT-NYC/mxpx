@@ -6,8 +6,7 @@ import { updatePicture, fetchPicture, deletePicture } from '../../actions/pictur
 const mapStateToProps = (state, ownProps) => {
     let currentUserId = state.session.currentUserId;
     let currentUser = state.entities.users[currentUserId];
-    // debugger
-    // let pictureId = ownProps.match.params.pictureId;
+
     let pictureId = parseInt(ownProps.location.pathname.split('/')[3], 10);
     let picture = state.entities.pictures[pictureId];
 

@@ -7,7 +7,6 @@ const mapStateToProps = state => {
     let currentUser = state.entities.users[currentUserId];
     let pictures = [];
 
-    
     if (currentUser.pictureIds) {
         currentUser.pictureIds.forEach((id) => {
             if (state.entities.pictures[id]) {
