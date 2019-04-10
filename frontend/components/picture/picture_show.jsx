@@ -59,25 +59,23 @@ class PictureShow extends React.Component {
                 <>
                     <PictureEditContainer />
                 </>
-            )
+           )
         } else {
             editModal = (
                 <>
+                    <div className='pictureShowPage-right-top-mock'>Edit</div>
+
                     <form className='pictureEditForm-mock'>
-                        <div className='pictureEditFormTitle-mock'>Edit
-                        </div>
 
                         <div className='pictureEditSubmitFields-mock'>
                             <div className='pictureEditInputHeadings-mock'>Title</div>
-                            <input className='pictureEditTitleInput-mock' type="text" readOnly value='Untitled Photo'/>
+                            <input className='pictureEditTitleInput-mock' type="text" readOnly value=''/>
 
                             <div className='pictureEditInputHeadings-mock'>Description</div>
-                            <textarea className='pictureEditDescriptionInput-mock' type='text' readOnly value='Tell us more about your beautiful photo'></textarea>
+                            <textarea className='pictureEditDescriptionInput-mock' type='text' readOnly value=''></textarea>
                         </div>
 
-                        <div className='pictureEditSubmitContainer-mock'>
-                            <input type="pictureEditSubmit-mock" type='submit' readOnly value='Save' />
-                        </div>
+                        <input className='pictureEditSubmitButton-mock' type="pictureEditSubmit-mock" type='submit' readOnly value='Save' />
                     </form>
 
                     <div className='pictureEditDeleteButton-mock'>Delete this Picture</div>
@@ -95,13 +93,17 @@ class PictureShow extends React.Component {
 
                     <div className='pictureShowPage-left-bottom'>
                         <h3 className='pictureShowPage-left-bottom-title'>PHOTOS</h3>
+
+                        <div className='pictureShowPage-left-bottom-set'>
+                            <div className='pictureShowPage-left-bottom-set-title'>All Photos</div>
+                            <span className='pictureShowPage-left-bottom-set-count'>{pictureCount}</span>
+                        </div>
                     </div>
                 </div>
 
                 <div className='pictureShowPage-mid'>
                     <div className='pictureShowPage-mid-top'>
-                        <div className='pictureShowPage-mid-top-title'>Public</div> 
-                        <span className='pictureShowPage-mid-top-count'>{`${pictureCount} Photos`}</span>
+                        <div className='pictureShowPage-mid-top-title'>All Photos</div> 
                     </div>
 
                   
@@ -112,12 +114,7 @@ class PictureShow extends React.Component {
                 </div>
 
                 <div className='pictureShowPage-right'>
-                    <div className='pictureShowPage-right-top'>
-
-                    </div>
-
-                    {editModal}
-
+                        {editModal} 
                 </div>
 
             </div>

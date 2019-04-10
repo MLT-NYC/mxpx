@@ -60,14 +60,36 @@
 
 .pictureShowPage-left-bottom {
     /* border: 1px solid red; */
+    padding: 10px 0px 10px 10px;
 }
 
 .pictureShowPage-left-bottom-title {
     color: #0099E5;
     font-size: 14px;
-    width: 100%;
-    margin-left: 19px;
+    width: 219px;
+    padding: 0px 10px;
+    /* margin-left: 19px; */
     /* border: 1px solid red; */
+}
+
+.pictureShowPage-left-bottom-set {  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    width: 219px;
+    height: 28px;
+    padding: 0px 10px;
+    /* border: 1px solid red;      */
+}
+
+.pictureShowPage-left-bottom-set-title {
+    color: #525558;
+}
+
+.pictureShowPage-left-bottom-set-count {
+    color: #b9c1c7;
 }
 
 .pictureShowPage-mid {
@@ -78,10 +100,20 @@
 }
 
 .pictureShowPage-mid-top {
+    display: flex;
+    align-items: center;
     height: 60px;
     border-left: 1px solid rgba(185,193,199,0.5); 
     border-right: 1px solid rgba(185,193,199,0.5);
     border-bottom: 1px solid rgba(185,193,199,0.5); 
+}
+
+.pictureShowPage-mid-top-title {
+    color: #0099E5;
+    font-size: 14px;
+    width: 65px;
+    margin-left: 19px;
+    /* border: 1px solid red; */
 }
 
 .pictureShowPage-mid-bottom {
@@ -117,4 +149,165 @@
     min-width: 340px;
     height: 100%;
     /* border: 1px solid red; */
+}
+
+.pictureShowPage-right-top {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #222222;
+    border-bottom: 1px solid rgba(185,193,199,0.5); 
+}
+
+.pictureShowPage-right-top-mock {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #b9c1c7;
+    border-bottom: 1px solid rgba(185,193,199,0.5); 
+}
+
+.pictureEditForm {
+    /* border: 1px solid red; */
+}
+
+.pictureEditForm-mock {
+    /* border: 1px solid red; */
+}
+
+.pictureEditInputHeadings {
+    color: #0099E5;
+    font-size: 14px;
+    width: 65px;
+    margin: 25px 0px 20px 19px;
+    /* border: 1px solid red; */
+}
+
+.pictureEditInputHeadings-mock {
+    color: rgb(199, 225, 246);
+    font-size: 14px;
+    width: 65px;
+    margin: 25px 0px 20px 19px;
+    /* border: 1px solid red; */
+}
+
+.pictureEditTitleInput {
+    width: 280px;
+    height: 14px;
+    font-size: 12px;
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #eeeff2;
+    color: #666;
+    outline: none;
+    resize: none;
+    border-radius: 3px;
+    margin: 0px 0px 10px 20px;
+}
+
+.pictureEditTitleInput-mock {
+    width: 280px;
+    height: 14px;
+    font-size: 12px;
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #eeeff2;
+    color: #666;
+    outline: none;
+    resize: none;
+    border-radius: 3px;
+    margin: 0px 0px 10px 20px;
+}
+
+.pictureEditDescriptionInput {
+    width: 280px;
+    height: 110px;
+    font-size: 12px;
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #eeeff2;
+    color: #666;
+    outline: none;
+    border-radius: 3px;
+    resize: none;
+    margin: 0px 0px 10px 20px;
+}
+
+.pictureEditDescriptionInput-mock {
+    width: 280px;
+    height: 110px;
+    font-size: 12px;
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #eeeff2;
+    color: #666;
+    outline: none;
+    border-radius: 3px;
+    resize: none;
+    margin: 0px 0px 10px 20px;
+}
+
+.pictureEditSubmitButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    background: rgb(176, 221, 172);
+    height: 40px;
+    width: 302px;
+    border: none;
+    border-radius: 3px;
+    margin: 20px 0px 10px 20px;
+}
+
+.pictureEditSubmitButton:hover {
+    background: rgb(96, 184, 88);
+    cursor: pointer;
+}
+
+.pictureEditSubmitButton-mock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    background: rgb(232, 245, 230);
+    height: 40px;
+    width: 302px;
+    border: none;
+    border-radius: 3px;
+    margin: 20px 0px 10px 20px;
+}
+
+.pictureEditDeleteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    background: rgb(114, 118, 122);
+    height: 40px;
+    width: 302px;
+    border: none;
+    border-radius: 3px;
+    margin: 250px 0px 10px 20px;
+}
+
+.pictureEditDeleteButton {
+    cursor: pointer;
+}
+
+.pictureEditDeleteButton-mock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    background: rgb(242, 242, 243);
+    height: 40px;
+    width: 302px;
+    border: none;
+    border-radius: 3px;
+    margin: 250px 0px 10px 20px;
 }

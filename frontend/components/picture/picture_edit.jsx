@@ -52,10 +52,9 @@ class PictureEdit extends React.Component {
 
         return (
             <>
-                <form className='pictureEditForm' onSubmit={this.handleSubmit}>
-                    <div className='pictureEditFormTitle'>Edit
-                    </div>
+                <div className='pictureShowPage-right-top'>Editing 1 Photo</div>
 
+                <form className='pictureEditForm' onSubmit={this.handleSubmit}>
                     <div className='pictureEditSubmitFields'>
                         <div className='pictureEditInputHeadings'>Title</div>
                         <input className='pictureEditTitleInput' type="text" value={this.state.title} onChange={this.update('title')} />
@@ -64,9 +63,7 @@ class PictureEdit extends React.Component {
                         <textarea className='pictureEditDescriptionInput' type='text' value={this.state.description} onChange={this.update('description')}></textarea>
                     </div>
 
-                    <div className='pictureEditSubmitContainer'>
-                        <input type="pictureEditSubmit" type='submit' value='Save'/>
-                    </div>
+                    <input className='pictureEditSubmitButton' type="pictureEditSubmit" type='submit' value='Save'/>
                 </form>
 
                 <div className='pictureEditDeleteButton' onClick={() => (this.props.deletePicture(this.props.pictureId))}>Delete this Picture</div>
