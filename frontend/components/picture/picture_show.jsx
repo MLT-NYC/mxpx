@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import PictureShowItem from './picture_show_item';
-
 import PictureEditContainer from './picture_edit_container';
 
 class PictureShow extends React.Component {
@@ -47,8 +45,8 @@ class PictureShow extends React.Component {
             return (
                     <Link to={`/pictures/new/${picture.id}/edit`} 
                         key={index} 
-                        onClick={this.handleClick.bind(this, index)}>
-                            <img className={className}src={picture.img_url}/>
+                        onClick={this.handleClick.bind(this, index)} className='imageLink'>
+                            <img className={className} src={picture.img_url}/>
                     </Link>
             )
         });
@@ -106,10 +104,11 @@ class PictureShow extends React.Component {
                         <div className='pictureShowPage-mid-top-title'>All Photos</div> 
                     </div>
 
-                  
-                    <ul className='pictureShowPage-mid-bottom'>
+                <div className='pictureShowPage-mid-bottom'>
+                    <ul className='pictureShowItem-container'> 
                         {pictures}
                     </ul>
+                </div>
             
                 </div>
 
