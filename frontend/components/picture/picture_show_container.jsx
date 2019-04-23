@@ -15,7 +15,6 @@ const mapStateToProps = state => {
         });
     }
 
-
     return ({
         currentUser: currentUser,
         pictures: pictures,
