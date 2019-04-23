@@ -16,7 +16,7 @@ class Profile extends React.Component {
 
         let pictures = this.props.pictures.map((picture, index) => {
             return (
-                <img key={index} src={picture.img_url}/>
+                <img key={index} src={picture.img_url} className='profilePictures'/>
             );
         });
 
@@ -26,7 +26,7 @@ class Profile extends React.Component {
                     navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
                 />    
 
-                <ul>
+                <ul className='picturesProfileContainer'>
                     {pictures}
                 </ul>
             </div>

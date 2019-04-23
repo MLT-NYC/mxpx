@@ -1,0 +1,14 @@
+.picturesProfileContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.profilePictures {
+    flex-grow: 1;
+    margin: 15px 15px 15px 15px;
+    max-height: 350px;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
