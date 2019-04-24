@@ -15,7 +15,7 @@ const mapStateToProps = state => {
             }
         });
     }
-    // debugger
+
     return ({
         currentUser: currentUser,
         pictures: pictures,

@@ -25,20 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // TESTING START //
 
     // session action creators
-    window.signUp = SessionAPIActions.signUp;
-    window.logIn = SessionAPIActions.logIn;
-    window.logOut = SessionAPIActions.logOut;
+    // window.signUp = SessionAPIActions.signUp;
+    // window.logIn = SessionAPIActions.logIn;
+    // window.logOut = SessionAPIActions.logOut;
     // pictures action creators
-    window.fetchPictures = PicturesAPIActions.fetchPictures;
-    window.fetchPicture = PicturesAPIActions.fetchPicture;
-    window.createPicture = PicturesAPIActions.createPicture;
-    window.updatePicture = PicturesAPIActions.updatePicture;
-    window.deletePicture = PicturesAPIActions.deletePicture;
+    // window.fetchPictures = PicturesAPIActions.fetchPictures;
+    // window.fetchPicture = PicturesAPIActions.fetchPicture;
+    // window.createPicture = PicturesAPIActions.createPicture;
+    // window.updatePicture = PicturesAPIActions.updatePicture;
+    // window.deletePicture = PicturesAPIActions.deletePicture;
 
     // state
-    window.store = store;
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
+    // window.store = store;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
     // TESTING END//
 
     ReactDOM.render(<Root store={store}/>, root)
