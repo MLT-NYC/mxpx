@@ -18,7 +18,8 @@ const mapStateToProps = state => {
     // debugger
     return ({
         currentUser: currentUser,
-        pictures: pictures
+        pictures: pictures,
+        navBarPicture: pictures[0]
     });
 };
 

@@ -9,11 +9,9 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchPictures();
-        // debugger
     }
 
     render(){
-
         let pictures = this.props.pictures.map((picture, index) => {
             return (
                 <img key={index} src={picture.img_url} className='profilePictures'/>
@@ -24,6 +22,7 @@ class Profile extends React.Component {
             <div>
                 <NavBar currentUser={this.props.currentUser} 
                     navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
+                    navBarPicture={this.props.navBarPicture}
                 />    
 
                 <ul className='picturesProfileContainer'>

@@ -94,6 +94,13 @@
     /* border: 1px solid red; */
 }
 
+.navBarPicture {
+    height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .dropdownMenuHeader:hover {
     cursor: pointer;
 }

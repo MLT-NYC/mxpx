@@ -29,10 +29,16 @@ class NavBar extends React.Component {
 
     render() {
 
+        let navBarPicture;
+        if (this.props.navBarPicture) {
+            navBarPicture = <img src={this.props.navBarPicture.img_url} className='navBarPicture'/>;
+        }
+        
         let rightItems;
         let navBarClassName;
         if (this.props.currentUser) {
             navBarClassName = 'profileNavBar';
+
             rightItems = (
                 <div className='dropdownMenuContainer'>
 
@@ -40,7 +46,7 @@ class NavBar extends React.Component {
                     <input type="text" className='search'/>
 
                     <div onClick={this.showMenu} className='dropdownMenuHeader'>
-                        Show menu
+                        {navBarPicture}
                     </div>
 
                     {
@@ -67,10 +73,8 @@ class NavBar extends React.Component {
                             )
                         }
 
-                   
                     <div className='messageSendIcon'><i className="far fa-paper-plane"></i></div>
                     <div className='notificationIcon'><i className="far fa-bell"></i></div>
-                    {/* <div className='pictureCreateIcon'><i className="fas fa-plus"></i></div> */}
                     <Link to='/pictures/new' onClick={this.props.toggleShowForm} className='pictureCreateIcon'><i className="fas fa-plus"></i></Link>
                 
                 </div>
