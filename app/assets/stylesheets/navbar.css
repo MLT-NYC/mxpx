@@ -84,19 +84,16 @@
     width: 70%;
     color: #222222;
     z-index: 1;
-    /* border: 1px solid red; */
 }
 
 .dropdownMenuHeader {
     height: 32px;
     width: 32px;
-    border-radius: 50%;
-    /* border: 1px solid red; */
 }
 
 .navBarPicture {
     height: 100%;
-    max-width: 100%;
+    width: 100%;
     border-radius: 50%;
     object-fit: cover;
 }
