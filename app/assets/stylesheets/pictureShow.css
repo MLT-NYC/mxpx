@@ -193,10 +193,13 @@
 
 .pictureEditForm {
     /* border: 1px solid red; */
+    position: fixed;
 }
 
 .pictureEditForm-mock {
     /* border: 1px solid red; */
+    position: fixed;
+    z-index: -1;
 }
 
 .pictureEditInputHeadings {
@@ -312,10 +315,7 @@
     width: 302px;
     border: none;
     border-radius: 3px;
-    margin: 250px 0px 10px 20px;
-}
-
-.pictureEditDeleteButton {
+    margin: 20px 0px 10px 20px;
     cursor: pointer;
 }
 
@@ -330,5 +330,5 @@
     width: 302px;
     border: none;
     border-radius: 3px;
-    margin: 250px 0px 10px 20px;
+    margin: 20px 0px 10px 20px;
 }

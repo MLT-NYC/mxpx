@@ -11,6 +11,7 @@ class PictureEdit extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     
     componentDidMount() {
@@ -41,6 +42,18 @@ class PictureEdit extends React.Component {
         this.props.updatePicture(picture);
     }
 
+    handleDelete(e) {
+        e.preventDefault();
+
+        this.setState({
+            title: '',
+            description: '',
+            id: null
+        });
+
+        this.props.deletePicture(this.props.pictureId);
+    }
+
     update(field) {
         return e => this.setState({
             [field]: e.target.value
@@ -62,9 +75,9 @@ class PictureEdit extends React.Component {
                     </div>
 
                     <input className='pictureEditSubmitButton' type="pictureEditSubmit" type='submit' value='Save'/>
+                    <div className='pictureEditDeleteButton' onClick={this.handleDelete}>Delete this Picture</div>
                 </form>
 
-                <div className='pictureEditDeleteButton' onClick={() => (this.props.deletePicture(this.props.pictureId))}>Delete this Picture</div>
             </>
         );
     }

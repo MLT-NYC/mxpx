@@ -24,21 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // TESTING START //
 
-    // session action creators
+    // SESSION ACTION CREATORS
     // window.signUp = SessionAPIActions.signUp;
     // window.logIn = SessionAPIActions.logIn;
     // window.logOut = SessionAPIActions.logOut;
-    // pictures action creators
+
+    // PICTURES ACTION CREATORS
     // window.fetchPictures = PicturesAPIActions.fetchPictures;
     // window.fetchPicture = PicturesAPIActions.fetchPicture;
     // window.createPicture = PicturesAPIActions.createPicture;
     // window.updatePicture = PicturesAPIActions.updatePicture;
     // window.deletePicture = PicturesAPIActions.deletePicture;
 
-    // state
+    // STATE
     // window.store = store;
     // window.getState = store.getState;
     // window.dispatch = store.dispatch;
+    
     // TESTING END//
 
     ReactDOM.render(<Root store={store}/>, root)

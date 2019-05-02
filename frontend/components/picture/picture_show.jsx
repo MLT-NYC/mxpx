@@ -74,9 +74,9 @@ class PictureShow extends React.Component {
                         </div>
 
                         <input className='pictureEditSubmitButton-mock' type="pictureEditSubmit-mock" type='submit' readOnly value='Save' />
+                        <div className='pictureEditDeleteButton-mock'>Delete this Picture</div>
                     </form>
 
-                    <div className='pictureEditDeleteButton-mock'>Delete this Picture</div>
                 </>
             )
         }
