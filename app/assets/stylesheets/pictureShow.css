@@ -61,6 +61,7 @@
 .pictureShowPage-left-bottom {
     /* border: 1px solid red; */
     padding: 10px 0px 10px 10px;
+    /* position: fixed; */
 }
 
 .pictureShowPage-left-bottom-title {
@@ -193,13 +194,13 @@
 
 .pictureEditForm {
     /* border: 1px solid red; */
-    position: fixed;
+    /* position: fixed; */
 }
 
 .pictureEditForm-mock {
     /* border: 1px solid red; */
-    position: fixed;
-    z-index: -1;
+    /* position: fixed; */
+    /* z-index: -1; */
 }
 
 .pictureEditInputHeadings {
@@ -282,10 +283,22 @@
     border: none;
     border-radius: 3px;
     margin: 20px 0px 10px 20px;
+    position: fixed;
 }
 
-.pictureEditSubmitButton:hover {
+.pictureEditSubmitButton-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
     background: rgb(96, 184, 88);
+    height: 40px;
+    width: 302px;
+    border: none;
+    border-radius: 3px;
+    margin: 20px 0px 10px 20px;
+    position: fixed;
     cursor: pointer;
 }
 
@@ -315,8 +328,9 @@
     width: 302px;
     border: none;
     border-radius: 3px;
-    margin: 20px 0px 10px 20px;
+    margin: 80px 0px 10px 20px;
     cursor: pointer;
+    position: fixed;
 }
 
 .pictureEditDeleteButton-mock {

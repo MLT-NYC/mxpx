@@ -7,7 +7,8 @@ class PictureEdit extends React.Component {
         this.state = {
             title: '',
             description: '',
-            id: null
+            id: null,
+            submitButtonActive: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,10 +57,18 @@ class PictureEdit extends React.Component {
 
     update(field) {
         return e => this.setState({
-            [field]: e.target.value
+            [field]: e.target.value,
+            submitButtonActive: true
         });
     }
     render() {
+
+        let pictureEditSubmitButtonClass;
+        if (this.state.submitButtonActive) {
+            pictureEditSubmitButtonClass = 'pictureEditSubmitButton-active';
+        } else {
+            pictureEditSubmitButtonClass = 'pictureEditSubmitButton';
+        }
 
         return (
             <>
@@ -74,7 +83,7 @@ class PictureEdit extends React.Component {
                         <textarea className='pictureEditDescriptionInput' type='text' value={this.state.description} onChange={this.update('description')}></textarea>
                     </div>
 
-                    <input className='pictureEditSubmitButton' type="pictureEditSubmit" type='submit' value='Save'/>
+                    <input className={pictureEditSubmitButtonClass} type="pictureEditSubmit" type='submit' value='Save'/>
                     <div className='pictureEditDeleteButton' onClick={this.handleDelete}>Delete this Picture</div>
                 </form>
 
