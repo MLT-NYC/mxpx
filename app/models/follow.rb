@@ -16,7 +16,7 @@ class Follow < ApplicationRecord
     private
     def ensure_not_self
         if follower_id == followee_id
-            errors[:follower_id] << 'You not follow yourself.'
+            errors[:follower_id] << 'You may not follow yourself.'
         end
     end
 end
