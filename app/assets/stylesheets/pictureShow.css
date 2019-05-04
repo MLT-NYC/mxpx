@@ -283,7 +283,6 @@
     border: none;
     border-radius: 3px;
     margin: 20px 0px 10px 20px;
-    position: fixed;
 }
 
 .pictureEditSubmitButton-active {
@@ -298,7 +297,6 @@
     border: none;
     border-radius: 3px;
     margin: 20px 0px 10px 20px;
-    position: fixed;
     cursor: pointer;
 }
 
@@ -328,9 +326,13 @@
     width: 302px;
     border: none;
     border-radius: 3px;
-    margin: 80px 0px 10px 20px;
+    margin: 20px 0px 10px 20px;
     cursor: pointer;
-    position: fixed;
+    transition: .25s;
+}
+
+.pictureEditDeleteButton:hover {
+    background: #ff4c4c;
 }
 
 .pictureEditDeleteButton-mock {
