@@ -14,12 +14,14 @@ const removeFollow = follow => ({
 });
 
 
-export const createFollow = follow => dispatch => {
+export const createFollow = (follow) => dispatch => {
+    debugger
     return FollowApiUtils.createFollow(follow)
         .then(follow => dispatch(receiveFollow(follow)));
+
 };
 
-export const deleteFollow = follow => dispatch => {
+export const deleteFollow = (follow) => dispatch => {
     return FollowApiUtils.deleteFollow(follow)
         .then(follow => dispatch(removeFollow(follow)));
 };

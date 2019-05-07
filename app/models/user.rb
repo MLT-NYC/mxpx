@@ -12,16 +12,22 @@ class User < ApplicationRecord
         foreign_key: :photographer_id,
         primary_key: :id
 
-
-    has_many :followees,
-        class_name: "Follow",
+    has_many :follower_objects,
+        class_name: 'Follow',
         foreign_key: :followee_id,
         primary_key: :id
 
+    has_many :followee_objects,
+        class_name: 'Follow',
+        foreign_key: :follower_id
+
     has_many :followers,
-        class_name: "Follow",
-        foreign_key: :follower_id,
-        primary_key: :id
+        through: :follower_objects,
+        source: :followee
+
+    has_many :followees,
+        through: :followee_objects,
+        source: :follower
 
     def password=(password) 
         @password = password
