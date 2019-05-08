@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.deletePicture = PicturesAPIActions.deletePicture;
 
     // FOLLOWS ACTION CREATORS
-    window.createFollow = FollowsUtils.createFollow;
+    window.createFollow = FollowsAPIActions.createFollow;
     window.deleteFollow = FollowsAPIActions.deleteFollow;
     
     // FOLLOWS UTILS
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // STATE
     // window.store = store;
     // window.getState = store.getState;
-    // window.dispatch = store.dispatch;
+    window.dispatch = store.dispatch;
     
     // TESTING END//
 

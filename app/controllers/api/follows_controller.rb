@@ -3,12 +3,12 @@ class Api::FollowsController < ApplicationController
     def create
         @follow = Follow.new(follows_params)
         @follow.save
+        render 'api/follows/show'
     end
 
     def destroy
-        # debugger
         @follow = Follow.all.find(params[:id])
-        # debugger
+        render 'api/follows/show'
         @follow.destroy
     end
 

@@ -15,7 +15,6 @@ const removeFollow = follow => ({
 
 
 export const createFollow = (follow) => dispatch => {
-    debugger
     return FollowApiUtils.createFollow(follow)
         .then(follow => dispatch(receiveFollow(follow)));
 

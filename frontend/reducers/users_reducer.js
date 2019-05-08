@@ -32,6 +32,10 @@ const usersReducer = (oldState = {}, action) => {
             let newPictureIds = pictureIds.filter(pictureId => pictureId != action.picture.id);
             newState[action.picture.photographer_id].pictureIds = newPictureIds;
             return newState;
+        case RECEIVE_FOLLOW:
+        debugger
+            newState = merge({}, oldState);
+            let followeeIds = newState[action.follow.follower_id].followeeIds;
         default:
             return oldState;
     }
