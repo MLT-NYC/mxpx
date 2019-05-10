@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -32,6 +33,8 @@ class NavBar extends React.Component {
         let navBarPicture;
         if (this.props.navBarPicture) {
             navBarPicture = <img src={this.props.navBarPicture.img_url} className='navBarPicture'/>;
+        } else {
+            navBarPicture = <img src={defaultProfilePic} className='navBarPicture' />
         }
         
         let rightItems;

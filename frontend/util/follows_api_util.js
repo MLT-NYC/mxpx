@@ -1,5 +1,4 @@
 export const createFollow = (follow) => {
-    // debugger
     return $.ajax({
         method: 'POST',
         url: `/api/users/${follow.follower_id}/follow`,
@@ -8,7 +7,6 @@ export const createFollow = (follow) => {
 };
 
 export const deleteFollow = (follow) => {
-    // debugger
     return $.ajax({
         method: 'DELETE',
         url: `/api/users/${follow.follower_id}/unfollow`,

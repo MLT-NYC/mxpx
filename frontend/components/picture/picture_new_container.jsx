@@ -9,7 +9,8 @@ const mapStateToProps = state => {
     let currentUser = state.entities.users[currentUserId];
     let navBarPictureId = currentUser.pictureIds[0];
     let navBarPicture = state.entities.pictures[navBarPictureId];
-    // let errors = state.errors.pictureForm;
+    
+
 
     return ({
         currentUser: currentUser,

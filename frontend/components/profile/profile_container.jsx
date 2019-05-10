@@ -6,6 +6,8 @@ import { fetchPictures } from '../../actions/pictures_actions';
 const mapStateToProps = state => {
     let currentUserId = state.session.currentUserId;
     let currentUser = state.entities.users[currentUserId];
+    let navBarPictureId = currentUser.pictureIds[0];
+    let navBarPicture = state.entities.pictures[navBarPictureId];
     let pictures = [];
 
     if (currentUser.pictureIds) {
@@ -19,7 +21,7 @@ const mapStateToProps = state => {
     return ({
         currentUser: currentUser,
         pictures: pictures,
-        navBarPicture: pictures[0]
+        navBarPicture: navBarPicture
     });
 };
 
