@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.deleteFollow = FollowsUtils.deleteFollow;
 
     // STATE
-    // window.store = store;
+    window.store = store;
     // window.getState = store.getState;
     window.dispatch = store.dispatch;
     
