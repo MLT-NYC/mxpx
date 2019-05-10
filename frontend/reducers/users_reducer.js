@@ -8,7 +8,8 @@ import {
 } from '../actions/pictures_actions';
 
 import {
-    RECEIVE_FOLLOW
+    RECEIVE_FOLLOW,
+    REMOVE_FOLLOW
 } from '../actions/follows_actions';
 
 import merge from 'lodash/merge';
@@ -16,6 +17,7 @@ import merge from 'lodash/merge';
 const usersReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     let newState;
+    let followeeIds;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState = merge({}, oldState, {[action.currentUser.id]: action.currentUser});
@@ -43,10 +45,9 @@ const usersReducer = (oldState = {}, action) => {
 
             return newState;
         case RECEIVE_FOLLOW:
-        debugger
             newState = merge({}, oldState);
 
-            let followeeIds = newState[action.follow.follower_id].followeeIds;
+            followeeIds = newState[action.follow.follower_id].followeeIds;
             if (followeeIds) {
                 if (!followeeIds.includes(action.follow.followee_id)) {
                     followeeIds.push(action.follow.followee_id);
@@ -55,15 +56,14 @@ const usersReducer = (oldState = {}, action) => {
                 followeeIds = [action.follow.followee_id];
             }
 
-            let followerIds = newState[action.follow.followee_id].followerIds;
-            if (followerIds) {
-                if (!followerIds.includes(action.follow.follower_id)) {
-                    followerIds.push(action.follow.follower_id);
-                }
-            } else {
-                followerIds = [action.follow.follower_id];
-            }
+            return newState;
+        case REMOVE_FOLLOW:
+            newState = merge({}, oldState);
 
+            followeeIds = newState[action.follow.follower_id].followeeIds;
+            let updatedFolloweeIds = followeeIds.filter(followeeId => followeeId != action.follow.followee_id);
+            newState[action.follow.follower_id].followeeIds = updatedFolloweeIds;
+            
             return newState;
         default:
             return oldState;

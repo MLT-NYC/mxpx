@@ -1,13 +1,13 @@
 class Api::FollowsController < ApplicationController
 
-    def create
+    def follow
         @follow = Follow.new(follows_params)
         @follow.save
         render 'api/follows/show'
     end
 
-    def destroy
-        @follow = Follow.all.find(params[:id])
+    def unfollow
+        @follow = Follow.where(follower_id: follows_params[:follower_id]).where(followee_id: follows_params[:followee_id]).first
         render 'api/follows/show'
         @follow.destroy
     end
