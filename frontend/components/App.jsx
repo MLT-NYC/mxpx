@@ -19,7 +19,6 @@ const App = () => (
             <ProtectedRoute  path='/pictures/new' component={PictureNewContainer} />
             <Route path='/' component={ProfileContainer}/>
         </Switch>
-            {/* <Route exact path='/pictures/new/:pictureId/edit' component={PictureEditContainer} /> */}
     </div>
 );
 

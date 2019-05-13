@@ -1,0 +1,40 @@
+import { connect } from 'react-redux';
+import PersonalProfile from './personal_profile';
+import { logOut } from '../../actions/session_actions';
+import { fetchPictures } from '../../actions/pictures_actions';
+
+const mapStateToProps = state => {
+    let currentUserId = state.session.currentUserId;
+    let currentUser = state.entities.users[currentUserId];
+    let navBarPictureId = currentUser.pictureIds[0];
+    let navBarPicture = state.entities.pictures[navBarPictureId];
+    let followers = state.entities.users[currentUserId].followerIds;
+    let followees = state.entities.users[currentUserId].followeeIds;
+    let pictures = [];
+
+    if (currentUser.pictureIds) {
+        currentUser.pictureIds.forEach((id) => {
+            if (state.entities.pictures[id]) {
+                pictures.push(state.entities.pictures[id]);
+            }
+        });
+    }
+
+    return ({
+        currentUser: currentUser,
+        pictures: pictures,
+        navBarPicture: navBarPicture,
+        followers: followers,
+        followees: followees
+    });
+};
+
+const mapDispatchToProps = dispatch => {
+    return ({
+        logOut: () => dispatch(logOut()),
+        fetchPictures: () => dispatch(fetchPictures())
+    });
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalProfile);
