@@ -14,15 +14,15 @@ class PersonalProfile extends React.Component {
     render (){
         let pictures = this.props.pictures.map((picture, index) => {
             return (
-                <img key={index} src={picture.img_url}/>
+                <img key={index} src={picture.img_url} className='personalProfile-pictures'/>
             );
         });
 
         let personalPicture;
         if (this.props.navBarPicture) {
-            personalPicture = <img src={this.props.navBarPicture.img_url} className='navBarPicture' />;
+            personalPicture = <img src={this.props.navBarPicture.img_url} className='personalProfile-personalPicture' />;
         } else {
-            personalPicture = <img src={defaultProfilePic} className='navBarPicture' />
+            personalPicture = <img src={defaultProfilePic} className='personalProfile-personalPicture' />
         }
 
         let profileName;
@@ -32,8 +32,9 @@ class PersonalProfile extends React.Component {
             profileName = this.props.email;
         }
 
-        let followerCount = this.props.followers.length;
-        let followeeCount = this.props.followees.length;
+        
+        let followerCount = <div className='personalProfile-detail-count'>{this.props.followers.length}</div>
+        let followeeCount = <div className='personalProfile-detail-count'>{this.props.followees.length}</div>
         let pictureCount = this.props.pictures.length;
 
         return (
@@ -57,15 +58,16 @@ class PersonalProfile extends React.Component {
                         </div>
 
                         <div className='personalProfile-details'>
-                            <div className='personalProfile-details-followers'>Followers {followerCount}</div>
-                            <div className='personalProfile-details-followees'>Following {followeeCount}</div>
+                            <div className='personalProfile-details-item'>{followerCount} Followers</div>
+                            <div className='personalProfile-details-item'>{followeeCount} Following</div>
                         </div>
                     </div>
                 </div>
 
                 <div className='personalProfile-middle'>
-                    <div className='personalProfile-middle-pictures'>
-                        PHOTOS {pictureCount}
+                    <div className='personalProfile-middle-tab-pictures'>
+                        <div className='personalProfile-middle-tab-title'>PHOTOS</div>
+                         {pictureCount}
                     </div>
                 </div>
 

@@ -12,3 +12,117 @@
     max-width: 100%;
     object-fit: cover;
 }
+
+.personalProfile-top {
+    border-bottom: 1px solid #eeeff2;
+    /* border: 1px solid red; */
+}
+
+.personalProfile-top-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 130px;
+    border-bottom: 1px solid #eeeff2;
+    /* border: 1px solid red; */
+}
+
+.personalProfile-personalPicture {
+    height: 100px;
+    width: 100px;
+    margin-top: 125px;
+    margin-left: calc(50% - 50px);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.personalProfile-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+    background: #0099E5;
+    border-radius: 3px;
+    padding: 7px 10px 7px 10px;
+    margin-top: 177px;
+    margin-left: 50px;
+}
+
+.personalProfile-edit:hover {
+    cursor: pointer;
+    background: #00aaff;
+}
+
+.personalProfile-top-bottom {
+    /* border: 1px solid red; */
+}
+
+.personalProfile-name {
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color:#525558;
+    margin-top: 75px;
+}
+
+.personalProfile-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #B9C1C7;
+    margin: 15px 0px 15px 0px;
+    /* border: 1px solid red; */
+}
+
+.personalProfile-details-item {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 15px 0px 15px;
+}
+
+.personalProfile-detail-count {
+    font-weight: bolder;
+    margin-right: 5px;
+}
+
+.personalProfile-middle {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #eeeff2;
+}
+
+.personalProfile-middle-tab-pictures {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 15px 0px 15px 0px;
+    border-bottom: 2px solid #0099E5;
+    color: #0099E5;
+    /* border: 1px solid red; */
+    /* padding: 15px 0px 15px 0px; */
+}
+
+.personalProfile-middle-tab-title {
+    font-weight: bolder;
+    margin-right: 5px;
+}
+
+.personalProfile-bottom {
+    padding: 20px 0px 20px 0px;
+    min-height: 500px;
+    background: rgb(247,248,250);
+    /* border: 1px solid red; */
+}
+
+.personalProfile-pictures {
+    height: 200px;
+    margin-left: 10px;
+}
