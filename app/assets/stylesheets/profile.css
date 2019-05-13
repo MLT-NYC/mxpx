@@ -126,3 +126,19 @@
     height: 200px;
     margin-left: 10px;
 }
+
+.editProfileModal {
+    background-color: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.editProfileModal-form {
+    height: 580px;
+    width: 580px;
+    background: white;
+}

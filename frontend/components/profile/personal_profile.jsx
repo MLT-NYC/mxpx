@@ -5,6 +5,21 @@ import defaultProfilePic from '../../../app/assets/images/default_profile_pic.pn
 class PersonalProfile extends React.Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            editProfile: false,
+        };
+
+        this.toggleEditProfile = this.toggleEditProfile.bind(this);
+    }
+
+    toggleEditProfile() {
+        debugger
+        const { editProfile } = this.state;
+
+        this.setState({
+            editProfile: !editProfile
+        });
     }
 
     componentDidMount() {
@@ -32,6 +47,29 @@ class PersonalProfile extends React.Component {
             profileName = this.props.email;
         }
 
+        let editProfileModal;
+        if (this.state.editProfile) {
+            editProfileModal = (
+                <>
+                    <div className='editProfileModal' onClick={this.toggleEditProfile}>
+                        <div className='editProfileModal-form'>
+                            <div className='editProfileModal-form-top'>
+                
+                            </div>
+
+
+                            <div className='editProfileModal-form-middle'>
+
+                            </div>
+
+                            <div className='editProfileModal-form-bottom'>
+
+                            </div>
+                        </div>
+                    </div>
+                </>
+                )
+        } 
         
         let followerCount = <div className='personalProfile-detail-count'>{this.props.followers.length}</div>
         let followeeCount = <div className='personalProfile-detail-count'>{this.props.followees.length}</div>
@@ -44,10 +82,12 @@ class PersonalProfile extends React.Component {
                     navBarPicture={this.props.navBarPicture}
                 />
 
+                {editProfileModal}
+
                 <div className='personalProfile-top'>
                     <div className='personalProfile-top-top'>
                         {personalPicture}
-                        <div className='personalProfile-edit'>
+                        <div className='personalProfile-edit' onClick={this.toggleEditProfile}>
                             Edit your profile
                         </div>
                     </div>
