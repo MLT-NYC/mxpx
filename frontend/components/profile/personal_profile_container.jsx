@@ -10,7 +10,10 @@ const mapStateToProps = state => {
     let navBarPicture = state.entities.pictures[navBarPictureId];
     let followers = state.entities.users[currentUserId].followerIds;
     let followees = state.entities.users[currentUserId].followeeIds;
+    let name = state.entities.users[currentUserId].name;
+    let email = state.entities.users[currentUserId].email;
     let pictures = [];
+    // debugger
 
     if (currentUser.pictureIds) {
         currentUser.pictureIds.forEach((id) => {
@@ -25,7 +28,9 @@ const mapStateToProps = state => {
         pictures: pictures,
         navBarPicture: navBarPicture,
         followers: followers,
-        followees: followees
+        followees: followees,
+        name: name,
+        email: email
     });
 };
 
