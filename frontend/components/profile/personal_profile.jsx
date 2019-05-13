@@ -9,7 +9,7 @@ class PersonalProfile extends React.Component {
     render (){
         let pictures = this.props.pictures.map((picture, index) => {
             return (
-                <img key={index} src={picture.img_url} className='profilePictures' />
+                <img key={index} src={picture.img_url}/>
             );
         });
 
@@ -20,7 +20,7 @@ class PersonalProfile extends React.Component {
                     navBarPicture={this.props.navBarPicture}
                 />
 
-                <ul className='picturesProfileContainer'>
+                <ul>
                     {pictures}
                 </ul>
             </div>

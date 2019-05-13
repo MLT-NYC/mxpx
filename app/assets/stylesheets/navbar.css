@@ -135,6 +135,8 @@
     width: 152px;
     height: 36px;
     padding-left: 7px;
+    text-emphasis: none;
+    color: #222222;
     /* border: 1px solid red; */
 }
 

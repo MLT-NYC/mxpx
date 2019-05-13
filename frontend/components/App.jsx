@@ -6,9 +6,8 @@ import WelcomeContainer from './welcome/welcome_container';
 import LogInContainer from './welcome/login_form_container';
 import SignUpContainer from './welcome/signup_form_container';
 import ProfileContainer from './profile/profile_container';
-import PictureFormContainer from './picture/picture_form_container';
+import PersonalProfileContainer from './profile/personal_profile_container';
 import PictureNewContainer from './picture/picture_new_container';
-import PictureEditContainer from './picture/picture_edit_container';
 
 const App = () => (
     <div className="outterMost">        
@@ -17,6 +16,7 @@ const App = () => (
             <AuthRoute exact path='/login' component={LogInContainer} />
             <AuthRoute exact path='/signup' component={SignUpContainer} />
             <ProtectedRoute  path='/pictures/new' component={PictureNewContainer} />
+            <ProtectedRoute path='/profile' component={PersonalProfileContainer} />
             <Route path='/' component={ProfileContainer}/>
         </Switch>
     </div>

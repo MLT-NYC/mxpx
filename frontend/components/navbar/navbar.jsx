@@ -59,7 +59,7 @@ class NavBar extends React.Component {
                                 <div className='dropdownMenuSquare'></div>
                                 
                                 <div className="dropdownMenu">
-                                    <div className='dropdownMenuItem-1'>My profile</div>
+                                    <Link to={'/profile'} className='dropdownMenuItem-1'>My profile</Link>
                                     <div className='dropdownMenuItem-2'>My Stats</div>
                                     <div className='dropdownMenuItem-3'>My Galleries</div>
                                     <div className='dropdownMenuItem-4'>My liked pictures</div>
