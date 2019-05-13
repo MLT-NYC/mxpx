@@ -8,6 +8,7 @@
     top: 8vh;
     height: 88vh;
     width: 90vw;
+    z-index: 1;
     /* border: 1px solid red; */
 }
 
@@ -25,6 +26,7 @@
     width: 100%;
     background-color: #f7f8fa;
     border: 1px solid #eeeff2;
+    /* z-index: 2; */
 }
 
 .newPictureFormContainer-left {
@@ -220,4 +222,5 @@ input[type="file"] {
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 1;
 }
