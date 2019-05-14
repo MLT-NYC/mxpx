@@ -14,7 +14,6 @@ const mapStateToProps = state => {
     let lastName = state.entities.users[currentUserId].last_name;
     let email = state.entities.users[currentUserId].email;
     let pictures = [];
-    // debugger
 
     if (currentUser.pictureIds) {
         currentUser.pictureIds.forEach((id) => {
