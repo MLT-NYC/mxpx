@@ -39,3 +39,9 @@ export const logOut = () => dispatch => {
     return SessionApiUtils.logOut()
         .then(() => dispatch(logOutCurrentUser()));
 };
+
+export const updateUser = (user) => dispatch => {
+    return SessionApiUtils.updateUser(user)
+        .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+            errors => dispatch(receiveSessionErrors(errors)));
+};

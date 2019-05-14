@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.signUp = SessionAPIActions.signUp;
     // window.logIn = SessionAPIActions.logIn;
     // window.logOut = SessionAPIActions.logOut;
+    window.updateUser = SessionAPIActions.updateUser;
 
     // PICTURES ACTION CREATORS
     // window.fetchPictures = PicturesAPIActions.fetchPictures;
@@ -39,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.deletePicture = PicturesAPIActions.deletePicture;
 
     // FOLLOWS ACTION CREATORS
-    window.createFollow = FollowsAPIActions.createFollow;
-    window.deleteFollow = FollowsAPIActions.deleteFollow;
+    // window.createFollow = FollowsAPIActions.createFollow;
+    // window.deleteFollow = FollowsAPIActions.deleteFollow;
     
     // FOLLOWS UTILS
     // window.createFollow = FollowsUtils.createFollow;
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // STATE
     window.store = store;
-    // window.getState = store.getState;
+    window.getState = store.getState;
     window.dispatch = store.dispatch;
     
     // TESTING END//
