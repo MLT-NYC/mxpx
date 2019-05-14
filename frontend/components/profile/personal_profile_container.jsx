@@ -10,7 +10,8 @@ const mapStateToProps = state => {
     let navBarPicture = state.entities.pictures[navBarPictureId];
     let followers = state.entities.users[currentUserId].followerIds;
     let followees = state.entities.users[currentUserId].followeeIds;
-    let name = state.entities.users[currentUserId].name;
+    let firstName = state.entities.users[currentUserId].first_name;
+    let lastName = state.entities.users[currentUserId].last_name;
     let email = state.entities.users[currentUserId].email;
     let pictures = [];
     // debugger
@@ -29,7 +30,8 @@ const mapStateToProps = state => {
         navBarPicture: navBarPicture,
         followers: followers,
         followees: followees,
-        name: name,
+        firstName: firstName,
+        lastName: lastName,
         email: email
     });
 };

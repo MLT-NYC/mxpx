@@ -162,3 +162,28 @@
     z-index: 1;
     background: white;
 }
+
+.editProfileModal-form-top {
+    height: 130px;
+    border: 1px solid red;
+}
+
+.editProfileModal-form-middle {
+    height: 495px;
+    border: 1px solid red;
+}
+
+.personalEdit-personalPicture {
+    height: 100px;
+    width: 100px;
+    margin-top: -50px;
+    margin-left: calc(50% - 50px);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.editProfileModal-form-bottom {
+    height: 75px;
+    border: 1px solid red;
+}
+

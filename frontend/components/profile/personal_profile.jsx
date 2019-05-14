@@ -6,9 +6,9 @@ import defaultProfilePic from '../../../app/assets/images/default_profile_pic.pn
 class PersonalProfile extends React.Component {
     constructor(props){
         super(props);
-
+        // change to TRUE
         this.state = {
-            editProfile: false,
+            editProfile: true,
         };
 
         this.toggleEditProfile = this.toggleEditProfile.bind(this);
@@ -41,8 +41,8 @@ class PersonalProfile extends React.Component {
         }
 
         let profileName;
-        if (this.props.name) {
-            profileName = this.props.name;
+        if (this.props.firstName) {
+            profileName = this.props.firstName + " " + this.props.lastName;
         } else {
             profileName = this.props.email;
         }
