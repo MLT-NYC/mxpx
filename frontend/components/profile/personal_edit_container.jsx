@@ -15,14 +15,14 @@ const mapStateToProps = state => {
     let country = state.entities.users[currentUserId].country;
     let about = state.entities.users[currentUserId].about;
 
-    firstName ? firstName = firstName : firstName = 'Your first name.';
-    lastName ? lastName = lastName : lastName = 'Your last name.';
-    city ? city = city : city = 'Your city.';
-    country ? country = country : country = 'Your country.';
+    firstName ? firstName = firstName : firstName = 'Your first name';
+    lastName ? lastName = lastName : lastName = 'Your last name';
+    city ? city = city : city = 'Your city';
+    country ? country = country : country = 'Your country';
     about ? about = about : about = 'Tell the world your story.';
 
     return ({
-        currentUser: currentUser,
+        currentUserId: currentUserId,
         navBarPicture: navBarPicture,
         followers: followers,
         followees: followees,

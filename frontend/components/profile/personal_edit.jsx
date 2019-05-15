@@ -6,7 +6,7 @@ class PersonalEdit extends React.Component {
         super(props);
 
         this.state = {
-            id: props.currentUser.id,
+            id: props.currentUserId,
             first_name: props.firstName,
             last_name: props.lastName,
             city: props.city,
@@ -22,7 +22,17 @@ class PersonalEdit extends React.Component {
         e.preventDefault();
 
         let user = this.state;
+
+        // debugger
+
+        if (user.first_name === this.props.firstName) {delete user.first_name;} 
+        if (user.last_name === this.props.lastName) { delete user.last_name;} 
+        if (user.city === this.props.city) {delete user.city;} 
+        if (user.country === this.props.country) {delete user.country;} 
+        if (user.about === this.props.about) {delete user.about;}
+
         this.props.updateUser(user);
+        this.props.toggleEditProfile();
     }
 
     update(field) {
@@ -84,6 +94,7 @@ class PersonalEdit extends React.Component {
                         </div>
 
                         <div className='editProfileModal-form-bottom'>
+                            <button className='editProfileModal-form-bottom-cancel' onClick={this.props.toggleEditProfile}>Cancel</button>
                             <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
                         </div>
                     </form>

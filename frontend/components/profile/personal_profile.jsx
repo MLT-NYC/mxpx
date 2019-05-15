@@ -55,7 +55,7 @@ class PersonalProfile extends React.Component {
                         
                     </div>
 
-                    <PersonalEditContainer/>
+                    <PersonalEditContainer toggleEditProfile={this.toggleEditProfile}/>
                 </ div>
                 )
         } 
