@@ -19,6 +19,7 @@ class Api::PicturesController < ApplicationController
         end
 
         if @picture.save
+            current_user.profile_picture_id = @picture.id
             render 'api/pictures/show'
         else
             render json: @picture.errors.full_messages, status: 400

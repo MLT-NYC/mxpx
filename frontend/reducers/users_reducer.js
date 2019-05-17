@@ -4,7 +4,8 @@ import {
 
 import {
     RECEIVE_PICTURE,
-    REMOVE_PICTURE
+    REMOVE_PICTURE,
+    RECEIVE_ALL_PICTURES
 } from '../actions/pictures_actions';
 
 import {
@@ -22,6 +23,16 @@ const usersReducer = (oldState = {}, action) => {
         case RECEIVE_CURRENT_USER:
             newState = merge({}, oldState, {[action.currentUser.id]: action.currentUser});
             
+            return newState;
+        case RECEIVE_ALL_PICTURES:
+            newState = merge({}, oldState);
+
+            action.pictures.forEach((picture) => {
+                if (picture.profile) {
+                    newState[picture.photographer_id].profile_picture_id = picture.id;
+                }
+            });
+
             return newState;
         case RECEIVE_PICTURE:
             newState = merge({}, oldState);
