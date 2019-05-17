@@ -40,6 +40,11 @@ class PersonalProfile extends React.Component {
             personalPicture = <img src={defaultProfilePic} className='personalProfile-personalPicture' />
         }
 
+        let coverPicture;
+        if (this.props.coverPicture) {
+            coverPicture = <img src={this.props.coverPicture.img_url} className='personalProfile-coverPicture' />;
+        }
+
         let profileName;
         if (this.props.firstName) {
             profileName = this.props.firstName + " " + this.props.lastName;
@@ -84,6 +89,7 @@ class PersonalProfile extends React.Component {
 
                 <div className='personalProfile-top'>
                     <div className='personalProfile-top-top'>
+                        {coverPicture}
                         {personalPicture}
                         <div className='personalProfile-edit' onClick={this.toggleEditProfile}>
                             Edit your profile
