@@ -31,13 +31,22 @@ const usersReducer = (oldState = {}, action) => {
                 if (picture.profile) {
                     newState[picture.photographer_id].profile_picture_id = picture.id;
                 }
+
+                if (picture.cover) {
+                    newState[picture.photographer_id].cover_picture_id = picture.id;
+                }
             });
 
             return newState;
         case RECEIVE_PICTURE:
             newState = merge({}, oldState);
+
             if (action.picture.profile) {
                 newState[action.picture.photographer_id].profile_picture_id = action.picture.id;
+            }
+
+            if (action.picture.cover) {
+                newState[action.picture.photographer_id].cover_picture_id = action.picture.id;
             }
 
             let pictureIdsArr = newState[action.picture.photographer_id].pictureIds;

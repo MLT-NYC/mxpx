@@ -9,8 +9,6 @@ const mapStateToProps = state => {
     let currentUser = state.entities.users[currentUserId];
     let navBarPicture = state.entities.pictures[currentUser.profile_picture_id];
     
-
-
     return ({
         currentUser: currentUser,
         navBarPicture: navBarPicture

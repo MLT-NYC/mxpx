@@ -16,6 +16,9 @@ class Api::PicturesController < ApplicationController
         if @picture.valid? && @picture.profile 
             @previous_picture = current_user.pictures.where("profile = true")
             @previous_picture.destroy_all
+        elsif @picture.valid? && @picture.cover 
+            @previous_picture = current_user.pictures.where("cover = true")
+            @previous_picture.destroy_all
         end
 
         if @picture.save
