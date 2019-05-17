@@ -9,13 +9,11 @@ class User < ApplicationRecord
 
     has_many :pictures,
         class_name: 'Picture',
-        foreign_key: :photographer_id,
-        primary_key: :id
+        foreign_key: :photographer_id
 
     has_many :follower_objects,
         class_name: 'Follow',
-        foreign_key: :followee_id,
-        primary_key: :id
+        foreign_key: :followee_id
 
     has_many :followee_objects,
         class_name: 'Follow',

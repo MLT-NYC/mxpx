@@ -25,6 +25,9 @@ const usersReducer = (oldState = {}, action) => {
             return newState;
         case RECEIVE_PICTURE:
             newState = merge({}, oldState);
+            if (action.picture.profile) {
+                newState[action.picture.photographer_id].profile_picture_id = action.picture.id;
+            }
 
             let pictureIdsArr = newState[action.picture.photographer_id].pictureIds;
             if (pictureIdsArr) {

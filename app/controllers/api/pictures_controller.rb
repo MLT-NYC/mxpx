@@ -13,6 +13,11 @@ class Api::PicturesController < ApplicationController
     def create
         @picture = current_user.pictures.new(picture_params)
 
+        if @picture.valid? && @picture.profile 
+            @previous_picture = current_user.pictures.where("profile = true")
+            @previous_picture.destroy_all
+        end
+
         if @picture.save
             render 'api/pictures/show'
         else
@@ -40,7 +45,7 @@ class Api::PicturesController < ApplicationController
 
     private
     def picture_params
-        params.require(:picture).permit(:image, :title, :description)
+        params.require(:picture).permit(:image, :title, :description, :profile, :cover)
     end
 
 end

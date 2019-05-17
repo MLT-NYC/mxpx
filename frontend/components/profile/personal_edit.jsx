@@ -12,24 +12,50 @@ class PersonalEdit extends React.Component {
             city: props.city,
             country: props.country,
             about: props.about,
-            submitButtonActive: false
+            profile_picture_id: props.profile_picture_id, 
+            cover_picture_id: props.cover_picture_id,
+            submitButtonActive: false,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
+    }
+
+    handleFile(e) {
+        e.preventDefault();
+
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = () => {
+            const picture = new FormData();
+
+            picture.append('picture[image]', file);
+            picture.append('picture[title]', 'profilePicPlaceHolder');
+            picture.append('picture[description]', 'profilePicPlaceHolder');
+            picture.append('picture[profile]', true);
+            debugger
+            this.props.createPicture(picture);
+        };
+
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
+
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        let user = this.state;
+        let { id, first_name, last_name, city, country, about, profile_picture_id, cover_picture_id } = this.state;
 
-        // debugger
+        let user = { id, first_name, last_name, city, country, about, profile_picture_id, cover_picture_id };
 
-        if (user.first_name === this.props.firstName) {delete user.first_name;} 
-        if (user.last_name === this.props.lastName) { delete user.last_name;} 
-        if (user.city === this.props.city) {delete user.city;} 
-        if (user.country === this.props.country) {delete user.country;} 
-        if (user.about === this.props.about) {delete user.about;}
+        if (user.first_name === this.props.firstName || user.first_name.length === 0) {delete user.first_name;} 
+        if (user.last_name === this.props.lastName || user.last_name.length === 0) { delete user.last_name;} 
+        if (user.city === this.props.city || user.city.length === 0) {delete user.city;} 
+        if (user.country === this.props.country || user.country.length === 0) {delete user.country;} 
+        if (user.about === this.props.about || user.about.length === 0) {delete user.about;}
 
         this.props.updateUser(user);
         this.props.toggleEditProfile();
@@ -45,20 +71,28 @@ class PersonalEdit extends React.Component {
     render() {
         let personalPicture;
         if (this.props.navBarPicture) {
-            personalPicture = <img src={this.props.navBarPicture.img_url} className='personalEdit-personalPicture' />;
+            personalPicture = (
+                <img src={this.props.navBarPicture.img_url} className='personalEdit-personalPicture' />
+            );
         } else {
-            personalPicture = <img src={defaultProfilePic} className='personalEdit-personalPicture' />
+            personalPicture = (
+                <img src={defaultProfilePic} className='personalEdit-personalPicture' />
+            );
         }
 
         return (
             <div className='editProfileModal-form'>
                 <div className='editProfileModal-form-top'>
-
+                <input type="file"/>
                 </div>
 
 
                 <div className='editProfileModal-form-middle'>
-                    {personalPicture}
+                    <label className='editProfileModal-personalPicture-wrapper'>
+                        {personalPicture}
+                        <input className='newPictureInput' onChange={this.handleFile} type="file" />
+                    </label>
+                    
 
                     <form className='editProfileModal-form-middle-inputs' onSubmit={this.handleSubmit}>
                         <div className='editProfileModal-form-middle-inputs-item'>

@@ -13,7 +13,7 @@ const picturesReducer = (oldState = {}, action) => {
             newState = merge({}, oldState);
             action.pictures.forEach((picture) => {
                 newState[picture.id] = picture;
-            }) ;
+            });
             return newState;
         case RECEIVE_PICTURE:
             newState = merge({}, oldState, {[action.picture.id]: action.picture});

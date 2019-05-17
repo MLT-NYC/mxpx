@@ -27,6 +27,10 @@
     /* border: 1px solid red; */
 }
 
+.editProfileModal-personalPicture-wrapper:hover {
+    cursor: pointer;
+}
+
 .personalProfile-personalPicture {
     height: 100px;
     width: 100px;
@@ -180,10 +184,17 @@
     margin-left: calc(50% - 50px);
     border-radius: 50%;
     object-fit: cover;
+    position: absolute;
 }
 
 .editProfileModal-form-bottom {
     height: 75px;
     border: 1px solid red;
+}
+
+.editProfileModal-profile-input {
+    height: 100px;
+    width: 100px;
+    z-index: 1;
 }
 

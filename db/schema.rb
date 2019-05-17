@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_162006) do
+ActiveRecord::Schema.define(version: 2019_05_16_212712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_05_14_162006) do
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "cover", default: false
+    t.boolean "profile", default: false
     t.index ["photographer_id"], name: "index_pictures_on_photographer_id"
   end
 
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_05_14_162006) do
     t.text "about"
     t.string "city"
     t.string "country"
+    t.integer "profile_picture_id"
+    t.integer "cover_picture_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end

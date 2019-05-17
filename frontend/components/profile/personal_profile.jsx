@@ -47,6 +47,15 @@ class PersonalProfile extends React.Component {
             profileName = this.props.email;
         }
 
+        let location;
+        if (this.props.city) {
+            location = <div className='personalProfile-detail-item'>{this.props.city}</div>;
+        }  
+        
+        if (this.props.city && this.props.country) {
+            location = <div className='personalProfile-detail-item'>{this.props.city + ', ' + this.props.country}</div>;
+        }
+
         let editProfileModal;
         if (this.state.editProfile) {
             editProfileModal = (
@@ -89,6 +98,7 @@ class PersonalProfile extends React.Component {
                         <div className='personalProfile-details'>
                             <div className='personalProfile-details-item'>{followerCount} Followers</div>
                             <div className='personalProfile-details-item'>{followeeCount} Following</div>
+                            {location}
                         </div>
                     </div>
                 </div>

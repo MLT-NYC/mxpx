@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import PictureForm from './picture_form';
 import { createPicture, clearPictureErrors } from '../../actions/pictures_actions';
 import { logOut } from '../../actions/session_actions';
-// import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
     let currentUserId = state.session.currentUserId;
