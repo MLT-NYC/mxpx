@@ -15,12 +15,14 @@ class PersonalEdit extends React.Component {
             profile_picture_id: props.profile_picture_id, 
             cover_picture_id: props.cover_picture_id,
             submitButtonActive: false,
+            coverModal: false,
             imgFile: null,
             imgUrl: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        this.toggleCoverModal = this.toggleCoverModal.bind(this);
     }
 
     handleFile(e) {
@@ -28,16 +30,6 @@ class PersonalEdit extends React.Component {
 
         const file = e.target.files[0];
         const fileReader = new FileReader();
-
-        // fileReader.onloadend = () => {
-        //     const picture = new FormData();
-
-        //     picture.append('picture[image]', file);
-        //     picture.append('picture[title]', 'profilePicPlaceHolder');
-        //     picture.append('picture[description]', 'profilePicPlaceHolder');
-        //     picture.append('picture[profile]', true);
-        //     this.props.createPicture(picture);
-        // };
 
         fileReader.onloadend = () => {
             this.setState({ imgFile: file, imgUrl: fileReader.result });
@@ -73,16 +65,22 @@ class PersonalEdit extends React.Component {
         }
 
         this.props.createPicture(picture).then(() => {
-            // debugger
             this.setState({
                 imgFile: null,
                 imgUrl: null
             });
         });
 
-        // debugger
         this.props.updateUser(user);
         this.props.toggleEditProfile();
+    }
+
+    toggleCoverModal() {
+        const { coverModal } = this.state;
+
+        this.setState({
+            coverModal: !coverModal
+        });
     }
 
     update(field) {
@@ -110,12 +108,18 @@ class PersonalEdit extends React.Component {
             );
         }
 
+        let personalCoverEdit;
+        if (this.state.toggleCoverModal) {
+            personalCoverEdit = <PersonalCoverEditContainer toggleCoverModal={this.toggleCoverModal}/>
+        }
+
         return (
             <div className='editProfileModal-form'>
                 <div className='editProfileModal-form-top'>
-                <input type="file"/>
+                    <input type="file"/>
                 </div>
 
+                {personalCoverEdit}
 
                 <div className='editProfileModal-form-middle'>
                     <label className='editProfileModal-personalPicture-wrapper'>
