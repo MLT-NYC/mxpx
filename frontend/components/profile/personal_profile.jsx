@@ -8,7 +8,7 @@ class PersonalProfile extends React.Component {
         super(props);
         // change to TRUE
         this.state = {
-            editProfile: true,
+            editProfile: false,
         };
 
         this.toggleEditProfile = this.toggleEditProfile.bind(this);
@@ -88,8 +88,8 @@ class PersonalProfile extends React.Component {
                 {editProfileModal}
 
                 <div className='personalProfile-top'>
-                    <div className='personalProfile-top-top'>
                         {coverPicture}
+                    <div className='personalProfile-top-top'>
                         {personalPicture}
                         <div className='personalProfile-edit' onClick={this.toggleEditProfile}>
                             Edit your profile

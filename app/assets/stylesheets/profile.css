@@ -15,7 +15,6 @@
 
 .personalProfile-top {
     border-bottom: 1px solid #eeeff2;
-    /* border: 1px solid red; */
 }
 
 .personalProfile-top-top {
@@ -23,8 +22,17 @@
     flex-direction: row;
     align-items: center;
     height: 130px;
+    max-height: 580px;
     border-bottom: 1px solid #eeeff2;
-    /* border: 1px solid red; */
+}
+
+.personalProfile-coverPicture {
+    object-fit: cover;
+    flex-grow: 1;
+    max-width: 100%;
+    /* max-height: 580px; */
+    /* position: absolute; */
+    z-index: -1;
 }
 
 .editProfileModal-personalPicture-wrapper:hover {
@@ -81,7 +89,6 @@
     font-size: 14px;
     color: #B9C1C7;
     margin: 15px 0px 15px 0px;
-    /* border: 1px solid red; */
 }
 
 .personalProfile-details-item {
@@ -110,8 +117,6 @@
     padding: 15px 0px 15px 0px;
     border-bottom: 2px solid #0099E5;
     color: #0099E5;
-    /* border: 1px solid red; */
-    /* padding: 15px 0px 15px 0px; */
 }
 
 .personalProfile-middle-tab-title {
@@ -150,28 +155,51 @@
 }
 
 .editProfileModal-form {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
     position: absolute;
-    /* left: 5vw; */
     top: 4vh;
     height: 700px;
     width: 580px;
-    /* margin-bottom: 100px; */
-    /* height: 580px;
-    width: 580px; */
     border-radius: 3px;
     z-index: 1;
     background: white;
 }
-
+/*  */
+/*  */
 .editProfileModal-form-top {
     height: 130px;
     border: 1px solid red;
 }
 
+.personalCoverEditModal {
+    height: 100px;
+    width: 200px;
+    /* z-index: 2; */
+    border: 1px solid red;
+}
+
+.personalCoverEditModal-top {
+    height: 50px;
+    width: 200px;
+    /* margin-top: -50px; */
+    /* margin-left: calc(50% - 50px); */
+    /* border-radius: 50%; */
+    object-fit: cover;
+    /* position: absolute; */
+    /* z-index: 2; */
+    /* border: 1px solid red; */
+}
+
+.personalCoverEditModal-top:hover {
+    /* cursor: pointer; */
+}
+
+.personalCoverEditModal-bottom {
+    height: 50px;
+    /* border: 1px solid red; */
+    /* z-index: 2; */
+}
+/*  */
+/*  */
 .editProfileModal-form-middle {
     height: 495px;
     border: 1px solid red;
@@ -197,4 +225,3 @@
     width: 100px;
     z-index: 1;
 }
-

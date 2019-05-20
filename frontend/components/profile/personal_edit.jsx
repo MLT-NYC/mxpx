@@ -22,7 +22,9 @@ class PersonalEdit extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        this.handleCover = this.handleCover.bind(this);
         this.toggleCoverModal = this.toggleCoverModal.bind(this);
+        // this.createPicture = this.props.createPicture.bind(this);
     }
 
     handleFile(e) {
@@ -61,9 +63,9 @@ class PersonalEdit extends React.Component {
 
         if (this.state.imgFile) {
             picture.append('picture[image]', this.state.imgFile);
-            picture.append('picture[image]', this.state.imgFile);
         }
 
+        debugger
         this.props.createPicture(picture).then(() => {
             this.setState({
                 imgFile: null,
@@ -73,6 +75,26 @@ class PersonalEdit extends React.Component {
 
         this.props.updateUser(user);
         this.props.toggleEditProfile();
+    }
+
+    handleCover(e) {
+        e.preventDefault();
+
+        debugger
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+        const picture = new FormData();
+        picture.append('picture[title]', 'coverPicPlaceHolder');
+        picture.append('picture[description]', 'coverPicPlaceHolder');
+        picture.append('picture[cover]', true);
+        
+        if (file) {
+            fileReader.readAsDataURL(file);
+            picture.append('picture[image]', file);
+        }
+        
+        debugger
+        this.props.createPicture(picture);
     }
 
     toggleCoverModal() {
@@ -108,22 +130,40 @@ class PersonalEdit extends React.Component {
             );
         }
 
-        let personalCoverEdit;
-        if (this.state.toggleCoverModal) {
-            personalCoverEdit = <PersonalCoverEditContainer toggleCoverModal={this.toggleCoverModal}/>
+        let coverModal;
+        if (this.state.coverModal) {
+            coverModal = (
+                <div className='personalCoverEditModal'>
+                    <label className='personalCoverEditModal-top'>
+                        Upload from Computer
+                        <input className='newPictureInput' onChange={this.handleCover} type="file" />
+                    </label>
+
+                    <div className='personalCoverEditModal-bottom'>
+                        Choose from your Library
+                    </div>
+                </div>
+            )
+        }
+
+        let coverPicture;
+        if (this.props.coverPicture) {
+            coverPicture = (
+                <img src={this.props.coverPicture.imgUrl} />
+            )
         }
 
         return (
             <div className='editProfileModal-form'>
-                <div className='editProfileModal-form-top'>
-                    <input type="file"/>
+                <div className='editProfileModal-form-top' onClick={this.toggleCoverModal}>
+                    {coverPicture}
                 </div>
 
-                {personalCoverEdit}
 
                 <div className='editProfileModal-form-middle'>
                     <label className='editProfileModal-personalPicture-wrapper'>
                         {personalPicture}
+                        {coverModal}
                         <input className='newPictureInput' onChange={this.handleFile} type="file" />
                     </label>
                     

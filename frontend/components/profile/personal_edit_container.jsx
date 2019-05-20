@@ -16,6 +16,7 @@ const mapStateToProps = state => {
     let about = state.entities.users[currentUserId].about;
     let profile_picture_id = state.entities.users[currentUserId].profile_picture_id;
     let cover_picture_id = state.entities.users[currentUserId].cover_picture_id;
+    let coverPicture = state.entities.pictures[cover_picture_id];
 
     firstName ? firstName = firstName : firstName = 'Your first name';
     lastName ? lastName = lastName : lastName = 'Your last name';
@@ -26,6 +27,7 @@ const mapStateToProps = state => {
     return ({
         currentUserId: currentUserId,
         navBarPicture: navBarPicture,
+        coverPicture: coverPicture,
         followers: followers,
         followees: followees,
         firstName: firstName,
