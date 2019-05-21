@@ -6,7 +6,7 @@ class Api::PicturesController < ApplicationController
     end 
     
     def index
-        @pictures = Picture.all
+        @pictures = current_user.pictures.all
         render :index
     end
 

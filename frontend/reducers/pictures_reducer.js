@@ -4,6 +4,7 @@ import {
     REMOVE_PICTURE
 } from '../actions/pictures_actions';
 import merge from 'lodash/merge';
+import pictureErrorsReducer from './picture_errors_reducer';
 
 const picturesReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -12,11 +13,20 @@ const picturesReducer = (oldState = {}, action) => {
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
             action.pictures.forEach((picture) => {
-                newState[picture.id] = picture;
+                // if (!picture.profile && !picture.cover) {
+                    newState[picture.id] = picture;
+                // }
             });
             return newState;
         case RECEIVE_PICTURE:
             newState = merge({}, oldState, {[action.picture.id]: action.picture});
+            
+            // newState = merge({}, oldState);
+
+            // if (!action.picture.profile && !action.picture.cover) {
+            //     newState[action.picture.id] = action.picture;
+            // }
+
             return newState;
         case REMOVE_PICTURE:
             newState = merge({}, oldState);

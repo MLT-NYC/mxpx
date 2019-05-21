@@ -11,7 +11,8 @@ const mapStateToProps = state => {
 
     if (currentUser.pictureIds) {
         currentUser.pictureIds.forEach((id) => {
-            if (state.entities.pictures[id]) {
+            let picture = state.entities.pictures[id];
+            if (picture && !picture.cover & !picture.profile) {
                 pictures.push(state.entities.pictures[id]);
             }
         });
