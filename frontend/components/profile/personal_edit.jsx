@@ -1,6 +1,7 @@
 import React from 'react';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 import ErrorMessage from '../notification/error_message';
+import ProfileCoverModalContainer from './profile_cover_modal_container';
 
 class PersonalEdit extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class PersonalEdit extends React.Component {
             cover_picture_id: props.cover_picture_id,
             submitButtonActive: false,
             coverModal: false,
+            ownPicturesModal: false,
             imgFile: null,
             imgUrl: null
         };
@@ -25,7 +27,7 @@ class PersonalEdit extends React.Component {
         this.handleFile = this.handleFile.bind(this);
         this.handleCover = this.handleCover.bind(this);
         this.toggleCoverModal = this.toggleCoverModal.bind(this);
-        // this.createPicture = this.props.createPicture.bind(this);
+        this.toggleOwnPicturesModal = this.toggleOwnPicturesModal.bind(this);
     }
 
     handleFile(e) {
@@ -103,6 +105,15 @@ class PersonalEdit extends React.Component {
         });
     }
 
+    toggleOwnPicturesModal() {
+        const { coverModal, ownPicturesModal } = this.state;
+
+        this.setState({
+            coverModal: !coverModal,
+            ownPicturesModal: !ownPicturesModal
+        });
+    }
+
     update(field) {
         return e => this.setState({
             [field]: e.target.value,
@@ -137,11 +148,16 @@ class PersonalEdit extends React.Component {
                         <input className='newPictureInput' onChange={this.handleCover} type="file" />
                     </label>
 
-                    <div className='personalCoverEditModal-bottom'>
+                    <div className='personalCoverEditModal-bottom' onClick={this.toggleOwnPicturesModal}>
                         Choose from your Library
                     </div>
                 </div>
             )
+        }
+
+        let ownPicturesModal;
+        if (this.state.ownPicturesModal) {
+            ownPicturesModal = <ProfileCoverModalContainer toggleOwnPicturesModal={this.toggleOwnPicturesModal}/>
         }
 
         let coverPicture;
@@ -156,7 +172,7 @@ class PersonalEdit extends React.Component {
                 <div className='pictureErrorContainer'>
                     <ErrorMessage className='picture-error' errors={this.props.errors} />
                 </div>
-                
+
                 <div className='editProfileModal-form-top' onClick={this.toggleCoverModal}>
                     {coverPicture}
                 </div>
@@ -166,6 +182,7 @@ class PersonalEdit extends React.Component {
                     <label className='editProfileModal-personalPicture-wrapper'>
                         {personalPicture}
                         {coverModal}
+                        {ownPicturesModal}
                         <input className='newPictureInput' onChange={this.handleFile} type="file" />
                     </label>
                     
