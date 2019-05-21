@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ErrorMessage from '../notification/error_message';
 
 class PictureForm extends React.Component {

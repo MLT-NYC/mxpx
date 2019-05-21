@@ -32,9 +32,7 @@ class Api::PicturesController < ApplicationController
                 current_user.cover_picture_id = @picture.id
                 render 'api/pictures/show'
             else
-                render json: 'Cover photos must be in landscape orientation and at least 2000x1000 pixels', status: 400
-                # errors[:image] << 
-                # render json: @picture.errors.full_messages, status: 400
+                render json: ['Cover photos must be in landscape orientation and at least 2000x1000 pixels'], status: 400
             end
         elsif @picture.valid?
             @picture.save

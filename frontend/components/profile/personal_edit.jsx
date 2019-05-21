@@ -1,5 +1,6 @@
 import React from 'react';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
+import ErrorMessage from '../notification/error_message';
 
 class PersonalEdit extends React.Component {
     constructor(props) {
@@ -152,6 +153,10 @@ class PersonalEdit extends React.Component {
 
         return (
             <div className='editProfileModal-form'>
+                <div className='pictureErrorContainer'>
+                    <ErrorMessage className='picture-error' errors={this.props.errors} />
+                </div>
+                
                 <div className='editProfileModal-form-top' onClick={this.toggleCoverModal}>
                     {coverPicture}
                 </div>

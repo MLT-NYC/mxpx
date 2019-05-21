@@ -17,6 +17,7 @@ const mapStateToProps = state => {
     let profile_picture_id = state.entities.users[currentUserId].profile_picture_id;
     let cover_picture_id = state.entities.users[currentUserId].cover_picture_id;
     let coverPicture = state.entities.pictures[cover_picture_id];
+    let errors = state.errors.pictureErrors;
 
     firstName ? firstName = firstName : firstName = 'Your first name';
     lastName ? lastName = lastName : lastName = 'Your last name';
@@ -36,7 +37,8 @@ const mapStateToProps = state => {
         country: country,
         about: about,
         profile_picture_id: profile_picture_id,
-        cover_picture_id: cover_picture_id
+        cover_picture_id: cover_picture_id,
+        errors: errors
     });
 };
 
