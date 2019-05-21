@@ -6,9 +6,10 @@ import defaultProfilePic from '../../../app/assets/images/default_profile_pic.pn
 class PersonalProfile extends React.Component {
     constructor(props){
         super(props);
-        // change to TRUE
+    
         this.state = {
             editProfile: false,
+            isTop: true,
         };
 
         this.toggleEditProfile = this.toggleEditProfile.bind(this);
@@ -23,6 +24,13 @@ class PersonalProfile extends React.Component {
     }
 
     componentDidMount() {
+        document.addEventListener('scroll', () => {
+            const isTop = window.scrollY < 1;
+            if (isTop !== this.state.isTop) {
+                this.setState({ isTop });
+            }
+        });
+
         this.props.fetchPictures();
     }
 
@@ -42,7 +50,16 @@ class PersonalProfile extends React.Component {
 
         let coverPicture;
         if (this.props.coverPicture) {
-            coverPicture = <img src={this.props.coverPicture.img_url} className='personalProfile-coverPicture' />;
+            coverPicture = (
+                <div className='personalProfile-top-top'>
+                    <img src={this.props.coverPicture.img_url} className='personalProfile-coverPicture' />
+                </div>
+            )
+        } else {
+            coverPicture = (
+                <div className='personalProfile-top-top-empty'>
+                </div>
+            )
         }
 
         let profileName;
@@ -83,20 +100,23 @@ class PersonalProfile extends React.Component {
                 <NavBar currentUser={this.props.currentUser}
                     navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
                     navBarPicture={this.props.navBarPicture}
+                    personalProfile={true}
+                    isTop={this.state.isTop}
                 />
 
                 {editProfileModal}
 
                 <div className='personalProfile-top'>
-                        {coverPicture}
-                    <div className='personalProfile-top-top'>
-                        {personalPicture}
-                        <div className='personalProfile-edit' onClick={this.toggleEditProfile}>
-                            Edit your profile
-                        </div>
-                    </div>
+                    {coverPicture}
 
                     <div className='personalProfile-top-bottom'>
+                        <div className='personalProfile-pictureEdit'>
+                            {personalPicture}
+                            <div className='personalProfile-edit' onClick={this.toggleEditProfile}>
+                                Edit your profile
+                            </div>
+                        </div>
+
                         <div className='personalProfile-name'>
                             {profileName}
                         </div>

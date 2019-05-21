@@ -7,7 +7,7 @@ const mapStateToProps = state => {
     let currentUserId = state.session.currentUserId;
     let currentUser = state.entities.users[currentUserId];
 
-    let errors = state.errors.pictureForm;
+    let errors = state.errors.pictureErrors;
 
     return ({
         currentUser: currentUser,

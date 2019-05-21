@@ -3,8 +3,8 @@ import sessionErrorsReducer from './session_errors_reducer';
 import pictureErrorsReducer from './picture_errors_reducer';
 
 const errorsReducer = combineReducers({
-    session: sessionErrorsReducer,
-    pictureForm: pictureErrorsReducer
+    sessionErrors: sessionErrorsReducer,
+    pictureErrors: pictureErrorsReducer
 });
 
 export default errorsReducer;

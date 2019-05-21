@@ -40,7 +40,15 @@ class NavBar extends React.Component {
         let rightItems;
         let navBarClassName;
         if (this.props.currentUser) {
-            navBarClassName = 'profileNavBar';
+            if (this.props.personalProfile) {
+                if (this.props.isTop){
+                    navBarClassName = 'personalProfileNavBar';
+                } else {
+                    navBarClassName = 'personalProfileNavBar-scroll';
+                }
+            } else {
+                navBarClassName = 'profileNavBar';
+            }
 
             rightItems = (
                 <div className='dropdownMenuContainer'>

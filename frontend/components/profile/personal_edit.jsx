@@ -65,7 +65,6 @@ class PersonalEdit extends React.Component {
             picture.append('picture[image]', this.state.imgFile);
         }
 
-        debugger
         this.props.createPicture(picture).then(() => {
             this.setState({
                 imgFile: null,
@@ -80,7 +79,6 @@ class PersonalEdit extends React.Component {
     handleCover(e) {
         e.preventDefault();
 
-        debugger
         const file = e.target.files[0];
         const fileReader = new FileReader();
         const picture = new FormData();
@@ -92,8 +90,7 @@ class PersonalEdit extends React.Component {
             fileReader.readAsDataURL(file);
             picture.append('picture[image]', file);
         }
-        
-        debugger
+ 
         this.props.createPicture(picture);
     }
 
@@ -149,7 +146,7 @@ class PersonalEdit extends React.Component {
         let coverPicture;
         if (this.props.coverPicture) {
             coverPicture = (
-                <img src={this.props.coverPicture.imgUrl} />
+                <img src={this.props.coverPicture.img_url} />
             )
         }
 

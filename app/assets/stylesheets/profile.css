@@ -14,24 +14,28 @@
 }
 
 .personalProfile-top {
+    /* background: white; */
     border-bottom: 1px solid #eeeff2;
 }
 
 .personalProfile-top-top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    /* display: flex; */
+    /* align-content: center; */
+    height: 580px; 
+    /* border-bottom: 1px solid #eeeff2; */
+}
+
+.personalProfile-top-top-empty {
     height: 130px;
-    max-height: 580px;
-    border-bottom: 1px solid #eeeff2;
 }
 
 .personalProfile-coverPicture {
-    object-fit: cover;
-    flex-grow: 1;
+    object-fit: contain;
+    /* flex-grow: 1; */
+    position: fixed;
     max-width: 100%;
     /* max-height: 580px; */
-    /* position: absolute; */
+    /* position: relative; */
     z-index: -1;
 }
 
@@ -39,10 +43,15 @@
     cursor: pointer;
 }
 
+.personalProfile-pictureEdit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .personalProfile-personalPicture {
     height: 100px;
     width: 100px;
-    margin-top: 125px;
+    margin-top: -50px;
     margin-left: calc(50% - 50px);
     border-radius: 50%;
     object-fit: cover;
@@ -58,9 +67,13 @@
     font-weight: bolder;
     background: #0099E5;
     border-radius: 3px;
-    padding: 7px 10px 7px 10px;
-    margin-top: 177px;
-    margin-left: 50px;
+    /* padding: 7px 10px 7px 10px; */
+    width: 128px;
+    height: 30px;
+    margin: 10px 50px 0px 0px;
+
+    /* margin-top: 177px; */
+    /* margin-left: 50px; */
 }
 
 .personalProfile-edit:hover {
@@ -69,6 +82,7 @@
 }
 
 .personalProfile-top-bottom {
+    background-color: white;
     /* border: 1px solid red; */
 }
 
@@ -78,7 +92,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color:#525558;
-    margin-top: 75px;
+    margin-top: 20px;
 }
 
 .personalProfile-details {
@@ -88,7 +102,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #B9C1C7;
-    margin: 15px 0px 15px 0px;
+    padding: 15px 0px 15px 0px;
 }
 
 .personalProfile-details-item {
@@ -105,6 +119,7 @@
 .personalProfile-middle {
     display: flex;
     justify-content: center;
+    background-color: white;
     border-bottom: 1px solid #eeeff2;
 }
 

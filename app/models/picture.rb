@@ -14,4 +14,5 @@ class Picture < ApplicationRecord
             errors[:image] << 'Must be attached'
         end
     end
+
 end

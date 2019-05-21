@@ -52,6 +52,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'annotate'
+  gem "mini_magick"
 end
 
 group :test do
