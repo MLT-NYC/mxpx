@@ -183,6 +183,17 @@
 .editProfileModal-form-top {
     height: 130px;
     border: 1px solid red;
+    z-index: 1;
+}
+
+.editProfileModal-form-top-cover {
+    object-fit: contain;
+    max-width: 580px;
+    z-index: -1;
+}
+
+.editProfileModal-form-top-cover:hover {
+    cursor: pointer;
 }
 
 .personalCoverEditModal {
@@ -205,19 +216,54 @@
 }
 
 .personalCoverEditModal-top:hover {
-    /* cursor: pointer; */
+    cursor: pointer;
+    z-index: 2;
 }
 
 .personalCoverEditModal-bottom {
     height: 50px;
+    width: 200px;
     /* border: 1px solid red; */
-    /* z-index: 2; */
 }
+.personalCoverEditModal-top:hover {
+    cursor: pointer;
+    z-index: 2;
+}
+
+.profileCoverModal {
+    background-color: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* z-index: 2;  */
+    border: 1px solid red;
+}
+
+.profileCoverModal-container {
+    display: flex;
+    flex-direction: column;
+    width: 1025px;
+    height: 700px;
+    position: fixed;
+    /* z-index: 3; */
+    border: 1px solid red;
+}
+
 /*  */
 /*  */
 .editProfileModal-form-middle {
     height: 495px;
+    z-index: 1;
+    background: #F7F8FA;
     border: 1px solid red;
+}
+
+.editProfileModal-form-middle-inputs {
+    background: #F7F8FA;
+    z-index: 1;
 }
 
 .personalEdit-personalPicture {
@@ -232,6 +278,7 @@
 
 .editProfileModal-form-bottom {
     height: 75px;
+    background: #F7F8FA;
     border: 1px solid red;
 }
 

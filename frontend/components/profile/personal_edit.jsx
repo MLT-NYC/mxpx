@@ -106,11 +106,11 @@ class PersonalEdit extends React.Component {
     }
 
     toggleOwnPicturesModal() {
-        const { coverModal, ownPicturesModal } = this.state;
+        const { ownPicturesModal } = this.state;
 
         this.setState({
-            coverModal: !coverModal,
-            ownPicturesModal: !ownPicturesModal
+            ownPicturesModal: !ownPicturesModal,
+            coverModal: false
         });
     }
 
@@ -157,13 +157,19 @@ class PersonalEdit extends React.Component {
 
         let ownPicturesModal;
         if (this.state.ownPicturesModal) {
-            ownPicturesModal = <ProfileCoverModalContainer toggleOwnPicturesModal={this.toggleOwnPicturesModal}/>
+            ownPicturesModal = (
+                <>
+                    <div className='profileCoverModal' onClick={this.toggleOwnPicturesModal}>
+                    </div>
+                    <ProfileCoverModalContainer toggleOwnPicturesModal={this.toggleOwnPicturesModal}/>
+                </>
+            )
         }
 
         let coverPicture;
         if (this.props.coverPicture) {
             coverPicture = (
-                <img src={this.props.coverPicture.img_url} />
+                <img className='editProfileModal-form-top-cover' src={this.props.coverPicture.img_url} />
             )
         }
 
@@ -181,11 +187,11 @@ class PersonalEdit extends React.Component {
                 <div className='editProfileModal-form-middle'>
                     <label className='editProfileModal-personalPicture-wrapper'>
                         {personalPicture}
-                        {coverModal}
-                        {ownPicturesModal}
                         <input className='newPictureInput' onChange={this.handleFile} type="file" />
                     </label>
                     
+                        {coverModal}
+                        {ownPicturesModal}
 
                     <form className='editProfileModal-form-middle-inputs' onSubmit={this.handleSubmit}>
                         <div className='editProfileModal-form-middle-inputs-item'>
@@ -220,14 +226,13 @@ class PersonalEdit extends React.Component {
                                 onChange={this.update('about')}></textarea>
                         </div>
 
-                        <div className='editProfileModal-form-bottom'>
-                            <button className='editProfileModal-form-bottom-cancel' onClick={this.props.toggleEditProfile}>Cancel</button>
-                            <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
-                        </div>
+                        <button className='editProfileModal-form-bottom-cancel' onClick={this.props.toggleEditProfile}>Cancel</button>
+                        <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
                     </form>
-
                 </div>
 
+                <div className='editProfileModal-form-bottom'>
+                </div>
                 
             </div>
         )
