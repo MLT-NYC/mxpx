@@ -51,6 +51,7 @@ class PictureForm extends React.Component {
         e.preventDefault();
 
         const file = e.target.files[0];
+        debugger
         const fileReader = new FileReader();
 
         fileReader.onloadend = () => {

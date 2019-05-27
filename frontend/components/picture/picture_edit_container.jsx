@@ -10,13 +10,10 @@ const mapStateToProps = (state, ownProps) => {
     let pictureId = parseInt(ownProps.location.pathname.split('/')[3], 10);
     let picture = state.entities.pictures[pictureId];
 
-    // let errors = state.errors.pictureForm;
-
     return ({
         currentUser: currentUser,
         pictureId: pictureId,
         picture: picture
-        // errors: errors
     });
 };
 
