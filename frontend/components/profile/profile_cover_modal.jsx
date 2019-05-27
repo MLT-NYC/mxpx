@@ -6,8 +6,6 @@ class ProfileCoverModal extends React.Component {
         super(props);
 
         this.state = {
-            title: 'coverPicPlaceHolder',
-            description: 'coverPicPlaceHolder',
             cover: true,
             activeIndex: null,
             id: null,
@@ -28,11 +26,12 @@ class ProfileCoverModal extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        let { id, title, description, cover } = this.state;
-        let picture = { id, title, description, cover};
+        let { id, cover } = this.state;
+        let picture = { id, cover};
 
 
         this.props.updatePicture(picture);
+        // this.props.toggleOwnPicturesModal();
     }
 
     render() {

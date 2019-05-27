@@ -15,10 +15,10 @@ class Api::PicturesController < ApplicationController
    
         if @picture.valid? && @picture.profile 
             previous_picture = current_user.pictures.where("profile = true")
-            previous_picture.destroy_all
+            previous_picture.each { |pic| pic.update_attributes(profile: false) }
 
             @picture.save
-            current_user.profile_picture_id = @picture.id
+            current_user.update_attributes(profile_picture_id: @picture.id)
             render 'api/pictures/show'
 
         elsif @picture.valid? && @picture.cover 
@@ -26,10 +26,8 @@ class Api::PicturesController < ApplicationController
 
             if correct_cover_resolution?(new_picture_path)
                 previous_picture = current_user.pictures.where("cover = true")
-                previous_picture.destroy_all
-
                 @picture.save
-                current_user.cover_picture_id = @picture.id
+                current_user.update_attributes(cover_picture_id: @picture.id)
                 render 'api/pictures/show'
             else
                 render json: ['Cover photos must be in landscape orientation and at least 2000x1000 pixels'], status: 400
@@ -45,9 +43,20 @@ class Api::PicturesController < ApplicationController
 
     def update
         @picture = current_user.pictures.find(params[:id])
+
         if @picture
+            if params[:picture][:profile]
+                previous_picture = current_user.pictures.where("profile = true")
+                previous_picture.each { |pic| pic.update_attributes(profile: false) }
+                current_user.update_attributes(profile_picture_id: @picture.id)
+            elsif params[:picture][:cover]
+                previous_picture = current_user.pictures.where("cover = true")
+                previous_picture.each { |pic| pic.update_attributes(cover: false) }
+                current_user.update_attributes(cover_picture_id: @picture.id)
+            end
+
             @picture.update_attributes(picture_params)
-            render 'api/pictures/show'
+            render 'api/pictures/show' 
         else
             render json: @picture.errors.full_messages, status: 400
         end

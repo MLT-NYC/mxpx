@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PersonalEdit from './personal_edit';
 import { updateUser } from '../../actions/session_actions';
-import { createPicture } from '../../actions/pictures_actions';
+import { createPicture, fetchPictures } from '../../actions/pictures_actions';
 
 const mapStateToProps = state => {
     let currentUserId = state.session.currentUserId;
@@ -45,7 +45,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         updateUser: user => dispatch(updateUser(user)),
-        createPicture: picture => dispatch(createPicture(picture))
+        createPicture: picture => dispatch(createPicture(picture)),
+        fetchPictures: () => dispatch(fetchPictures())
     });
 };
 

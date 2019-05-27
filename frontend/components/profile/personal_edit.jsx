@@ -106,7 +106,6 @@ class PersonalEdit extends React.Component {
     }
 
     toggleOwnPicturesModal() {
-        debugger
         const { ownPicturesModal } = this.state;
 
         this.setState({
@@ -120,6 +119,13 @@ class PersonalEdit extends React.Component {
             [field]: e.target.value,
             submitButtonActive: true
         });
+    }
+
+    componentDidUpdate(prevProps) {
+        debugger
+        if (this.props.cover_picture_id != prevProps.cover_picture_id) {
+            this.props.fetchPictures();
+        }
     }
 
     render() {
@@ -162,7 +168,7 @@ class PersonalEdit extends React.Component {
                 <>
                     <div className='profileCoverModal' onClick={this.toggleOwnPicturesModal}>
                     </div>
-                    <ProfileCoverModalContainer props={this.toggleOwnPicturesModal}/>
+                    <ProfileCoverModalContainer toggleOwnPicturesModal={this.toggleOwnPicturesModal}/>
                 </>
             )
         }

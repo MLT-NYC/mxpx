@@ -252,6 +252,14 @@
     border: 1px solid red;
 }
 
+.profileCoverModal-mid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+
+}
+
 /*  */
 /*  */
 .editProfileModal-form-middle {
