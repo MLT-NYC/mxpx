@@ -55,12 +55,20 @@ class Api::PicturesController < ApplicationController
 
         if @picture
             if params[:picture][:profile]
-                debugger
+                # This logic may be used later to update an existing photo into a profile pic.
                 previous_picture = current_user.pictures.where("profile = true")
                 previous_picture.each { |pic| pic.update_attributes(profile: false) }
             elsif params[:picture][:cover]
                 previous_picture = current_user.pictures.where("cover = true")
-                previous_picture.each { |pic| pic.update_attributes(cover: false) }
+
+                previous_picture.each do |pic|
+                    if pic.showcase
+                        pic.update_attributes(cover: false)
+                    else
+                        pic.destroy
+                    end
+                end
+
                 current_user.update_attributes(cover_picture_id: @picture.id)
             end
 

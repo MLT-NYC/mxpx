@@ -19,6 +19,7 @@ const usersReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     let newState;
     let followeeIds;
+    let pictureIds = [];
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState = merge({}, oldState, {[action.currentUser.id]: action.currentUser});
@@ -26,15 +27,21 @@ const usersReducer = (oldState = {}, action) => {
             return newState;
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
-
+    
             action.pictures.forEach((picture) => {
                 if (picture.profile) {
                     newState[picture.photographer_id].profile_picture_id = picture.id;
                 }
-
+                
                 if (picture.cover) {
                     newState[picture.photographer_id].cover_picture_id = picture.id;
                 }
+                
+                if (picture.showcase) {
+                    pictureIds.push(picture.id);
+                }
+
+                newState[picture.photographer_id].pictureIds = pictureIds;
             });
 
             return newState;
@@ -49,20 +56,22 @@ const usersReducer = (oldState = {}, action) => {
                 newState[action.picture.photographer_id].cover_picture_id = action.picture.id;
             }
 
-            let pictureIdsArr = newState[action.picture.photographer_id].pictureIds;
-            if (pictureIdsArr) {
-                if (!pictureIdsArr.includes(action.picture.id)) {
-                    pictureIdsArr.push(action.picture.id);
+            pictureIds = newState[action.picture.photographer_id].pictureIds;
+            if (pictureIds) {
+                if (!pictureIds.includes(action.picture.id) && action.picture.showcase) {
+                    pictureIds.push(action.picture.id);
                 }
             } else {
-                pictureIdsArr = [action.picture.id];
+                if (action.picture.showcase) {
+                    pictureIds = [action.picture.id];
+                }
             }
 
             return newState;
         case REMOVE_PICTURE:
             newState = merge({}, oldState);
 
-            let pictureIds = newState[action.picture.photographer_id].pictureIds;
+            pictureIds = newState[action.picture.photographer_id].pictureIds;
             let newPictureIds = pictureIds.filter(pictureId => pictureId != action.picture.id);
             newState[action.picture.photographer_id].pictureIds = newPictureIds;
 

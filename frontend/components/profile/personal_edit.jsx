@@ -62,6 +62,7 @@ class PersonalEdit extends React.Component {
         const picture = new FormData();
         picture.append('picture[title]', 'profilePicPlaceHolder');
         picture.append('picture[description]', 'profilePicPlaceHolder');
+        picture.append('picture[showcase]', false);
         picture.append('picture[profile]', true);
 
         if (this.state.imgFile) {
@@ -87,6 +88,7 @@ class PersonalEdit extends React.Component {
         const picture = new FormData();
         picture.append('picture[title]', 'coverPicPlaceHolder');
         picture.append('picture[description]', 'coverPicPlaceHolder');
+        picture.append('picture[showcase]', false);
         picture.append('picture[cover]', true);
         
         if (file) {
