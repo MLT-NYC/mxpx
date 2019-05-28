@@ -122,7 +122,6 @@ class PersonalEdit extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        debugger
         if (this.props.cover_picture_id != prevProps.cover_picture_id) {
             this.props.fetchPictures();
         }

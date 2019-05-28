@@ -15,7 +15,7 @@ class Api::PicturesController < ApplicationController
    
         if @picture.valid? && @picture.profile 
             previous_picture = current_user.pictures.where("profile = true")
-            previous_picture.each { |pic| pic.update_attributes(profile: false) }
+            previous_picture.each { |pic| pic.destroy }
 
             @picture.save
             current_user.update_attributes(profile_picture_id: @picture.id)
@@ -26,6 +26,15 @@ class Api::PicturesController < ApplicationController
 
             if correct_cover_resolution?(new_picture_path)
                 previous_picture = current_user.pictures.where("cover = true")
+
+                previous_picture.each do |pic|
+                    if pic.showcase
+                        pic.update_attributes(cover: false)
+                    else
+                        pic.destroy
+                    end
+                end
+
                 @picture.save
                 current_user.update_attributes(cover_picture_id: @picture.id)
                 render 'api/pictures/show'
@@ -46,9 +55,9 @@ class Api::PicturesController < ApplicationController
 
         if @picture
             if params[:picture][:profile]
+                debugger
                 previous_picture = current_user.pictures.where("profile = true")
                 previous_picture.each { |pic| pic.update_attributes(profile: false) }
-                current_user.update_attributes(profile_picture_id: @picture.id)
             elsif params[:picture][:cover]
                 previous_picture = current_user.pictures.where("cover = true")
                 previous_picture.each { |pic| pic.update_attributes(cover: false) }
@@ -71,7 +80,7 @@ class Api::PicturesController < ApplicationController
 
     private
     def picture_params
-        params.require(:picture).permit(:image, :title, :description, :profile, :cover)
+        params.require(:picture).permit(:image, :title, :description, :profile, :cover, :showcase)
     end
 
 end

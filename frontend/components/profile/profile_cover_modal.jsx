@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class ProfileCoverModal extends React.Component {
     constructor(props) {
@@ -31,20 +30,21 @@ class ProfileCoverModal extends React.Component {
 
 
         this.props.updatePicture(picture);
-        // this.props.toggleOwnPicturesModal();
+        this.props.toggleOwnPicturesModal();
     }
 
     render() {
         let pictures = this.props.pictures.map((picture, index) => {
             const className = this.state.activeIndex === index ? 'pictureShowItem-active' : 'pictureShowItem'; 
             return (
-                <Link
+                <li
                     key={index}
-                    onClick={this.handleClick.bind(this, index, picture.id)} 
+                    onClick={this.handleClick.bind(this, index, picture.id)}
                     className='imageLink'
                 >
                     <img className={className} src={picture.img_url} />
-                </Link>
+
+                </li>
             )
         })
 
