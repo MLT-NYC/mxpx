@@ -159,9 +159,10 @@
     top: 4vh;
     height: 700px;
     width: 580px;
-    border-radius: 3px;
     z-index: 1;
     background:#F7F8FA;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .editProfileModal-form-top {
@@ -172,7 +173,7 @@
     object-fit: contain;
     max-width: 580px;
     /* z-index: 0; */
-    position:fixed;
+    position: absolute;;
 }
 
 .editProfileModal-form-top-cover:hover {
@@ -237,12 +238,15 @@
 .editProfileModal-form-middle {
     height: 495px;
     width: 580px;
-    position: fixed;
+    position: absolute;
     background: #F7F8FA;
     z-index: 1;
 }
 
 .editProfileModal-form-middle-inputs {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
     background: #F7F8FA;
 }
 
@@ -259,10 +263,11 @@
 .editProfileModal-form-bottom {
     height: 75px;
     width: 580px;
-    position: fixed;
+    position: absolute;
     background: #F7F8FA;
     margin-top: 495px;
-    z-index: 1;
+    border-top: 1px solid #eeeff2;
+    /* z-index: 1; */
     /* border: 1px solid red; */
 }
 
