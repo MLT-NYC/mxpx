@@ -34,6 +34,15 @@ class PersonalProfile extends React.Component {
         this.props.fetchPictures();
     }
 
+    componentWillUnmount(){
+        document.removeEventListener('scroll', () => {
+            const isTop = window.scrollY < 1;
+            if (isTop !== this.state.isTop) {
+                this.setState({ isTop });
+            }
+        });
+    }
+
     render (){
         let pictures = this.props.pictures.map((picture, index) => {
             return (

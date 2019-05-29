@@ -28,6 +28,9 @@ class NavBar extends React.Component {
         });
     }
 
+    componentWillUnmount() {
+        document.removeEventListener('click', this.closeMenu);
+    }
     render() {
 
         let navBarPicture;
