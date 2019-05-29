@@ -202,34 +202,34 @@ class PersonalEdit extends React.Component {
                         {ownPicturesModal}
 
                     <form className='editProfileModal-form-middle-inputs' onSubmit={this.handleSubmit}>
-                        <div className='editProfileModal-form-middle-inputs-item'>
-                            <label className='editProfileModal-form-middle-inputs-item-heading'>First name</label>
-                            <input className='editProfileModal-form-middle-inputs-item-input' type='text' 
+                        <div className='editProfileModal-form-middle-inputs-name'>
+                            <label className='editProfileModal-form-middle-inputs-name-heading'>First name</label>
+                            <input className='editProfileModal-form-middle-inputs-name-input' type='text' 
                                 value={this.state.first_name} 
                                 onChange={this.update('first_name')}/>
                         </div>
 
-                        <div className='editProfileModal-form-middle-inputs-item'>
-                            <label className='editProfileModal-form-middle-inputs-item-heading'>Last name</label>
-                            <input className='editProfileModal-form-middle-inputs-item-input' type='text'
+                        <div className='editProfileModal-form-middle-inputs-name'>
+                            <label className='editProfileModal-form-middle-inputs-name-heading'>Last name</label>
+                            <input className='editProfileModal-form-middle-inputs-name-input' type='text'
                                 value={this.state.last_name}
                                 onChange={this.update('last_name')} />
                         </div>
 
-                        <div className='editProfileModal-form-middle-inputs-item'>
-                            <label className='editProfileModal-form-middle-inputs-item-heading'>Location</label>
-                            <input className='editProfileModal-form-middle-inputs-item-input' type='text'
+                        <div className='editProfileModal-form-middle-inputs-location'>
+                            <label className='editProfileModal-form-middle-inputs-location-heading'>Location</label>
+                            <input className='editProfileModal-form-middle-inputs-location-input' type='text'
                                 value={this.state.city}
                                 onChange={this.update('city')} />
 
-                            <input className='editProfileModal-form-middle-inputs-item-input' type='text'
+                            <input className='editProfileModal-form-middle-inputs-location-input' type='text'
                                 value={this.state.country}
                                 onChange={this.update('country')} />
                         </div>
 
-                        <div className='editProfileModal-form-middle-inputs-item'>
-                            <label className='editProfileModal-form-middle-inputs-item-heading'>About</label>
-                            <textarea className='editProfileModal-form-middle-inputs-item-input' type='text'
+                        <div className='editProfileModal-form-middle-inputs-about'>
+                            <label className='editProfileModal-form-middle-inputs-about-heading'>About</label>
+                            <textarea className='editProfileModal-form-middle-inputs-about-input' type='text'
                                 value={this.state.about}
                                 onChange={this.update('about')}></textarea>
                         </div>
