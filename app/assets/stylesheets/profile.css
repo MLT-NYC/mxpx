@@ -157,12 +157,13 @@
 .editProfileModal-form {
     position: absolute;
     top: 4vh;
-    height: 700px;
+    height: 600px;
     width: 580px;
     z-index: 1;
     background:#F7F8FA;
     border-radius: 3px;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .editProfileModal-form-top {
@@ -243,22 +244,6 @@
     z-index: 1;
 }
 
-.editProfileModal-form-middle-inputs {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* flex-wrap: wrap; */
-    /* width: 100%; */
-    height: 100%;
-    background: #F7F8FA;
-}
-
-.editProfileModal-form-middle-inputs-name {
-    width: 265px;
-    height: 63px;
-    display: flex;
-    flex-direction: column;
-}
-
 .personalEdit-personalPicture {
     height: 100px;
     width: 100px;
@@ -269,19 +254,163 @@
     position: absolute;
 }
 
-.editProfileModal-form-bottom {
-    height: 75px;
-    width: 580px;
-    position: absolute;
+.editProfileModal-form-middle-inputs {
+    height: 100%;
     background: #F7F8FA;
-    margin-top: 495px;
-    border-top: 1px solid #eeeff2;
-    /* z-index: 1; */
-    /* border: 1px solid red; */
 }
 
-.editProfileModal-profile-input {
+.editProfileModal-form-middle-inputs-names {
+    /* width: 265px;
+    height: 63px; */
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+    padding: 0px 20px 10px;
+}
+
+.editProfileModal-form-middle-inputs-name {
+    /* width: 265px;
+    height: 63px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.editProfileModal-form-middle-inputs-lastname {
+    /* width: 265px;
+    height: 63px; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.editProfileModal-form-middle-inputs-heading {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #0099E5;
+}
+
+.editProfileModal-form-middle-inputs-name-input {
+    width: 243px;
+    height: 19px;
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid rgba(185,193,199,0.5);
+    color: #666;
+    outline: none;
+    resize: none;
+    border-radius: 3px;
+    /* margin-bottom: 10px; */
+}
+
+.editProfileModal-form-middle-inputs-location {
+    width: 540px;
+    height: 63px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 10px;
+    margin-bottom: 10px;
+}
+
+.editProfileModal-form-middle-inputs-city-input {
+    width: 243px;
+    height: 19px;
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid rgba(185,193,199,0.5);
+    color: #666;
+    outline: none;
+    resize: none;
+    border-radius: 3px;
+    /* margin-bottom: 10px; */
+}
+
+.editProfileModal-form-middle-inputs-country-input {
+    width: 243px;
+    height: 19px;
+    font-size: 14px;
+    padding: 8px 10px;
+    margin-left: 10px;
+    border: 1px solid rgba(185,193,199,0.5);
+    color: #666;
+    outline: none;
+    resize: none;
+    border-radius: 3px;
+    /* margin-bottom: 10px; */
+}
+
+
+.editProfileModal-form-middle-inputs-location-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.editProfileModal-form-middle-inputs-about {
+    /* width: 540px;
+    height: 63px; */
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 10px;
+    margin-bottom: 10px;
+}
+
+.editProfileModal-form-middle-inputs-about-input {
+    width: 518px;
+    height: 95px;
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid rgba(185,193,199,0.5);
+    color: #666;
+    outline: none;
+    border-radius: 3px;
+    resize: none;
+}
+
+
+
+.editProfileModal-form-bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 75px;
+    width: 540px;
+    background: #F7F8FA;
+    padding: 0px 20px;
+    border-top: 1px solid #eeeff2;
+}
+
+/* .editProfileModal-profile-input {
     height: 100px;
     width: 100px;
     z-index: 1;
+} */
+
+
+.editProfileModal-form-bottom-cancel {
+    text-decoration: none;
+    border: none;
+    background: #F7F8FA;
+    color: #71767A;
+    font-size: 14px;
+    /* margin-top: 285px;
+    z-index: 2; */
 }
+
+.editProfileModal-form-bottom-submit {
+    border: #34BF49;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: white;
+    background: #34BF49;
+    padding: 0;
+    margin-left: 20px;
+    height: 30px;
+    width: 75px;
+    border-radius: 3px;
+}
+
+.editProfileModal-form-bottom-submit:hover {
+    background: #41cb56;
+    cursor: pointer;
+}
+
+

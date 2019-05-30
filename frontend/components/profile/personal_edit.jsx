@@ -202,46 +202,49 @@ class PersonalEdit extends React.Component {
                         {ownPicturesModal}
 
                     <form className='editProfileModal-form-middle-inputs' onSubmit={this.handleSubmit}>
-                        <div className='editProfileModal-form-middle-inputs-name'>
-                            <label className='editProfileModal-form-middle-inputs-name-heading'>First name</label>
-                            <input className='editProfileModal-form-middle-inputs-name-input' type='text' 
-                                value={this.state.first_name} 
-                                onChange={this.update('first_name')}/>
-                        </div>
+                        <div className='editProfileModal-form-middle-inputs-names'>
+                            <div className='editProfileModal-form-middle-inputs-name'>
+                                <label className='editProfileModal-form-middle-inputs-heading'>First name</label>
+                                <input className='editProfileModal-form-middle-inputs-name-input' type='text' 
+                                    value={this.state.first_name} 
+                                    onChange={this.update('first_name')}/>
+                            </div>
 
-                        <div className='editProfileModal-form-middle-inputs-name'>
-                            <label className='editProfileModal-form-middle-inputs-name-heading'>Last name</label>
-                            <input className='editProfileModal-form-middle-inputs-name-input' type='text'
-                                value={this.state.last_name}
-                                onChange={this.update('last_name')} />
+                            <div className='editProfileModal-form-middle-inputs-lastname'>
+                                <label className='editProfileModal-form-middle-inputs-heading'>Last name</label>
+                                <input className='editProfileModal-form-middle-inputs-name-input' type='text'
+                                    value={this.state.last_name}
+                                    onChange={this.update('last_name')} />
+                            </div>
                         </div>
 
                         <div className='editProfileModal-form-middle-inputs-location'>
-                            <label className='editProfileModal-form-middle-inputs-location-heading'>Location</label>
-                            <input className='editProfileModal-form-middle-inputs-location-input' type='text'
-                                value={this.state.city}
-                                onChange={this.update('city')} />
+                            <label className='editProfileModal-form-middle-inputs-heading'>Location</label>
+                            <div className='editProfileModal-form-middle-inputs-location-inputs'>
+                                <input className='editProfileModal-form-middle-inputs-city-input' type='text'
+                                    value={this.state.city}
+                                    onChange={this.update('city')} />
 
-                            <input className='editProfileModal-form-middle-inputs-location-input' type='text'
-                                value={this.state.country}
-                                onChange={this.update('country')} />
+                                <input className='editProfileModal-form-middle-inputs-country-input' type='text'
+                                    value={this.state.country}
+                                    onChange={this.update('country')} />
+                            </div>
                         </div>
 
                         <div className='editProfileModal-form-middle-inputs-about'>
-                            <label className='editProfileModal-form-middle-inputs-about-heading'>About</label>
+                            <label className='editProfileModal-form-middle-inputs-heading'>About</label>
                             <textarea className='editProfileModal-form-middle-inputs-about-input' type='text'
                                 value={this.state.about}
                                 onChange={this.update('about')}></textarea>
                         </div>
 
-                        <button className='editProfileModal-form-bottom-cancel' onClick={this.props.toggleEditProfile}>Cancel</button>
-                        <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
+                        <div className='editProfileModal-form-bottom'>
+                            <button className='editProfileModal-form-bottom-cancel' onClick={this.props.toggleEditProfile}>Cancel</button>
+                            <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
+                        </div>
                     </form>
                 </div>
-
-                <div className='editProfileModal-form-bottom'>
-                </div>
-                
+    
             </div>
         )
     }
