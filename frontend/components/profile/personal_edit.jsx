@@ -150,16 +150,23 @@ class PersonalEdit extends React.Component {
         let coverModal;
         if (this.state.coverModal) {
             coverModal = (
-                <div className='personalCoverEditModal'>
-                    <label className='personalCoverEditModal-top'>
-                        Upload from Computer
-                        <input className='newPictureInput' onChange={this.handleCover} type="file" />
-                    </label>
-
-                    <div className='personalCoverEditModal-bottom' onClick={this.toggleOwnPicturesModal}>
-                        Choose from your Library
+                <>
+                    <div className='personalCoverEditModal-arrow-outer'>
                     </div>
-                </div>
+
+                    <div className='personalCoverEditModal'>
+                        <label className='personalCoverEditModal-top'>
+                            <div className='personalCoverEditModal-arrow-inner'>
+                            </div>
+                            Upload from Computer
+                            <input className='newPictureInput' onChange={this.handleCover} type="file" />
+                        </label>
+
+                        <div className='personalCoverEditModal-bottom' onClick={this.toggleOwnPicturesModal}>
+                            Choose from your Library
+                        </div>
+                    </div>
+                </>
             )
         }
 

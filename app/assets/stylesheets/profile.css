@@ -173,41 +173,85 @@
 .editProfileModal-form-top-cover {
     object-fit: contain;
     max-width: 580px;
-    /* z-index: 0; */
     position: absolute;;
 }
 
 .editProfileModal-form-top-cover:hover {
     cursor: pointer;
-    /* z-index: 0; */
 }
-
+/*  */
+/*  */
 .personalCoverEditModal {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    position: fixed;
     height: 100px;
     width: 200px;
-    border: 1px solid red;
+    margin-top: -35px;
+    margin-left: 190px;
+    border-radius: 3px;
+    border: 2px solid #c7ced2;
+    background: #F7F8FA;
+    box-shadow: 0 2px 25px rgba(0,0,0,0.2);
 }
 
+.personalCoverEditModal-arrow-outer {
+    height: 20px;
+    width: 20px;
+    position: fixed;
+    margin-top: -40px;
+    margin-left: 280px;
+    transform: rotate(45deg);
+    background: #c7ced2;
+}
+
+.personalCoverEditModal-arrow-inner {
+    height: 14px;
+    width: 14px;
+    position: fixed;
+    margin-top: -22px;
+    margin-left: 76px;
+    transform: rotate(45deg);
+    background-color: inherit;
+}
+
+/* .personalCoverEditModal-arrow-inner:hover {
+    background-color: #eeeff2;
+} */
+
 .personalCoverEditModal-top {
-    height: 50px;
-    width: 200px;
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 15px;
+    background-color: #f7f8fa;
+    font-size: 14px;
+    color: #71767A;
 }
 
 .personalCoverEditModal-top:hover {
     cursor: pointer;
-    z-index: 2;
+    background-color: #eeeff2;
 }
 
 .personalCoverEditModal-bottom {
-    height: 50px;
-    width: 200px;
-}
-.personalCoverEditModal-top:hover {
-    cursor: pointer;
-    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #f7f8fa;
+    color: #71767A;
+    height: 100%;
+    border-top: 1px solid #eeeff2;
 }
 
+.personalCoverEditModal-bottom:hover {
+    cursor: pointer;
+    background-color: #eeeff2;
+}
+/*  */
+/*  */
 .profileCoverModal {
     background-color: #000;
     opacity: 0.5;
