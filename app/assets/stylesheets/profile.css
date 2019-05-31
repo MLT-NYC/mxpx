@@ -256,13 +256,14 @@
 }
 
 .profileCoverModal-container {
-    top: 6vh;
+    bottom: 10vh;
     left: 10vw;
     display: flex;
     flex-direction: column;
-    min-width: 700px;
     width: 80%;
-    height: 700px;
+    min-width: 700px;
+    max-height: 700px;
+    height: 80%;
     position: fixed;
     overflow: hidden;
     background-color: white;
@@ -300,9 +301,11 @@
     background-color: #f7f8fa;
     padding: 10px 15px;
     border-top: 1px solid #b9c1c7;
+    position: relative;
     height: 26px;
-    width: 100% - 30px;
-    bottom: 0;
+    /* min-height: 26px; */
+    /* width: 100% - 30px; */
+    /* bottom: 0; */
 }
 
 .profileCoverModal-bottom-cancel {

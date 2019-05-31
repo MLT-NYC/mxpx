@@ -39,11 +39,8 @@ class ProfileCoverModal extends React.Component {
             return (
                 <li
                     key={index}
-                    onClick={this.handleClick.bind(this, index, picture.id)}
-                    className='imageLink'
-                >
-                    <img className={className} src={picture.img_url} />
-
+                    onClick={this.handleClick.bind(this, index, picture.id)} className='imageLink'>
+                        <img className={className} src={picture.img_url} />
                 </li>
             )
         })
