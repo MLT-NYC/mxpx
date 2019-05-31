@@ -10,7 +10,6 @@ const pictureErrorsReducer = (oldState = [], action) => {
     let newState;
     switch(action.type){
         case RECEIVE_PICTURE_ERRORS:
-            // debugger
             if (action.errors.responseJSON) {
                 newState = action.errors.responseJSON;
             } else if (action.errors.responseText) {

@@ -9,7 +9,6 @@ const mapStateToProps = (state, ownProps) => {
 
     let pictureId = parseInt(ownProps.location.pathname.split('/')[3], 10);
     // let pictureId = ownProps.pictureId;
-    // debugger
     let picture = state.entities.pictures[pictureId];
 
     return ({
