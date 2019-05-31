@@ -51,7 +51,7 @@ class ProfileCoverModal extends React.Component {
         return (
                 <div className='profileCoverModal-container'>
                     <div className='profileCoverModal-top'>
-
+                        <label>ADD PHOTOS FROM YOUR LIBRARY</label>
                     </div>
 
                     <div className='profileCoverModal-mid'>
@@ -59,9 +59,8 @@ class ProfileCoverModal extends React.Component {
                     </div>
 
                     <div className='profileCoverModal-bottom'>
-                        <button onClick={this.props.toggleOwnPicturesModal}>Cancel</button>
-                        <button onClick={this.handleSubmit}>Save</button>
-
+                        <button className='profileCoverModal-bottom-cancel' onClick={this.props.toggleOwnPicturesModal}>Cancel</button>
+                        <button className='profileCoverModal-bottom-save' onClick={this.handleSubmit}>Save</button>
                     </div>
                 </div>
             
