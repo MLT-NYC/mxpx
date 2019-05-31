@@ -272,9 +272,8 @@
 .profileCoverModal-top {
     display: flex;
     align-items: center;
-    /* position: fixed; */
     height: 26px;
-    width: 100% - 30px;
+    width: calc(100% - 30px);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -303,9 +302,6 @@
     border-top: 1px solid #b9c1c7;
     position: relative;
     height: 26px;
-    /* min-height: 26px; */
-    /* width: 100% - 30px; */
-    /* bottom: 0; */
 }
 
 .profileCoverModal-bottom-cancel {
