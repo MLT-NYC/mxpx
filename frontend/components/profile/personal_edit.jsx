@@ -97,6 +97,7 @@ class PersonalEdit extends React.Component {
         }
  
         this.props.createPicture(picture);
+        this.props.toggleEditProfile();
     }
 
     toggleCoverModal() {
