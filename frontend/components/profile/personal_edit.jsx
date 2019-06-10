@@ -97,7 +97,7 @@ class PersonalEdit extends React.Component {
         }
  
         this.props.createPicture(picture);
-        this.props.toggleEditProfile();
+        this.toggleCoverModal();
     }
 
     toggleCoverModal() {
@@ -189,6 +189,13 @@ class PersonalEdit extends React.Component {
             )
         }
 
+        let submitButton;
+        if (this.state.submitButtonActive) {
+            submitButton = <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
+        } else {
+            submitButton = <input className='editProfileModal-form-bottom-submit' type="button" value='Save' onClick={this.props.toggleEditProfile} />
+        }
+
         return (
             <div className='editProfileModal-form'>
                 <div className='pictureErrorContainer'>
@@ -209,7 +216,7 @@ class PersonalEdit extends React.Component {
                         {coverModal}
                         {ownPicturesModal}
 
-                    <form className='editProfileModal-form-middle-inputs' onSubmit={this.handleSubmit}>
+                    <form className='editProfileModal-form-middle-inputs'>
                         <div className='editProfileModal-form-middle-inputs-names'>
                             <div className='editProfileModal-form-middle-inputs-name'>
                                 <label className='editProfileModal-form-middle-inputs-heading'>First name</label>
@@ -248,7 +255,7 @@ class PersonalEdit extends React.Component {
 
                         <div className='editProfileModal-form-bottom'>
                             <button className='editProfileModal-form-bottom-cancel' onClick={this.props.toggleEditProfile}>Cancel</button>
-                            <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
+                            {submitButton}
                         </div>
                     </form>
                 </div>

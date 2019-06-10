@@ -53,30 +53,42 @@ class Api::PicturesController < ApplicationController
     def update
         @picture = current_user.pictures.find(params[:id])
 
-        if @picture
-            if params[:picture][:profile]
-                # This logic may be used later to update an existing photo into a profile pic.
-                previous_picture = current_user.pictures.where("profile = true")
-                previous_picture.each { |pic| pic.update_attributes(profile: false) }
-            elsif params[:picture][:cover]
+        if @picture && params[:picture][:profile]
+            # This logic may be used later to update an existing photo into a profile pic.
+            previous_picture = current_user.pictures.where("profile = true")
+            previous_picture.each { |pic| pic.update_attributes(profile: false) }
+            @picture.update_attributes(picture_params)
+            render 'api/pictures/show' 
+
+        elsif @picture && params[:picture][:cover]
+            new_picture_path = url_for(@picture.image)
+
+            if correct_cover_resolution?(new_picture_path)
                 previous_picture = current_user.pictures.where("cover = true")
 
-                previous_picture.each do |pic|
-                    if pic.showcase
-                        pic.update_attributes(cover: false)
-                    else
-                        pic.destroy
+                    previous_picture.each do |pic|
+                        if pic.showcase
+                            pic.update_attributes(cover: false)
+                        else
+                            pic.destroy
+                        end
                     end
-                end
 
                 current_user.update_attributes(cover_picture_id: @picture.id)
+                @picture.update_attributes(picture_params)
+                render 'api/pictures/show' 
+            else
+                render json: ['Cover photos must be in landscape orientation and at least 2000x1000 pixels'], status: 400
             end
 
+        elsif @picture
             @picture.update_attributes(picture_params)
             render 'api/pictures/show' 
         else
             render json: @picture.errors.full_messages, status: 400
         end
+
+
     end
 
     def destroy

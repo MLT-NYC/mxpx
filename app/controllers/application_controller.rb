@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    helper_method :current_user, :logged_in?, :ensure_cover_resolution
+    helper_method :current_user, :logged_in?
 
     def current_user
         @current_user ||= User.find_by_session_token(session[:session_token])
@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
 
     def correct_cover_resolution?(picture_path)
         temp_picture = MiniMagick::Image.open(picture_path)
-
         if temp_picture[:width] < 2000 || temp_picture[:height] < 1000
             return false
         end

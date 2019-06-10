@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     let currentUser = state.entities.users[currentUserId];
 
     let pictureId = parseInt(ownProps.location.pathname.split('/')[3], 10);
-    // let pictureId = ownProps.pictureId;
     let picture = state.entities.pictures[pictureId];
 
     return ({
