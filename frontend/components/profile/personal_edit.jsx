@@ -216,7 +216,7 @@ class PersonalEdit extends React.Component {
                         {coverModal}
                         {ownPicturesModal}
 
-                    <form className='editProfileModal-form-middle-inputs'>
+                    <form className='editProfileModal-form-middle-inputs' onSubmit={this.handleSubmit}>
                         <div className='editProfileModal-form-middle-inputs-names'>
                             <div className='editProfileModal-form-middle-inputs-name'>
                                 <label className='editProfileModal-form-middle-inputs-heading'>First name</label>
