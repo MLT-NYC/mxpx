@@ -308,7 +308,7 @@
     bottom: 0;
     position: absolute;
     height: 26px;
-    width: 715px;
+    width: calc(100% - 30px);
 }
 
 .profileCoverModal-bottom-cancel {
