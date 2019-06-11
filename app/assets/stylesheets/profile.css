@@ -32,6 +32,10 @@
     z-index: -1;
 }
 
+.editProfileModal-personalPicture-wrapper {
+    border: 2px solid #fff;
+}
+
 .editProfileModal-personalPicture-wrapper:hover {
     cursor: pointer;
 }
@@ -45,9 +49,11 @@
     height: 100px;
     width: 100px;
     margin-top: -50px;
+    margin-bottom: 50px;
     margin-left: calc(50% - 50px);
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #fff;
 }
 
 .personalProfile-edit {
@@ -80,7 +86,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color:#525558;
-    margin-top: 20px;
+    margin-top: -30px;
 }
 
 .personalProfile-details {
@@ -157,11 +163,10 @@
 .editProfileModal-form {
     position: fixed;
     top: 13vh;
-    height: 600px;
     width: 580px;
     z-index: 1;
-    background:#F7F8FA;
     border-radius: 3px;
+    background:#F7F8FA;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -170,9 +175,9 @@
 }
 
 .editProfileModal-form-top-cover {
-    object-fit: contain;
-    max-width: 580px;
-    position: absolute;;
+    object-fit: cover;
+    width: 580px; 
+    height: 130px;
 }
 
 .editProfileModal-form-top-cover:hover {
@@ -349,7 +354,7 @@
 }
 
 .editProfileModal-form-middle {
-    position: absolute;
+    /* position: absolute; */
     background: #F7F8FA;
 }
 
@@ -361,6 +366,7 @@
     border-radius: 50%;
     object-fit: cover;
     position: absolute;
+    border: 2px solid #fff;
 }
 
 .editProfileModal-form-middle-inputs {
@@ -462,8 +468,6 @@
     border-radius: 3px;
     resize: none;
 }
-
-
 
 .editProfileModal-form-bottom {
     display: flex;
