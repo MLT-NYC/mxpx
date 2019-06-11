@@ -305,8 +305,10 @@
     background-color: #f7f8fa;
     padding: 10px 15px;
     border-top: 1px solid #b9c1c7;
-    position: relative;
+    bottom: 0;
+    position: absolute;
     height: 26px;
+    width: 715px;
 }
 
 .profileCoverModal-bottom-cancel {

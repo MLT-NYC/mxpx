@@ -6,6 +6,7 @@ class ProfileCoverModal extends React.Component {
 
         this.state = {
             cover: true,
+            activeSubmit: false,
             activeIndex: null,
             id: null,
         };
@@ -17,6 +18,7 @@ class ProfileCoverModal extends React.Component {
     handleClick(index, id) {
         this.setState({
             id: id,
+            activeSubmit: true,
             activeIndex: index
         });
 
@@ -45,6 +47,13 @@ class ProfileCoverModal extends React.Component {
             )
         })
 
+        let submitButtom;
+        if (this.state.activeSubmit) {
+            submitButtom = <button className='profileCoverModal-bottom-save' onClick={this.handleSubmit}>Save</button>
+        } else {
+            submitButtom = <button className='profileCoverModal-bottom-save' onClick={this.props.toggleOwnPicturesModal}>Save</button>
+        }
+
         return (
                 <div className='profileCoverModal-container'>
                     <div className='profileCoverModal-top'>
@@ -57,7 +66,7 @@ class ProfileCoverModal extends React.Component {
 
                     <div className='profileCoverModal-bottom'>
                         <button className='profileCoverModal-bottom-cancel' onClick={this.props.toggleOwnPicturesModal}>Cancel</button>
-                        <button className='profileCoverModal-bottom-save' onClick={this.handleSubmit}>Save</button>
+                        {submitButtom}
                     </div>
                 </div>
             
