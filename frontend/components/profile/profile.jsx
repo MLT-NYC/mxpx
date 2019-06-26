@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../navbar/navbar';
-// import { Link } from 'react-router-dom';
 
 class Profile extends React.Component {
     constructor(props){
