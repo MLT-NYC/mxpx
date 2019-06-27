@@ -1,6 +1,16 @@
 class Api::CommentsController < ApplicationController
     before_action :find_commentable, only: :create
 
+    def show
+        @comment = Comment.find(params[:id])
+        render 'api/comments/show'
+    end
+
+    def index
+        @comments = @commentable.comments.all 
+        render :index
+    end
+
     def create
         @commentable.new(comment_params)
         
