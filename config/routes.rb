@@ -11,7 +11,13 @@ Rails.application.routes.draw do
     end
     
     resource :session, only: [:create, :destroy]
-    resources :pictures, only: [:show, :index, :create, :update, :destroy]
+    resources :pictures, only: [:show, :index, :create, :update, :destroy] do 
+      resources :comments, only: [:create, :destroy, :index]
+    end
+
+    resources :comments, only: [:create, :destroy, :index] do 
+      resources :comments, only: [:create, :destroy, :index]
+    end
   end
 
 end

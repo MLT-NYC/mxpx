@@ -9,6 +9,8 @@ class Picture < ApplicationRecord
 
     has_one_attached :image
 
+    has_many :comments, as: :commentable
+
     def ensure_image
         unless self.image.attached?
             errors[:image] << 'Must be attached'
