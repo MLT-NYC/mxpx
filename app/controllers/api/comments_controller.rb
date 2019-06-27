@@ -21,6 +21,12 @@ class Api::CommentsController < ApplicationController
         end
     end
 
+    def destroy
+        @comment = @commentable.comments.find(params[:id])
+        render 'api/comments/show'
+        @comment.destroy
+    end
+
     private
     def comment_params
         params.require(:comment).permit(:body)
