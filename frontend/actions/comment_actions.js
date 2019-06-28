@@ -1,5 +1,6 @@
 import * as CommentApiUtils from  '../util/comments_api_util';
 
+// export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS';
 export const RECEIVE_ALL_PICTURE_COMMENTS = 'RECEIVE_ALL_PICTURE_COMMENTS';
 export const RECEIVE_PICTURE_COMMENT = 'RECEIVE_PICTURE_COMMENT';
 export const REMOVE_PICTURE_COMMENT = 'REMOVE_PICTURE_COMMENT';
