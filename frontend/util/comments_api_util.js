@@ -1,41 +1,47 @@
 export const fetchPictureComments = (pictureId) => {
     return $.ajax({
         method: 'GET',
-        url: `api/${pictureId}/comments`
+        url: `api/pictures/${pictureId}/comments`,
+        data: {comment: {picture_id: pictureId}}
     });
 };
 
-export const createPictureComment = (pictureId) => {
+export const createPictureComment = (comment) => {
     return $.ajax({
         method: 'POST',
-        url: `api/${pictureId}/comments`
+        url: `api/pictures/${comment.pictureId}/comments`,
+        data: { comment }
     });
 };
 
-export const deletePictureComment = (pictureId, commentId) => {
+export const deletePictureComment = (comment) => {
     return $.ajax({
         method: 'DELETE',
-        url: `api/${pictureId}/comments/${commentId}`
+        url: `api/pictures/${comment.picture_id}/comments/${comment.id}`,
+        data: { comment }
     });
 };
 
 export const fetchSubComments = (commentId) => {
     return $.ajax({
         method: 'GET',
-        url: `api/${commentId}/comments/`
+        url: `api/comments/${commentId}/comments/`,
+        data: { comment: {comment_id: commentId}}
     });
 };
 
-export const createSubComment = (commentId) => {
+export const createSubComment = (subComment) => {
     return $.ajax({
         method: 'POST',
-        url: `api/${commentId}/comments/`
+        url: `api/comments/${subComment.comment_id}/comments/`,
+        data: { comment: subComment }
     });
 };
 
-export const deleteSubComment = (commentId, subCommentId) => {
+export const deleteSubComment = (subComment) => {
     return $.ajax({
         method: 'DELETE',
-        url: `api/${commentId}/comments/${subCommentId}`
+        url: `api/comments/${subComment.comment_id}/comments/${subComment.id}`,
+        data: { comment: subComment }
     });
 };

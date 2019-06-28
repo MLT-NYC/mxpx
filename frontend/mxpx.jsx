@@ -5,6 +5,8 @@ import Root from './components/root';
 import * as SessionAPIActions from './actions/session_actions';
 import * as PicturesAPIActions from './actions/pictures_actions';
 import * as FollowsAPIActions from './actions/follows_actions';
+import * as CommentAPIActions from './actions/comment_actions';
+import * as CommentUtils from './util/comments_api_util';
 import * as FollowsUtils from './util/follows_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -42,6 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // FOLLOWS ACTION CREATORS
     // window.createFollow = FollowsAPIActions.createFollow;
     // window.deleteFollow = FollowsAPIActions.deleteFollow;
+
+    // COMMENTS ACTION CREATORS
+    // window.fetchPictureComments = CommentAPIActions.fetchPictureComments;
+
+    // COMMENT UTILS
+    // window.fetchPictureComments = CommentUtils.fetchPictureComments;
+    // window.createPictureComment = CommentUtils.createPictureComment;
+    // window.deletePictureComment = CommentUtils.deletePictureComment;
+    // window.fetchSubComments = CommentUtils.fetchSubComments;
+    // window.createSubComment = CommentUtils.createSubComment;
+    // window.deleteSubComment = CommentUtils.deleteSubComment;
     
     // FOLLOWS UTILS
     // window.createFollow = FollowsUtils.createFollow;

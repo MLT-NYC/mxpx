@@ -27,6 +27,10 @@ class User < ApplicationRecord
         through: :followee_objects,
         source: :follower
 
+    has_many :authored_comments,
+        class_name: 'Comment',
+        foreign_key: :author_id
+
     def password=(password) 
         @password = password
         self.password_digest = BCrypt::Password.create(password)
