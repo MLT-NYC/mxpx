@@ -27,17 +27,23 @@ const commentsReducer = (oldState = {}, action) => {
             delete newState[action.pictureComment.id];
             return newState;
         case RECEIVE_ALL_SUB_COMMENTS:
+            debugger
             newState = merge({}, oldState);
             action.subComments.forEach((subComment) => {
                 newState[subComment.id] = subComment;
             });
             return newState;
         case RECEIVE_SUB_COMMENT:
+            debugger
             newState = merge({}, oldState, { [action.subComment.id]: action.subComment });
             return newState;
         case REMOVE_SUB_COMMENT:
+            debugger
             newState = merge({}, oldState);
             delete newState[action.subComment.id];
+            let subCommentIds = newState[action.subComment.commentable_id].subCommentIds;
+            let newSubCommentIds = subCommentIds.filter(subCommentId => subCommentId != action.subComment.id);
+            newState[action.subComment.commentable_id].subCommentIds = newSubCommentIds;
             return newState;   
         default:
             return oldState;

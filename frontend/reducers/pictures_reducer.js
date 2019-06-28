@@ -3,8 +3,13 @@ import {
     RECEIVE_PICTURE,
     REMOVE_PICTURE
 } from '../actions/pictures_actions';
+
+import {
+    RECEIVE_PICTURE_COMMENT,
+    REMOVE_PICTURE_COMMENT
+} from '../actions/comment_actions';
+
 import merge from 'lodash/merge';
-import pictureErrorsReducer from './picture_errors_reducer';
 
 const picturesReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -22,6 +27,16 @@ const picturesReducer = (oldState = {}, action) => {
         case REMOVE_PICTURE:
             newState = merge({}, oldState);
             delete newState[action.picture.id];
+            return newState;
+        case RECEIVE_PICTURE_COMMENT:
+            newState = merge({}, oldState);
+            newState[action.pictureComment.commentable_id].commentIds.push(action.pictureComment.id);
+            return newState;
+        case REMOVE_PICTURE_COMMENT:
+            newState = merge({}, oldState);
+            let commentIds = newState[action.pictureComment.commentable_id].commentIds;
+            let newCommentIds = commentIds.filter(commentId => commentId != action.pictureComment.id);
+            newState[action.pictureComment.commentable_id].commentIds = newCommentIds;
             return newState;
         default:
             return oldState;

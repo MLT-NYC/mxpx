@@ -43,27 +43,30 @@ export const fetchPictureComments = pictureId => dispatch => {
         .then(pictureComments => dispatch(receivePictureComments(pictureComments)));
 };
 
-export const createPictureComment = pictureId => dispatch => {
-    return CommentApiUtils.createPictureComment(pictureId)
+export const createPictureComment = comment => dispatch => {
+    return CommentApiUtils.createPictureComment(comment)
         .then(pictureComment => dispatch(receivePictureComment(pictureComment)));
 };
 
-export const deletePictureComment = (pictureId, commentId) => dispatch => {
-    return CommentApiUtils.deletePictureComment(pictureId, commentId)
+export const deletePictureComment = comment => dispatch => {
+    return CommentApiUtils.deletePictureComment(comment)
         .then((pictureComment) => dispatch(removePictureComment(pictureComment)));
 };
 
 export const fetchSubComments = commentId => dispatch => {
+    debugger
     return CommentApiUtils.fetchSubComments(commentId)
         .then(subComments => dispatch(receiveSubComments(subComments)));
 };
 
-export const createSubComment = commentId => dispatch => {
-    return CommentApiUtils.createSubComment(commentId)
+export const createSubComment = comment => dispatch => {
+    debugger
+    return CommentApiUtils.createSubComment(comment)
         .then(subComment => dispatch(receiveSubComment(subComment)));
 };
 
-export const deleteSubComment = (commentId, subCommentId) => dispatch => {
-    return CommentApiUtils.deleteSubComment(commentId, subCommentId)
+export const deleteSubComment = comment => dispatch => {
+    debugger
+    return CommentApiUtils.deleteSubComment(comment)
         .then((subComment) => dispatch(removeSubComment(subComment)));
 };
