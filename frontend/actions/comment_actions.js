@@ -1,17 +1,11 @@
 import * as CommentApiUtils from  '../util/comments_api_util';
 
-// export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS';
 export const RECEIVE_ALL_PICTURE_COMMENTS = 'RECEIVE_ALL_PICTURE_COMMENTS';
 export const RECEIVE_PICTURE_COMMENT = 'RECEIVE_PICTURE_COMMENT';
 export const REMOVE_PICTURE_COMMENT = 'REMOVE_PICTURE_COMMENT';
 export const RECEIVE_ALL_SUB_COMMENTS = 'RECEIVE_ALL_SUB_COMMENTS';
 export const RECEIVE_SUB_COMMENT = 'RECEIVE_SUB_COMMENT';
 export const REMOVE_SUB_COMMENT = 'REMOVE_SUB_COMMENT';
-
-const receivePictureComments = pictureComments => ({
-    type: RECEIVE_ALL_PICTURE_COMMENTS,
-    pictureComments: pictureComments
-});
 
 const receivePictureComment = pictureComment => ({
     type: RECEIVE_PICTURE_COMMENT,
@@ -54,19 +48,16 @@ export const deletePictureComment = comment => dispatch => {
 };
 
 export const fetchSubComments = commentId => dispatch => {
-    debugger
     return CommentApiUtils.fetchSubComments(commentId)
         .then(subComments => dispatch(receiveSubComments(subComments)));
 };
 
 export const createSubComment = comment => dispatch => {
-    debugger
     return CommentApiUtils.createSubComment(comment)
         .then(subComment => dispatch(receiveSubComment(subComment)));
 };
 
 export const deleteSubComment = comment => dispatch => {
-    debugger
     return CommentApiUtils.deleteSubComment(comment)
         .then((subComment) => dispatch(removeSubComment(subComment)));
 };
