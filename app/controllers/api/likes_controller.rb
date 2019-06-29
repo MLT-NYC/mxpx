@@ -1,7 +1,7 @@
 class Api::LikesController < ApplicationController
     before_action :ensure_not_own_picture, only: [:create]
 
-    def create
+    def like
         @like = Like.new(like_params)
 
         if @like.save
@@ -11,10 +11,15 @@ class Api::LikesController < ApplicationController
         end
     end
 
-    def destroy
-        @like = Like.where(picture_id: params[:picture_id]).where(liker_id: params[:liker_id])
-        render 'api/likes/show'
-        @like.destroy
+    def unlike
+        @like = Like.where(picture_id: params[:like][:picture_id]).where(liker_id: params[:like][:liker_id]).first
+
+        if @like
+            render 'api/likes/show'
+            @like.destroy
+        else
+            render json: ['You have to like, before you unlike']
+        end
     end
 
     private

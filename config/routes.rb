@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
     resources :pictures, only: [:show, :index, :create, :update, :destroy] do 
       resources :comments, only: [:create, :destroy, :index]
-      resources :likes, only: [:create, :destroy]
+      post :like, to: 'likes#like', as: 'like' 
+      delete :unlike, to: 'likes#unlike', as: 'unlike'
     end
 
     resources :comments, only: [:index] do 

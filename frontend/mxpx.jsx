@@ -8,6 +8,7 @@ import * as FollowsAPIActions from './actions/follows_actions';
 import * as CommentAPIActions from './actions/comment_actions';
 import * as CommentUtils from './util/comments_api_util';
 import * as FollowsUtils from './util/follows_api_util';
+import * as LikesUtils from './util/likes_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     let root = document.getElementById('root');
@@ -64,6 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // FOLLOWS UTILS
     // window.createFollow = FollowsUtils.createFollow;
     // window.deleteFollow = FollowsUtils.deleteFollow;
+
+    // LIKES UTILS
+    window.likePicture = LikesUtils.likePicture;
+    window.unlikePicture = LikesUtils.unlikePicture;
 
     // STATE
     // window.store = store;
