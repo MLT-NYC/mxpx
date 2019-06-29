@@ -13,6 +13,11 @@ import {
     REMOVE_FOLLOW
 } from '../actions/follows_actions';
 
+import {
+    RECEIVE_LIKE,
+    REMOVE_LIKE
+} from '../actions/likes_actions';
+
 import merge from 'lodash/merge';
 
 const usersReducer = (oldState = {}, action) => {
@@ -20,10 +25,10 @@ const usersReducer = (oldState = {}, action) => {
     let newState;
     let followeeIds;
     let pictureIds = [];
+    let likedPictureIds = [];
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState = merge({}, oldState, {[action.currentUser.id]: action.currentUser});
-            
             return newState;
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
@@ -70,11 +75,9 @@ const usersReducer = (oldState = {}, action) => {
             return newState;
         case REMOVE_PICTURE:
             newState = merge({}, oldState);
-
             pictureIds = newState[action.picture.photographer_id].pictureIds;
             let newPictureIds = pictureIds.filter(pictureId => pictureId != action.picture.id);
             newState[action.picture.photographer_id].pictureIds = newPictureIds;
-
             return newState;
         case RECEIVE_FOLLOW:
             newState = merge({}, oldState);
@@ -91,10 +94,30 @@ const usersReducer = (oldState = {}, action) => {
             return newState;
         case REMOVE_FOLLOW:
             newState = merge({}, oldState);
-
             followeeIds = newState[action.follow.follower_id].followeeIds;
             let updatedFolloweeIds = followeeIds.filter(followeeId => followeeId != action.follow.followee_id);
             newState[action.follow.follower_id].followeeIds = updatedFolloweeIds;
+            return newState;
+        case RECEIVE_LIKE:
+            newState = merge({}, oldState);
+            
+            if (newState[action.like.liker_id]) {
+                likedPictureIds = newState[action.like.liker_id].likedPictureIds;
+            }
+
+            if (!likedPictureIds.includes(action.like.picture_id)) {
+                likedPictureIds.push(action.like.picture_id);
+            }
+
+            return newState;
+        case REMOVE_LIKE:
+            newState = merge({}, oldState);
+
+            if (newState[action.like.liker_id]) {
+                likedPictureIds = newState[action.like.liker_id].likedPictureIds;
+                let updatedLikedPictureIds = likedPictureIds.filter(likedPictureId => likedPictureId != action.like.picture_id);
+                newState[action.like.liker_id].likedPictureIds = updatedLikedPictureIds;
+            }
             
             return newState;
         default:

@@ -9,11 +9,17 @@ import {
     REMOVE_PICTURE_COMMENT
 } from '../actions/comment_actions';
 
+import {
+    RECEIVE_LIKE,
+    REMOVE_LIKE
+} from '../actions/likes_actions';
+
 import merge from 'lodash/merge';
 
 const picturesReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     let newState;
+    let likerIds = [];
     switch (action.type) {
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
@@ -37,6 +43,28 @@ const picturesReducer = (oldState = {}, action) => {
             let commentIds = newState[action.pictureComment.commentable_id].commentIds;
             let newCommentIds = commentIds.filter(commentId => commentId != action.pictureComment.id);
             newState[action.pictureComment.commentable_id].commentIds = newCommentIds;
+            return newState;
+        case RECEIVE_LIKE:
+            newState = merge({}, oldState);
+
+            if (newState[action.like.picture_id]) {
+                likerIds = newState[action.like.picture_id].likerIds;
+            }
+
+            if (!likerIds.includes(action.like.liker_id)) {
+                likerIds.push(action.like.liker_id);
+            }
+
+            return newState;
+        case REMOVE_LIKE:
+            newState = merge({}, oldState);
+
+            if (newState[action.like.picture_id]) {
+                likerIds = newState[action.like.picture_id].likerIds;
+                let updatedLikerIds = likerIds.filter(likerId => likerId != action.like.liker_id);
+                newState[action.like.picture_id].likerIds = updatedLikerIds;
+            }
+            
             return newState;
         default:
             return oldState;

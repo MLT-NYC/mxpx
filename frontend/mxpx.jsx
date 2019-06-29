@@ -6,6 +6,7 @@ import * as SessionAPIActions from './actions/session_actions';
 import * as PicturesAPIActions from './actions/pictures_actions';
 import * as FollowsAPIActions from './actions/follows_actions';
 import * as CommentAPIActions from './actions/comment_actions';
+import * as LikesAPIActions from './actions/likes_actions';
 import * as CommentUtils from './util/comments_api_util';
 import * as FollowsUtils from './util/follows_api_util';
 import * as LikesUtils from './util/likes_api_util';
@@ -54,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.createSubComment = CommentAPIActions.createSubComment;
     // window.deleteSubComment = CommentAPIActions.deleteSubComment;
 
+    // LIKES ACTION CREATORS
+    window.likePicture = LikesAPIActions.likePicture;
+    window.unlikePicture = LikesAPIActions.unlikePicture;
+
     // COMMENT UTILS
     // window.fetchPictureComments = CommentUtils.fetchPictureComments;
     // window.createPictureComment = CommentUtils.createPictureComment;
@@ -67,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.deleteFollow = FollowsUtils.deleteFollow;
 
     // LIKES UTILS
-    window.likePicture = LikesUtils.likePicture;
-    window.unlikePicture = LikesUtils.unlikePicture;
+    // window.likePicture = LikesUtils.likePicture;
+    // window.unlikePicture = LikesUtils.unlikePicture;
 
     // STATE
     // window.store = store;
     // window.getState = store.getState;
-    // window.dispatch = store.dispatch;
+    window.dispatch = store.dispatch;
     
     // TESTING END//
 
