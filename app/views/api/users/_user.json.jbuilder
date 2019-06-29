@@ -2,3 +2,4 @@ json.extract! user, :id, :email, :first_name, :last_name, :about, :city, :countr
 json.pictureIds user.pictures.ids
 json.followerIds user.followers.ids
 json.followeeIds user.followees.ids
+json.likedPictureIds user.liked_pictures.ids
