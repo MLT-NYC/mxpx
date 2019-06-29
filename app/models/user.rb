@@ -31,6 +31,14 @@ class User < ApplicationRecord
         class_name: 'Comment',
         foreign_key: :author_id
 
+    has_many :likes,
+        class_name: 'Like',
+        foreign_key: :liker_id
+
+    has_many :liked_pictures,
+        through: :likes,
+        source: :picture
+
     def password=(password) 
         @password = password
         self.password_digest = BCrypt::Password.create(password)

@@ -11,6 +11,14 @@ class Picture < ApplicationRecord
 
     has_many :comments, as: :commentable
 
+    has_many :likes,
+        class_name: 'Like',
+        foreign_key: :picture_id
+
+    has_many :likers, 
+        through: :likes,
+        source: :liker
+
     def ensure_image
         unless self.image.attached?
             errors[:image] << 'Must be attached'
