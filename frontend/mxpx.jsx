@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.deleteSubComment = CommentAPIActions.deleteSubComment;
 
     // LIKES ACTION CREATORS
-    window.likePicture = LikesAPIActions.likePicture;
-    window.unlikePicture = LikesAPIActions.unlikePicture;
+    // window.likePicture = LikesAPIActions.likePicture;
+    // window.unlikePicture = LikesAPIActions.unlikePicture;
 
     // COMMENT UTILS
     // window.fetchPictureComments = CommentUtils.fetchPictureComments;
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // STATE
     // window.store = store;
     // window.getState = store.getState;
-    window.dispatch = store.dispatch;
+    // window.dispatch = store.dispatch;
     
     // TESTING END//
 
