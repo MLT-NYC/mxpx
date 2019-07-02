@@ -10,6 +10,8 @@ class PictureCarousel extends React.Component {
 
         this.toggleLeft = this.toggleLeft.bind(this);
         this.toggleRight = this.toggleRight.bind(this);
+        this.likePicture = this.likePicture.bind(this);
+        this.unlikePicture = this.unlikePicture.bind(this);
     }
 
     toggleLeft() {
@@ -30,11 +32,40 @@ class PictureCarousel extends React.Component {
         });
     }
 
+    likePicture(pictureId) {
+        let like = {
+            pictureId: pictureId,
+            likerId: this.props.currentUser.id
+        };
+
+        this.props.likePicture(like);
+    }
+
+    unlikePicture(pictureId) {
+        let like = {
+            pictureId: pictureId,
+            likerId: this.props.currentUser.id
+        };
+
+        this.props.unlikePicture(like);
+    }
+
     render(){
         let currentPicture = this.props.carouselPictures[this.state.currentIndex];
         let currentPhotographer = this.props.allUsers[currentPicture.photographer_id];
         let currentPhotographerProfilePic = this.props.allPictures[currentPhotographer.profile_picture_id];
-       
+
+        let likeButton;
+        if (this.props.currentUser.pictureIds.includes(currentPicture.id)) {
+            likeButton = (<i className="far fa-heart" />)
+        } else {
+            if (currentPicture.likerIds.includes(this.props.currentUser.id)) {
+                likeButton = (<i className="fas fa-heart" onClick={() => this.unlikePicture(currentPicture.id)}></i>)
+            } else {
+                likeButton = (<i className="far fa-heart" onClick={() => this.likePicture(currentPicture.id)}></i>)
+            }
+        }
+
         let photographerName;
         if (currentPhotographer.first_name) {
             photographerName = currentPhotographer.first_name + ' ' + currentPhotographer.last_name;
@@ -42,27 +73,37 @@ class PictureCarousel extends React.Component {
             photographerName = currentPhotographer.email;
         }
        
+        let leftNav;
+        if (this.state.currentIndex > 0) {
+            leftNav = (<div className='pictureCarousel-navLeft' onClick={() => this.toggleLeft()}>Left</div>);
+        }
+
+        let rightNav;
+        if (this.state.currentIndex < this.props.carouselPictures.length - 1) {
+            rightNav = (<div className='pictureCarousel-navRight' onClick={this.toggleRight}>Right</div>);
+        }
+
         return (
             <>
                 <div className='pictureCarousel-top'>
 
                     <div className='pictureCarousel-top-left'>
                         <div className='pictureCarousel-close' onClick={() => this.props.closePictureCarousel()}>CLOSE ICON</div>
-                        <div className='pictureCarousel-navLeft' onClick={() => this.toggleLeft()}>Left</div>
+                       {leftNav}
                     </div>
 
                     <div className='pictureCarousel-display'>
                         <img src={currentPicture.img_url}/>
                     </div>
 
-                    <div className='pictureCarousel-navRight' onClick={this.toggleRight}>Right</div>
+                    {rightNav}
                 </div>
 
                 <div className='pictureCarousel-bottom'>
                     <div className='pictureDetails'>
                         <div className='pictureDetails-likes'>
-                            {/* Clickable Like Icon Goes Here */}
-                            {/* Likers/Followers Component Goes Here */}
+                            {likeButton}
+                            {/* Likers Component Goes Here */}
                         </div>
 
                         <div className='pictureDetails-authorship'>

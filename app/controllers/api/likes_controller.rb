@@ -1,5 +1,4 @@
 class Api::LikesController < ApplicationController
-    before_action :ensure_not_own_picture, only: [:create]
 
     def like
         @like = Like.new(like_params)
@@ -26,10 +25,5 @@ class Api::LikesController < ApplicationController
     def like_params
         params.require(:like).permit(:liker_id, :picture_id)
     end
-
-    def ensure_not_own_picture
-        if current_user.pictures.ids.include?(params[:picture_id])
-            render json: ["Sorry, you can't like your own photo"]
-        end        
-    end
+    
 end
