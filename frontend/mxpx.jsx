@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.unlikePicture = LikesAPIActions.unlikePicture;
 
     // SESSION UTILS
-    window.fetchUsers = SessionUtils.fetchUsers;
+    // window.fetchUsers = SessionUtils.fetchUsers;
 
     // COMMENT UTILS
     // window.fetchPictureComments = CommentUtils.fetchPictureComments;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // STATE
     // window.store = store;
     // window.getState = store.getState;
-    window.dispatch = store.dispatch;
+    // window.dispatch = store.dispatch;
     
     // TESTING END//
 

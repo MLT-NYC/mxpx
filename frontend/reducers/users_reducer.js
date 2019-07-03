@@ -1,5 +1,6 @@
 import { 
-    RECEIVE_CURRENT_USER
+    RECEIVE_CURRENT_USER,
+    RECEIVE_USERS
 } from '../actions/session_actions';
 
 import {
@@ -29,6 +30,12 @@ const usersReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState = merge({}, oldState, {[action.currentUser.id]: action.currentUser});
+            return newState;
+        case RECEIVE_USERS:
+            newState = merge({}, oldState);
+            action.users.forEach(user => {
+                newState[user.id] = user;
+            });
             return newState;
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
