@@ -10,6 +10,7 @@ import * as LikesAPIActions from './actions/likes_actions';
 import * as CommentUtils from './util/comments_api_util';
 import * as FollowsUtils from './util/follows_api_util';
 import * as LikesUtils from './util/likes_api_util';
+import * as SessionUtils from './util/session_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     let root = document.getElementById('root');
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.logIn = SessionAPIActions.logIn;
     // window.logOut = SessionAPIActions.logOut;
     // window.updateUser = SessionAPIActions.updateUser;
+    // window.fetchUsers = SessionAPIActions.fetchUsers;
 
     // PICTURES ACTION CREATORS
     // window.fetchPictures = PicturesAPIActions.fetchPictures;
@@ -59,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.likePicture = LikesAPIActions.likePicture;
     // window.unlikePicture = LikesAPIActions.unlikePicture;
 
+    // SESSION UTILS
+    window.fetchUsers = SessionUtils.fetchUsers;
+
     // COMMENT UTILS
     // window.fetchPictureComments = CommentUtils.fetchPictureComments;
     // window.createPictureComment = CommentUtils.createPictureComment;
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // STATE
     // window.store = store;
     // window.getState = store.getState;
-    // window.dispatch = store.dispatch;
+    window.dispatch = store.dispatch;
     
     // TESTING END//
 

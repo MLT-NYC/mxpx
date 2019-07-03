@@ -1,5 +1,10 @@
 class Api::UsersController < ApplicationController
 
+    def index
+        @users = User.find(params[:users])
+        
+        render :index
+    end
 
     def create
         @user = User.new(user_params)
