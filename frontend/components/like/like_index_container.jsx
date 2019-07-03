@@ -1,23 +1,22 @@
 import { connect } from 'react-redux';
 import LikeIndex from './like_index';
 
-import {
-    createFollow,
-    deleteFollow
-} from '../../actions/follows_actions';
+import { fetchUsers } from '../../actions/session_actions';
+
 
 const mapStateToProps = (state, props) => {
     let likerIds = props.picture.likerIds;
+    let likersCount = this.props.likerIds.length;
 
     return ({
-        likerIds
+        likerIds,
+        likersCount
     });
 };
 
 const mapDispatchToProps = dispatch => {
     return ({
-        createFollow: follow => dispatch(createFollow(follow)),
-        deleteFollow: follow => dispatch(deleteFollow(follow))
+        fetchUsers: users => dispatch(fetchUsers(users))
     });
 };
 
