@@ -1,25 +1,31 @@
 import React from 'react';
+import LikeIndexContainer from '../like/like_index_container';
 
 class PictureCarousel extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            currentIndex: props.currentIndex
+            currentIndex: props.currentIndex,
+            showLikesIndex: false,
+            likerIds: props.carouselPictures[props.currentIndex].likerIds
         };
 
         this.toggleLeft = this.toggleLeft.bind(this);
         this.toggleRight = this.toggleRight.bind(this);
         this.likePicture = this.likePicture.bind(this);
         this.unlikePicture = this.unlikePicture.bind(this);
+        this.toggleLikesIndex = this.toggleLikesIndex.bind(this);
     }
 
     toggleLeft() {
         let leftIndex = this.state.currentIndex;
         leftIndex -= 1;
 
+        let likerIds = this.props.carouselPictures[leftIndex].likerIds;
         this.setState({
-            currentIndex: leftIndex
+            currentIndex: leftIndex,
+            likerIds
         });
     }
 
@@ -27,8 +33,10 @@ class PictureCarousel extends React.Component {
         let rightIndex = this.state.currentIndex;
         rightIndex += 1;
 
+        let likerIds = this.props.carouselPictures[rightIndex].likerIds;
         this.setState({
-            currentIndex: rightIndex
+            currentIndex: rightIndex,
+            likerIds
         });
     }
 
@@ -48,6 +56,14 @@ class PictureCarousel extends React.Component {
         };
 
         this.props.unlikePicture(like);
+    }
+
+    toggleLikesIndex() {
+        let { showLikesIndex } = this.state;
+
+        this.setState({
+            showLikesIndex: !showLikesIndex
+        });
     }
 
     render(){
@@ -83,9 +99,28 @@ class PictureCarousel extends React.Component {
             rightNav = (<div className='pictureCarousel-navRight' onClick={this.toggleRight}>Right</div>);
         }
 
+        let likesIndexButton;
+        let likeCount = currentPicture.likerIds.length;
+        if (likeCount > 0) {
+            likesIndexButton = <div className='likesIndexButtonActive' onClick={this.toggleLikesIndex}>{likeCount}</div>
+        } else {
+            likesIndexButton = <div className='likesIndexButtonInactive'>{likeCount}</div> 
+        }
+        
+        let likesIndex;
+        if (this.state.showLikesIndex) {
+            likesIndex = (
+                <LikeIndexContainer
+                    likerIds={currentPicture.likerIds}
+                    toggleLikesIndex={this.toggleLikesIndex}
+                />
+            )
+        }
+
         return (
             <>
                 <div className='pictureCarousel-top'>
+                    {likesIndex}
 
                     <div className='pictureCarousel-top-left'>
                         <div className='pictureCarousel-close' onClick={() => this.props.closePictureCarousel()}>CLOSE ICON</div>
@@ -103,7 +138,7 @@ class PictureCarousel extends React.Component {
                     <div className='pictureDetails'>
                         <div className='pictureDetails-likes'>
                             {likeButton}
-                            {/* Likers Component Goes Here */}
+                            {likesIndexButton}
                         </div>
 
                         <div className='pictureDetails-authorship'>

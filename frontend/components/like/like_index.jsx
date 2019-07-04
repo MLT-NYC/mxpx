@@ -1,18 +1,25 @@
 import React from 'react';
+import LikeIndexItemContainer from './like_index_item_container';
 
 class LikeIndex extends React.Component {
     constructor(props) {
-
+        super(props);
     }
 
     componentDidMount() {
-        this.props.fetchUsers(this.props.likerIds);
+        if (this.props.likerIds.length > 0) {
+            this.props.fetchUsers(this.props.likerIds);
+        }
     }
 
     render() {
         let likersCount = this.props.likersCount;
 
-        // let likers = this.props.likerIds.forEach(likerId)
+        let likers = this.props.likerIds.map((likerId, index) => {
+            return (
+                <LikeIndexItemContainer key={index} likerId={likerId}/>
+            );
+        });
 
         return (
             <div className='likesContainer'>
@@ -22,11 +29,11 @@ class LikeIndex extends React.Component {
                         <li className='likesHeader-counter'>{likersCount}</li>
                     </div>
 
-                    <div className='likesCloseButton'>CLOSE LIKES</div>
+                    <div className='likesCloseButton' onClick={() => this.props.toggleLikesIndex()}>CLOSE LIKES</div>
                 </div>
 
-                <div className='likesIndex'>
-                    {/* mapped likes index items go here */}
+                <div className='likeIndexItems'>
+                    {likers}
                 </div>
 
             </div>

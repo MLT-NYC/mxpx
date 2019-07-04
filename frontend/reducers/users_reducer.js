@@ -25,6 +25,7 @@ const usersReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     let newState;
     let followeeIds;
+    let followerIds;
     let pictureIds = [];
     let likedPictureIds = [];
     switch (action.type) {
@@ -98,12 +99,26 @@ const usersReducer = (oldState = {}, action) => {
                 followeeIds = [action.follow.followee_id];
             }
 
+            followerIds = newState[action.follow.followee_id].followerIds;
+            if (followerIds) {
+                if (!followerIds.includes(action.follow.follower_id)) {
+                    followerIds.push(action.follow.follower_id);
+                }
+            } else {
+                followerIds = [action.follow.follower_id];
+            }
+
             return newState;
         case REMOVE_FOLLOW:
             newState = merge({}, oldState);
+
             followeeIds = newState[action.follow.follower_id].followeeIds;
             let updatedFolloweeIds = followeeIds.filter(followeeId => followeeId != action.follow.followee_id);
             newState[action.follow.follower_id].followeeIds = updatedFolloweeIds;
+
+            followerIds = newState[action.follow.followee_id].followerIds;
+            let updatedFollowerIds = followerIds.filter(followerId => followerId != action.follow.follower_id);
+            newState[action.follow.followee_id].followerIds = updatedFollowerIds;
             return newState;
         case RECEIVE_LIKE:
             newState = merge({}, oldState);

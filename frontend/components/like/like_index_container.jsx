@@ -3,10 +3,9 @@ import LikeIndex from './like_index';
 
 import { fetchUsers } from '../../actions/session_actions';
 
-
 const mapStateToProps = (state, props) => {
-    let likerIds = props.picture.likerIds;
-    let likersCount = this.props.likerIds.length;
+    let likerIds = props.likerIds;
+    let likersCount = likerIds.length;
 
     return ({
         likerIds,
@@ -16,7 +15,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        fetchUsers: users => dispatch(fetchUsers(users))
+        fetchUsers: userIds => dispatch(fetchUsers(userIds))
     });
 };
 
