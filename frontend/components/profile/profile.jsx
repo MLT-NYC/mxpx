@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../navbar/navbar';
+import PictureItemContainer from '../picture/picture_item_container';
 import PictureCarouselContainer from '../picture/picture_carousel_container';
 
 class Profile extends React.Component {
@@ -41,7 +42,8 @@ class Profile extends React.Component {
     render(){
         let pictures = this.props.pictures.map((picture, index) => {
             return (
-                <img key={index} src={picture.img_url} className='profilePictures' onClick={() => this.openPictureCarousel(index)}/>
+                <PictureItemContainer picture={picture} index={index} openPictureCarousel={this.openPictureCarousel}/>
+                // <img key={index} src={picture.img_url} className='profilePictures' onClick={() => this.openPictureCarousel(index)}/>
             );
         });
 

@@ -40,12 +40,10 @@ const usersReducer = (oldState = {}, action) => {
             return newState;
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
-    
-            // debugger
+            
             action.pictures.forEach((picture) => {
                 let photographer = newState[picture.photographer_id];
                 if (photographer) {
-                    // debugger
                     if (picture.profile && picture.id === photographer.profile_picture_id) {
                         photographer.profile_picture_id = picture.id;
                     }
@@ -57,8 +55,6 @@ const usersReducer = (oldState = {}, action) => {
                     if (picture.showcase && !photographer.pictureIds.includes(picture.id)) {
                         pictureIds.push(picture.id);
                     }
-
-                    // photographer.pictureIds = pictureIds;
                 }
 
             });

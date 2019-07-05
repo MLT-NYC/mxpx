@@ -30,7 +30,7 @@ const mapStateToProps = (state, props) => {
         } else {
             likerName = liker.email;
         }
-// debugger
+
         if (state.entities.pictures[likerProfilePicId]) {
             likerProfilePicImgUrl = state.entities.pictures[likerProfilePicId].img_url;
         } else {

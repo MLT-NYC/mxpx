@@ -13,9 +13,10 @@ const mapStateToProps = (state, props) => {
     });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
     return ({
-        fetchUsers: userIds => dispatch(fetchUsers(userIds))
+        fetchUsers: userIds => dispatch(fetchUsers(userIds)),
+        toggleLikeIndex: () => props.toggleLikeIndex()
     });
 };
 

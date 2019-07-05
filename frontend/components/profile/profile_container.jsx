@@ -8,17 +8,9 @@ const mapStateToProps = state => {
     let currentUserId = state.session.currentUserId;
     let currentUser = state.entities.users[currentUserId];
     let navBarPicture = state.entities.pictures[currentUser.profile_picture_id];
-    // debugger
     let pictureIds = currentUser.pictureIds.concat(currentUser.likedPictureIds);
     let pictures = [];
     let userIds = [];
-
-    // debugger
-    
-   
-    
-    // Shows user's pictures and liked pictures, 
-    // excluding the user's profile and cover pictures
 
     if (pictureIds.length > 0) {
         pictureIds.forEach(pictureId => {
