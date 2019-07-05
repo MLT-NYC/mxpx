@@ -11,8 +11,6 @@ import {
     unlikePicture
 } from '../../actions/likes_actions';
 
-
-
 const mapStateToProps = (state, props) => {
     let currentUserId = state.session.currentUserId;
     let currentUser = state.entities.users[currentUserId];

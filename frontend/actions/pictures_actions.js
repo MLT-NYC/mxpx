@@ -30,8 +30,8 @@ export const clearPictureErrors = () => ({
     type: CLEAR_PICTURE_ERRORS,
 });
 
-export const fetchPictures = () => dispatch => {
-    return PictureApiUtils.fetchPictures()
+export const fetchPictures = pictureIds => dispatch => {
+    return PictureApiUtils.fetchPictures(pictureIds)
         .then(pictures => dispatch(receivePictures(pictures)));
 };
 

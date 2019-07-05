@@ -1,5 +1,6 @@
 import React from 'react';
 import LikeIndexContainer from '../like/like_index_container';
+import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class PictureCarousel extends React.Component {
     constructor(props) {
@@ -88,6 +89,13 @@ class PictureCarousel extends React.Component {
         } else {
             photographerName = currentPhotographer.email;
         }
+
+        let currentPhotographerProfilePicImgUrl;
+        if (currentPhotographerProfilePic) {
+            currentPhotographerProfilePicImgUrl = currentPhotographerProfilePic.img_url;
+        } else {
+            currentPhotographerProfilePicImgUrl = defaultProfilePic
+        }
        
         let leftNav;
         if (this.state.currentIndex > 0) {
@@ -148,7 +156,7 @@ class PictureCarousel extends React.Component {
                             </div>
 
                             <div className='pictureDetails-authorship-right'>
-                                <img src={currentPhotographerProfilePic.img_url}/>
+                                <img src={currentPhotographerProfilePicImgUrl}/>
                             </div>
                         </div>
 

@@ -41,20 +41,26 @@ const usersReducer = (oldState = {}, action) => {
         case RECEIVE_ALL_PICTURES:
             newState = merge({}, oldState);
     
+            // debugger
             action.pictures.forEach((picture) => {
-                if (picture.profile) {
-                    newState[picture.photographer_id].profile_picture_id = picture.id;
-                }
-                
-                if (picture.cover) {
-                    newState[picture.photographer_id].cover_picture_id = picture.id;
-                }
-                
-                if (picture.showcase) {
-                    pictureIds.push(picture.id);
+                let photographer = newState[picture.photographer_id];
+                if (photographer) {
+                    // debugger
+                    if (picture.profile && picture.id === photographer.profile_picture_id) {
+                        photographer.profile_picture_id = picture.id;
+                    }
+                    
+                    if (picture.cover && picture.id === photographer.cover_picture_id) {
+                        photographer.cover_picture_id = picture.id;
+                    }
+                    
+                    if (picture.showcase && !photographer.pictureIds.includes(picture.id)) {
+                        pictureIds.push(picture.id);
+                    }
+
+                    // photographer.pictureIds = pictureIds;
                 }
 
-                newState[picture.photographer_id].pictureIds = pictureIds;
             });
 
             return newState;

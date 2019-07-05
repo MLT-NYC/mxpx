@@ -29,7 +29,13 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPictures();
+        this.props.fetchPictures(this.props.pictureIds);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (JSON.stringify(prevProps.userIds) !== JSON.stringify(this.props.userIds)) {
+            this.props.fetchUsers(this.props.userIds);
+        }
     }
 
     render(){
