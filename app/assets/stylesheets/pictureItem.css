@@ -1,0 +1,90 @@
+.pictureItem {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 32px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #222222;
+    height: 100%;
+    max-width: 450px;
+}
+
+.pictureItem-picture {
+    max-height: 350px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.pictureItem-info-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px;
+    width: 100%
+}
+
+.pictureItem-unlikeable {
+    font-size: 24px;
+    color: rgb(215,216,219);
+}
+
+.pictureItem-liked {
+    font-size: 24px;
+    color: rgb(192, 45, 66);
+    cursor: pointer;
+}
+
+.pictureItem-notLiked {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.pictureItem-notLiked:hover {
+    color: rgb(192, 45, 66);
+}
+
+.likeIndexButtonActive {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.likeIndexButtonActive:hover {
+    color: #0099E5;
+}
+
+.likeIndexButtonInactive {
+    margin-left: 8px;
+    cursor: default;
+}
+
+.pictureItem-info-bottom {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.pictureItem-info-bottom-left {
+    /* display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    height: 50%; */
+}
+
+.pictureItem-info-bottom-left-photographer {
+    margin-top: 4px;
+}
+
+.pictureItem-info-bottom-left-pictureTitle {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.pictureItem-photographerProfilePic {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}

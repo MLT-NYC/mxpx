@@ -42,8 +42,12 @@ class Profile extends React.Component {
     render(){
         let pictures = this.props.pictures.map((picture, index) => {
             return (
-                <PictureItemContainer picture={picture} index={index} openPictureCarousel={this.openPictureCarousel}/>
-                // <img key={index} src={picture.img_url} className='profilePictures' onClick={() => this.openPictureCarousel(index)}/>
+                <PictureItemContainer 
+                    key={index}
+                    picture={picture} 
+                    index={index} 
+                    openPictureCarousel={this.openPictureCarousel}
+                />
             );
         });
 
@@ -61,7 +65,8 @@ class Profile extends React.Component {
         return (
             <div>
                 <NavBar currentUser={this.props.currentUser} 
-                    navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
+                    navLink={<div className='dropdownMenuItem-9' 
+                    onClick={this.props.logOut}>Log out</div>}
                     navBarPicture={this.props.navBarPicture}
                 />    
 

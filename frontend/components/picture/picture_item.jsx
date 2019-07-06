@@ -52,12 +52,13 @@ class PictureItem extends React.Component {
     render() {
         let likeButton;
         if (this.props.currentUser.pictureIds.includes(this.props.picture.id)) {
-            likeButton = (<i className="far fa-heart" />)
+            likeButton = (<div className='pictureItem-unlikeable'><i className="far fa-heart" /></div>)
         } else {
             if (this.props.picture.likerIds.includes(this.props.currentUserId)) {
-                likeButton = (<i className="fas fa-heart" onClick={() => this.unlikePicture()}></i>)
+                likeButton = (<div className='pictureItem-liked'><i className="fas fa-heart" onClick={() => this.unlikePicture()}></i></div>)
             } else {
-                likeButton = (<i className="far fa-heart" onClick={() => this.likePicture()}></i>)
+                
+                likeButton = (<div className='pictureItem-notLiked'><i className="far fa-heart" onClick={() => this.likePicture()}></i></div>)
             }
         }
 
@@ -86,9 +87,9 @@ class PictureItem extends React.Component {
             photographerProfilePicIdImgUrl = defaultProfilePic;
         }
         return (
-            <>
+            <div className='pictureItem'>
                 {likeIndex}
-                <img src={this.props.imgUrl} className='profilePictures' onClick={() => this.props.openPictureCarousel(this.props.carouselIndex)}/>
+                <img src={this.props.imgUrl} className='pictureItem-picture' onClick={() => this.props.openPictureCarousel(this.props.carouselIndex)}/>
                 <div className='pictureItem-info'>
                     <div className='pictureItem-info-top'>
                         {likeButton}
@@ -99,16 +100,16 @@ class PictureItem extends React.Component {
                             <div className='pictureItem-info-bottom-left-pictureTitle'>
                                 {this.props.picture.title}
                             </div>
-                            <div>
+                            <div className='pictureItem-info-bottom-left-photographer'>
                                 by {this.props.photographerName}
                             </div>
                         </div>
                         <div className='pictureItem-info-bottom-right'>
-                            <img src={photographerProfilePicIdImgUrl}/>
+                            <img src={photographerProfilePicIdImgUrl} className='pictureItem-photographerProfilePic'/>
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
