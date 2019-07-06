@@ -6,6 +6,16 @@
     height: auto;
 }
 
+/* .personalProfileContainer {
+
+} */
+
+.personalProfileContainer-modal {
+    position: fixed;
+    z-index: 1;
+    overflow: hidden;
+}
+
 .personalProfile-top {
     border-bottom: 1px solid #eeeff2;
 }
@@ -138,8 +148,12 @@
 }
 
 .editProfileModalContainer {
-    display: flex;
-    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .editProfileModal {
@@ -155,6 +169,7 @@
 
 .editProfileModal-form {
     position: fixed;
+    margin-left: calc(50% - 290px);
     top: 13vh;
     width: 580px;
     z-index: 1;

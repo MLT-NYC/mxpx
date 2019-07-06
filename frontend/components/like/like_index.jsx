@@ -22,21 +22,24 @@ class LikeIndex extends React.Component {
         });
 
         return (
-            <div className='likesContainer'>
-                <div className='likesHeader'>
-                    <div className='likesHeader-title-container'>
-                        <div className='likesHeader-title'>Likes</div>
-                        <li className='likesHeader-counter'>{likersCount}</li>
+            <>
+                <div className='likesModal'></div>
+                <div className='likesContainer'>
+                    <div className='likesHeader'>
+                        <div className='likesHeader-title-container'>
+                            <div className='likesHeader-title'>Likes</div>
+                            <li className='likesHeader-counter'>{likersCount}</li>
+                        </div>
+
+                        <div className='likesCloseButton' onClick={() => this.props.toggleLikeIndex()}>CLOSE LIKES</div>
                     </div>
 
-                    <div className='likesCloseButton' onClick={() => this.props.toggleLikeIndex()}>CLOSE LIKES</div>
-                </div>
+                    <div className='likeIndexItems'>
+                        {likers}
+                    </div>
 
-                <div className='likeIndexItems'>
-                    {likers}
                 </div>
-
-            </div>
+            </>
         )
     }
 }

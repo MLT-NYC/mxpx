@@ -9,17 +9,15 @@ import ProfileContainer from './profile/profile_container';
 import PersonalProfileContainer from './profile/personal_profile_container';
 import PictureNewContainer from './picture/picture_new_container';
 
-const App = () => (
-    <div className="outterMost">        
-        <Switch>
-            <Route exact path='/' component={WelcomeContainer} />
-            <AuthRoute exact path='/login' component={LogInContainer} />
-            <AuthRoute exact path='/signup' component={SignUpContainer} />
-            <ProtectedRoute  path='/pictures/new' component={PictureNewContainer} />
-            <ProtectedRoute path='/profile' component={PersonalProfileContainer} />
-            <Route path='/' component={ProfileContainer}/>
-        </Switch>
-    </div>
+const App = () => (       
+    <Switch>
+        <Route exact path='/' component={WelcomeContainer} />
+        <AuthRoute exact path='/login' component={LogInContainer} />
+        <AuthRoute exact path='/signup' component={SignUpContainer} />
+        <ProtectedRoute  path='/pictures/new' component={PictureNewContainer} />
+        <ProtectedRoute path='/profile' component={PersonalProfileContainer} />
+        <Route path='/' component={ProfileContainer}/>
+    </Switch>
 );
 
 export default App;

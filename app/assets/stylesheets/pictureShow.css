@@ -1,13 +1,15 @@
-.outterMost {
-    height: 100%;
-}
-
 .pictureNewContainer {
     height: 100%;
 }
 
-.pictureShowContainer {
-    height: 100%;
+.pictureNewContainer-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .pictureShowPage {
@@ -16,6 +18,7 @@
     font-family: Arial, Helvetica, sans-serif;
     border-top: 1px solid rgba(185,193,199,0.5); 
     height: 100%;
+    overflow: scroll;
 }
 
 .pictureShowPage-left {
@@ -106,6 +109,7 @@
     border-left: 1px solid rgba(185,193,199,0.5); 
     border-right: 1px solid rgba(185,193,199,0.5); 
     min-height: 100%;
+    overflow: scroll;
 }
 
 .pictureShowItem-container {

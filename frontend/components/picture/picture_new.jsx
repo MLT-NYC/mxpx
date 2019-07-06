@@ -24,6 +24,7 @@ class PictureNew extends React.Component {
 
     render(){
         let modal;
+        let modalClassName;
         if (this.state.showForm){
             modal = (
                 <>
@@ -33,9 +34,13 @@ class PictureNew extends React.Component {
                     <PictureFormContainer />    
                 </>
             );
+
+            modalClassName = 'pictureNewContainer-modal'
+        } else {
+            modalClassName = 'pictureNewContainer'
         }
         return (
-            <div className='pictureNewContainer'>
+            <div className={modalClassName}>
                 <NavBar currentUser={this.props.currentUser}
                     navLink={<div className='dropdownMenuItem-9' 
                     onClick={this.props.logOut}>Log out</div>}
@@ -45,7 +50,7 @@ class PictureNew extends React.Component {
                 
                 {modal}
 
-                <PictureShowContainer className='pictureShowContainer' toggleShowForm={this.toggleShowForm}/>
+                <PictureShowContainer toggleShowForm={this.toggleShowForm}/>
             </div>
         )
     }

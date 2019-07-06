@@ -88,32 +88,38 @@ class PersonalProfile extends React.Component {
         }
 
         let editProfileModal;
+        let modalClassName;
         if (this.state.editProfile) {
             editProfileModal = (
-                <div className='editProfileModalContainer'>
-                    <div className='editProfileModal' onClick={this.toggleEditProfile}>
-                        
-                    </div>
-
-                    <PersonalEditContainer toggleEditProfile={this.toggleEditProfile}/>
-                </ div>
+                    <>
+                        <div className='editProfileModal' 
+                            onClick={this.toggleEditProfile}>
+                        </div>
+                        <PersonalEditContainer toggleEditProfile={this.toggleEditProfile}/>
+                    </>
                 )
-        } 
+
+            modalClassName = 'personalProfileContainer-modal'
+        } else {
+            modalClassName = 'personalProfileContainer'
+        }
         
         let followerCount = <div className='personalProfile-detail-count'>{this.props.followers.length}</div>
         let followeeCount = <div className='personalProfile-detail-count'>{this.props.followees.length}</div>
         let pictureCount = this.props.pictures.length;
 
         return (
-            <div>
+            // <>
+            <div className={modalClassName}>
                 <NavBar currentUser={this.props.currentUser}
                     navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
                     navBarPicture={this.props.navBarPicture}
                     personalProfile={true}
                     isTop={this.state.isTop}
-                />
+                    />
 
                 {editProfileModal}
+            
 
                 <div className='personalProfile-top'>
                     {coverPicture}
@@ -141,7 +147,7 @@ class PersonalProfile extends React.Component {
                 <div className='personalProfile-middle'>
                     <div className='personalProfile-middle-tab-pictures'>
                         <div className='personalProfile-middle-tab-title'>PHOTOS</div>
-                         {pictureCount}
+                        {pictureCount}
                     </div>
                 </div>
 
@@ -151,6 +157,7 @@ class PersonalProfile extends React.Component {
                     </ul>
                 </div>
             </div>
+            // </>
         )
     }
 }
