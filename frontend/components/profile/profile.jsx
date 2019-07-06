@@ -10,6 +10,7 @@ class Profile extends React.Component {
         this.state = {
             showPictureCarousel: false,
             selectedPictureIndex: null,
+            isTop: true,
         };
 
         this.openPictureCarousel = this.openPictureCarousel.bind(this);
@@ -30,6 +31,13 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
+        document.addEventListener('scroll', () => {
+            const isTop = window.scrollY < 1;
+            if (isTop !== this.state.isTop) {
+                this.setState({ isTop });
+            }
+        });
+
         this.props.fetchPictures(this.props.pictureIds);
     }
 
@@ -37,6 +45,15 @@ class Profile extends React.Component {
         if (JSON.stringify(prevProps.userIds) !== JSON.stringify(this.props.userIds)) {
             this.props.fetchUsers(this.props.userIds);
         }
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', () => {
+            const isTop = window.scrollY < 1;
+            if (isTop !== this.state.isTop) {
+                this.setState({ isTop });
+            }
+        });
     }
 
     render(){
@@ -68,6 +85,8 @@ class Profile extends React.Component {
                     navLink={<div className='dropdownMenuItem-9' 
                     onClick={this.props.logOut}>Log out</div>}
                     navBarPicture={this.props.navBarPicture}
+                    personalProfile={true}
+                    isTop={this.state.isTop}
                 />    
 
                 {pictureCarousel}
