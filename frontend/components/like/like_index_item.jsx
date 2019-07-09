@@ -49,7 +49,7 @@ class LikeIndexItem extends React.Component {
         return (
             <li className='likesIndexItem'>
                 <div className='likesIndexItem-left'>
-                    <img src={this.props.likerProfilePicImgUrl}/>
+                    <img className='likeIndexItem-likerProfilePic' src={this.props.likerProfilePicImgUrl}/>
                     <div className='likesIndexItem-likerInfo'>
                         <div className='likesIndexItem-likerName'>{this.props.likerName}</div>
                         <div className='likesIndexItem-likersFollowCount'>{this.props.likersFollowCount} Followers</div>

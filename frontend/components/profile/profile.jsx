@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../navbar/navbar';
 import PictureItemContainer from '../picture/picture_item_container';
 import PictureCarouselContainer from '../picture/picture_carousel_container';
+import LikeIndexContainer from '../like/like_index_container';
 
 class Profile extends React.Component {
     constructor(props){
@@ -9,24 +10,40 @@ class Profile extends React.Component {
 
         this.state = {
             showPictureCarousel: false,
+            showLikeIndex: false,
             selectedPictureIndex: null,
             isTop: true,
         };
 
         this.openPictureCarousel = this.openPictureCarousel.bind(this);
         this.closePictureCarousel = this.closePictureCarousel.bind(this);
+        this.openLikeIndex = this.openLikeIndex.bind(this);
+        this.closeLikeIndex = this.closeLikeIndex.bind(this);
     }
 
     openPictureCarousel(selectedPictureIndex) {
         this.setState({
             showPictureCarousel: true,
-            selectedPictureIndex: selectedPictureIndex
+            selectedPictureIndex
         });
     }
 
     closePictureCarousel() {
         this.setState({
             showPictureCarousel: false
+        });
+    }
+
+    openLikeIndex(selectedPictureIndex) {
+        this.setState({
+            showLikeIndex: true,
+            selectedPictureIndex
+        });
+    }
+
+    closeLikeIndex() {
+        this.setState({
+            showLikeIndex: false
         });
     }
 
@@ -64,6 +81,7 @@ class Profile extends React.Component {
                     picture={picture} 
                     index={index} 
                     openPictureCarousel={this.openPictureCarousel}
+                    openLikeIndex={this.openLikeIndex}
                 />
             );
         });
@@ -79,8 +97,23 @@ class Profile extends React.Component {
             );
         }
 
+        let likeIndex;
+        let profileContainerClass;
+        if (this.state.showLikeIndex) {
+            likeIndex = (
+                <LikeIndexContainer
+                    likerIds={this.props.pictures[this.state.selectedPictureIndex].likerIds}
+                    closeLikeIndex={this.closeLikeIndex}
+                />
+            )
+
+            profileContainerClass = 'profileContainer-modal';
+        } else {
+            profileContainerClass = 'profileContainer';
+        }
+
         return (
-            <div>
+            <div className={profileContainerClass}>
                 <NavBar currentUser={this.props.currentUser} 
                     navLink={<div className='dropdownMenuItem-9' 
                     onClick={this.props.logOut}>Log out</div>}
@@ -90,6 +123,7 @@ class Profile extends React.Component {
                 />    
 
                 {pictureCarousel}
+                {likeIndex}
 
                 <ul className='picturesProfileContainer'>
                     {pictures}

@@ -16,7 +16,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
     return ({
         fetchUsers: userIds => dispatch(fetchUsers(userIds)),
-        toggleLikeIndex: () => props.toggleLikeIndex()
+        closeLikeIndex: () => props.closeLikeIndex()
     });
 };
 

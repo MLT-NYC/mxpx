@@ -23,7 +23,7 @@ class LikeIndex extends React.Component {
 
         return (
             <>
-                <div className='likesModal'></div>
+                <div className='likesModal' onClick={() => this.props.closeLikeIndex()}></div>
                 <div className='likesContainer'>
                     <div className='likesHeader'>
                         <div className='likesHeader-title-container'>
@@ -31,7 +31,7 @@ class LikeIndex extends React.Component {
                             <li className='likesHeader-counter'>{likersCount}</li>
                         </div>
 
-                        <div className='likesCloseButton' onClick={() => this.props.toggleLikeIndex()}>CLOSE LIKES</div>
+                        <div className='likesCloseButton' onClick={() => this.props.closeLikeIndex()}>CLOSE LIKES</div>
                     </div>
 
                     <div className='likeIndexItems'>

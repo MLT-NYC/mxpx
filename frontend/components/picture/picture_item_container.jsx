@@ -56,7 +56,8 @@ const mapDispatchToProps = (dispatch, props) => {
         likePicture: like => dispatch(likePicture(like)),
         unlikePicture: like => dispatch(unlikePicture(like)),
         fetchPicture: id => dispatch(fetchPicture(id)),
-        openPictureCarousel: carouselIndex => props.openPictureCarousel(carouselIndex)
+        openPictureCarousel: carouselIndex => props.openPictureCarousel(carouselIndex),
+        openLikeIndex: (likeIndex) => props.openLikeIndex(likeIndex)
     });
 };
 

@@ -1,18 +1,12 @@
 import React from 'react';
-import LikeIndexContainer from '../like/like_index_container';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class PictureItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            showLikeIndex: false
-        };
-
         this.likePicture = this.likePicture.bind(this);
         this.unlikePicture = this.unlikePicture.bind(this);
-        this.toggleLikeIndex = this.toggleLikeIndex.bind(this);
     }
 
     componentDidMount() {
@@ -41,14 +35,6 @@ class PictureItem extends React.Component {
         this.props.unlikePicture(like);
     }
 
-    toggleLikeIndex() {
-        let { showLikeIndex } = this.state;
-
-        this.setState({
-            showLikeIndex: !showLikeIndex
-        });
-    }
-
     render() {
         let likeButton;
         if (this.props.currentUser.pictureIds.includes(this.props.picture.id)) {
@@ -62,20 +48,11 @@ class PictureItem extends React.Component {
             }
         }
 
-        let likeIndex;
-        if (this.state.showLikeIndex) {
-            likeIndex = (
-                <LikeIndexContainer
-                    likerIds={this.props.picture.likerIds}
-                    toggleLikeIndex={this.toggleLikeIndex}
-                />
-            )
-        }
-
+        
         let likeIndexButton;
         let likeCount = this.props.picture.likerIds.length;
         if (likeCount > 0) {
-            likeIndexButton = <div className='likeIndexButtonActive' onClick={this.toggleLikeIndex}>{likeCount}</div>
+            likeIndexButton = <div className='likeIndexButtonActive' onClick={() => this.props.openLikeIndex(this.props.carouselIndex)}>{likeCount}</div>
         } else {
             likeIndexButton = <div className='likeIndexButtonInactive'>{likeCount}</div>
         }
@@ -88,7 +65,6 @@ class PictureItem extends React.Component {
         }
         return (
             <div className='pictureItem'>
-                {likeIndex}
                 <img src={this.props.imgUrl} className='pictureItem-picture' onClick={() => this.props.openPictureCarousel(this.props.carouselIndex)}/>
                 <div className='pictureItem-info'>
                     <div className='pictureItem-info-top'>

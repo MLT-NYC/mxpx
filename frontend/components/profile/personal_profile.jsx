@@ -109,18 +109,16 @@ class PersonalProfile extends React.Component {
         let pictureCount = this.props.pictures.length;
 
         return (
-            // <>
             <div className={modalClassName}>
                 <NavBar currentUser={this.props.currentUser}
                     navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
                     navBarPicture={this.props.navBarPicture}
                     personalProfile={true}
                     isTop={this.state.isTop}
-                    />
+                />
 
                 {editProfileModal}
             
-
                 <div className='personalProfile-top'>
                     {coverPicture}
 
@@ -157,7 +155,6 @@ class PersonalProfile extends React.Component {
                     </ul>
                 </div>
             </div>
-            // </>
         )
     }
 }
