@@ -65,11 +65,8 @@
 
 .likesCloseButton:hover {
     color: #1890ff;
-}   
+}  
 
-.likeIndexItem-likerProfilePic {
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
-    object-fit: cover;
+.likeIndexItems {
+    padding-top: 16px;
 }
