@@ -6,19 +6,66 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border: 1px solid red;
-    z-index: 0;
 }
 
 .likesContainer {
     display: flex;
-    position: fixed;
-    width: 450px;
-    height: 728px;
+    flex-direction: column;
+    position: absolute;
+    width: 418px;
+    max-height: 725px;
+    padding: 16px 16px 0px 16px;
+    border-radius: 8px;
+    left: calc((100vw - 450px)/2);
+    top: 12vh;
     background: #ffffff;
-    z-index: 200;
-    border: 1px solid red;
+    font-family: Arial, Helvetica, sans-serif
 }
+
+.likesHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px 16px;
+    border-bottom: 1px solid rgb(215, 216, 219);
+}
+
+.likesHeader-title-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.likesHeader-title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    font-weight: bold;
+    text-transform: none;
+    color: rgb(34, 34, 34);
+}
+
+.likesHeader-counter {
+    font-size: 16px;
+    color: rgb(109, 115, 120);
+    margin-left: 5px;
+}
+
+.likesHeader-counter-span {
+    position: relative;
+    left: -15px;
+}
+
+.likesCloseButton {
+    font-size: 26px;
+    font-weight: normal;
+    color: rgb(109, 115, 120);
+    cursor: pointer;
+}
+
+.likesCloseButton:hover {
+    color: #1890ff;
+}   
 
 .likeIndexItem-likerProfilePic {
     height: 48px;

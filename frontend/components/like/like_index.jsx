@@ -28,10 +28,16 @@ class LikeIndex extends React.Component {
                     <div className='likesHeader'>
                         <div className='likesHeader-title-container'>
                             <div className='likesHeader-title'>Likes</div>
-                            <li className='likesHeader-counter'>{likersCount}</li>
+                            <li className='likesHeader-counter'>
+                                <span className='likesHeader-counter-span'>
+                                    {likersCount}
+                                </span>
+                            </li>
                         </div>
 
-                        <div className='likesCloseButton' onClick={() => this.props.closeLikeIndex()}>CLOSE LIKES</div>
+                        <div className='likesCloseButton' onClick={() => this.props.closeLikeIndex()}>
+                            <i class="fas fa-times"></i>
+                        </div>
                     </div>
 
                     <div className='likeIndexItems'>
