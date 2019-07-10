@@ -8,24 +8,18 @@ const mapStateToProps = state => {
     let pictureIds = [];
     let pictures = [];
 
-    if (pictureIds.length > 0) {
-        pictureIds.forEach((id) => {
-            let picture = state.entities.pictures[id];
-            if (picture && picture.showcase) {
-                pictures.push(state.entities.pictures[id]);
-            }
-        });
-    }
-
     if (currentUser.pictureIds) {
         currentUser.pictureIds.forEach(id => {
             pictureIds.push(id);
         });
     } 
 
-    if (currentUser.likedPictureIds) {
-        currentUser.likedPictureIds.forEach(id => {
-            pictureIds.push(id);
+    if (pictureIds.length > 0) {
+        pictureIds.forEach((id) => {
+            let picture = state.entities.pictures[id];
+            if (picture && picture.showcase) {
+                pictures.push(picture);
+            }
         });
     }
 

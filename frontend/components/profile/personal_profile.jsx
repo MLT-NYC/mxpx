@@ -31,7 +31,7 @@ class PersonalProfile extends React.Component {
             }
         });
 
-        this.props.fetchPictures();
+        this.props.fetchPictures(this.props.pictureIds);
     }
 
     componentWillUnmount(){
@@ -150,7 +150,7 @@ class PersonalProfile extends React.Component {
                 </div>
 
                 <div className='personalProfile-bottom'>
-                    <ul>
+                    <ul className='personalProfile-pictures-container'>
                         {pictures}
                     </ul>
                 </div>

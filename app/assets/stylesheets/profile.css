@@ -150,9 +150,19 @@
     background: rgb(247,248,250);
 }
 
+.personalProfile-pictures-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+
 .personalProfile-pictures {
+    flex-grow: 1;
+    max-width: 100%;
+    object-fit: cover; 
     height: 200px;
-    margin-left: 10px;
+    margin: 5px;
 }
 
 .editProfileModalContainer {

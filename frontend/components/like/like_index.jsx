@@ -23,7 +23,6 @@ class LikeIndex extends React.Component {
             );
         });
 
-        debugger
         return (
             <>
                 <div className='likesModal' 

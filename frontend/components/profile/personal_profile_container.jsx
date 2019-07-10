@@ -15,36 +15,44 @@ const mapStateToProps = state => {
     let email = state.entities.users[currentUserId].email;
     let city = state.entities.users[currentUserId].city;
     let country = state.entities.users[currentUserId].country;
+    let pictureIds = [];
     let pictures = [];
 
     if (currentUser.pictureIds) {
-        currentUser.pictureIds.forEach((id) => {
+        currentUser.pictureIds.forEach(id => {
+            pictureIds.push(id);
+        });
+    } 
+
+    if (pictureIds.length > 0) {
+        pictureIds.forEach((id) => {
             let picture = state.entities.pictures[id];
             if (picture && picture.showcase) {
-                pictures.push(state.entities.pictures[id]);
+                pictures.push(picture);
             }
         });
     }
 
     return ({
-        currentUser: currentUser,
-        pictures: pictures,
-        navBarPicture: navBarPicture,
-        coverPicture: coverPicture,
-        followers: followers,
-        followees: followees,
-        firstName: firstName,
-        lastName: lastName,
-        city: city,
-        country: country,
-        email: email
+        currentUser,
+        pictures,
+        navBarPicture,
+        coverPicture,
+        followers,
+        followees,
+        firstName,
+        lastName,
+        city,
+        country,
+        email,
+        pictureIds
     });
 };
 
 const mapDispatchToProps = dispatch => {
     return ({
         logOut: () => dispatch(logOut()),
-        fetchPictures: () => dispatch(fetchPictures())
+        fetchPictures: pictureIds => dispatch(fetchPictures(pictureIds))
     });
 
 };
