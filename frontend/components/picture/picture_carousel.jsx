@@ -164,6 +164,11 @@ class PictureCarousel extends React.Component {
                             {currentPicture.description}
                         </div>
                     </div>
+
+                    <div className='test'>
+
+                    </div>
+                    {/* comments go here */}
                 </div>
             </div>
         )
