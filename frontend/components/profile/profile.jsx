@@ -95,20 +95,21 @@ class Profile extends React.Component {
             );
         });
 
+    
         let pictureCarousel;
+        let likeIndex;
+        let profileContainerClass;
         if (this.state.showPictureCarousel) {
             pictureCarousel = (
-                <PictureCarouselContainer 
-                    carouselPictures={this.props.pictures} 
+                <PictureCarouselContainer
+                    carouselPictures={this.props.pictures}
                     currentIndex={this.state.selectedPictureIndex}
                     closePictureCarousel={this.closePictureCarousel}
                 />
             );
-        }
 
-        let likeIndex;
-        let profileContainerClass;
-        if (this.state.showLikeIndex) {
+            profileContainerClass = 'profileContainer-modal';
+        } else if (this.state.showLikeIndex) {
             likeIndex = (
                 <LikeIndexContainer
                     likerIds={this.props.pictures[this.state.selectedPictureIndex].likerIds}

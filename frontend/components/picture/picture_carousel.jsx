@@ -8,7 +8,6 @@ class PictureCarousel extends React.Component {
 
         this.state = {
             currentIndex: props.currentIndex,
-            showLikeIndex: false,
             likerIds: props.carouselPictures[props.currentIndex].likerIds
         };
 
@@ -16,7 +15,6 @@ class PictureCarousel extends React.Component {
         this.toggleRight = this.toggleRight.bind(this);
         this.likePicture = this.likePicture.bind(this);
         this.unlikePicture = this.unlikePicture.bind(this);
-        this.toggleLikeIndex = this.toggleLikeIndex.bind(this);
     }
 
     toggleLeft() {
@@ -59,14 +57,6 @@ class PictureCarousel extends React.Component {
         this.props.unlikePicture(like);
     }
 
-    toggleLikeIndex() {
-        let { showLikeIndex } = this.state;
-
-        this.setState({
-            showLikeIndex: !showLikeIndex
-        });
-    }
-
     render(){
         let currentPicture = this.props.carouselPictures[this.state.currentIndex];
         let currentPhotographer = this.props.allUsers[currentPicture.photographer_id];
@@ -99,12 +89,37 @@ class PictureCarousel extends React.Component {
        
         let leftNav;
         if (this.state.currentIndex > 0) {
-            leftNav = (<div className='pictureCarousel-navLeft' onClick={() => this.toggleLeft()}>Left</div>);
+            leftNav = (
+                <div className='pictureCarousel-navLeft-active' onClick={() => this.toggleLeft()}>
+                    <div className='pictureCarousel-close' onClick={() => this.props.closePictureCarousel()}>
+                        <i className="fas fa-times"></i>
+                    </div>
+
+                    <span className='left-logo' onClick={() => this.toggleLeft()}><i className="fas fa-angle-left"></i></span>
+                </div>
+                );
+        } else {
+            leftNav = (
+                <div className='pictureCarousel-navLeft-inactive'>
+                    <div className='pictureCarousel-close' onClick={() => this.props.closePictureCarousel()}>
+                        <i className="fas fa-times"></i>
+                    </div>
+                </div>
+            );
         }
 
         let rightNav;
         if (this.state.currentIndex < this.props.carouselPictures.length - 1) {
-            rightNav = (<div className='pictureCarousel-navRight' onClick={this.toggleRight}>Right</div>);
+            rightNav = (
+                <div className='pictureCarousel-navRight-active' onClick={() => this.toggleRight()}>
+                    <span className='right-logo' onClick={() => this.toggleRight()}><i className="fas fa-angle-right"></i></span>
+                </div>
+                );
+        } else {
+            rightNav = (
+                <div className='pictureCarousel-navRight-inactive'>
+                </div>
+            );
         }
 
         let likeIndexButton;
@@ -114,29 +129,14 @@ class PictureCarousel extends React.Component {
         } else {
             likeIndexButton = <div className='likeIndexButtonInactive'>{likeCount}</div> 
         }
-        
-        let likeIndex;
-        if (this.state.showLikeIndex) {
-            likeIndex = (
-                <LikeIndexContainer
-                    likerIds={currentPicture.likerIds}
-                    toggleLikeIndex={this.toggleLikeIndex}
-                />
-            )
-        }
 
         return (
-            <>
+            <div className='pictureCarousel'>
                 <div className='pictureCarousel-top'>
-                    {likeIndex}
-
-                    <div className='pictureCarousel-top-left'>
-                        <div className='pictureCarousel-close' onClick={() => this.props.closePictureCarousel()}>CLOSE ICON</div>
-                       {leftNav}
-                    </div>
+                    {leftNav}   
 
                     <div className='pictureCarousel-display'>
-                        <img src={currentPicture.img_url}/>
+                        <img className='pictureCarousel-display-picture' src={currentPicture.img_url} />
                     </div>
 
                     {rightNav}
@@ -156,7 +156,7 @@ class PictureCarousel extends React.Component {
                             </div>
 
                             <div className='pictureDetails-authorship-right'>
-                                <img src={currentPhotographerProfilePicImgUrl}/>
+                                <img className='pictureCarousel-photographerProfilePic' src={currentPhotographerProfilePicImgUrl}/>
                             </div>
                         </div>
 
@@ -164,10 +164,8 @@ class PictureCarousel extends React.Component {
                             {currentPicture.description}
                         </div>
                     </div>
-
-                    {/* Comment Component Goes Here */}
                 </div>
-            </>
+            </div>
         )
     }
 }

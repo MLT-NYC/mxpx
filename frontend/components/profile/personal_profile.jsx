@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../navbar/navbar';
 import PersonalEditContainer from './personal_edit_container';
-import PictureItemContainer from '../picture/picture_item_container';
 import PictureCarouselContainer from '../picture/picture_carousel_container';
 import LikeIndexContainer from '../like/like_index_container';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
