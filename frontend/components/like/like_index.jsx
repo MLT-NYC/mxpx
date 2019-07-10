@@ -4,6 +4,8 @@ import LikeIndexItemContainer from './like_index_item_container';
 class LikeIndex extends React.Component {
     constructor(props) {
         super(props);
+
+
     }
 
     componentDidMount() {
@@ -21,9 +23,12 @@ class LikeIndex extends React.Component {
             );
         });
 
+        debugger
         return (
             <>
-                <div className='likesModal' onClick={() => this.props.closeLikeIndex()}></div>
+                <div className='likesModal' 
+                    onClick={() => this.props.closeLikeIndex()}>
+                </div>
                 <div className='likesContainer'>
                     <div className='likesHeader'>
                         <div className='likesHeader-title-container'>
@@ -36,7 +41,7 @@ class LikeIndex extends React.Component {
                         </div>
 
                         <div className='likesCloseButton' onClick={() => this.props.closeLikeIndex()}>
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                         </div>
                     </div>
 

@@ -3,6 +3,14 @@
     flex-wrap: wrap;
     width: 100%;
     height: auto;
+    margin-top: 60px;
+    top: 0;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
 }
 
 .profileContainer-modal {

@@ -6,15 +6,14 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #222222;
-    height: 100%;
-    max-width: 450px;
     cursor: default;
+    max-width: 750px;
 }
 
 .pictureItem-picture {
-    max-height: 350px;
     object-fit: cover;
     cursor: pointer;
+    max-height: 450px;
 }
 
 .pictureItem-info-top {

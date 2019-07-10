@@ -13,6 +13,7 @@ class Profile extends React.Component {
             showLikeIndex: false,
             selectedPictureIndex: null,
             isTop: true,
+            top: window.scrollY,
         };
 
         this.openPictureCarousel = this.openPictureCarousel.bind(this);
@@ -35,15 +36,19 @@ class Profile extends React.Component {
     }
 
     openLikeIndex(selectedPictureIndex) {
+        const top = window.scrollY;
         this.setState({
             showLikeIndex: true,
-            selectedPictureIndex
+            selectedPictureIndex,
+            top
         });
     }
 
     closeLikeIndex() {
+        const top = window.scrollY;
         this.setState({
-            showLikeIndex: false
+            showLikeIndex: false,
+            top
         });
     }
 
@@ -51,7 +56,9 @@ class Profile extends React.Component {
         document.addEventListener('scroll', () => {
             const isTop = window.scrollY < 1;
             if (isTop !== this.state.isTop) {
-                this.setState({ isTop });
+                this.setState({ 
+                    isTop
+                });
             }
         });
 
@@ -68,7 +75,9 @@ class Profile extends React.Component {
         document.removeEventListener('scroll', () => {
             const isTop = window.scrollY < 1;
             if (isTop !== this.state.isTop) {
-                this.setState({ isTop });
+                this.setState({ 
+                    isTop
+                });
             }
         });
     }
@@ -104,6 +113,7 @@ class Profile extends React.Component {
                 <LikeIndexContainer
                     likerIds={this.props.pictures[this.state.selectedPictureIndex].likerIds}
                     closeLikeIndex={this.closeLikeIndex}
+                    top={this.state.top}
                 />
             )
 
@@ -125,7 +135,7 @@ class Profile extends React.Component {
                 {pictureCarousel}
                 {likeIndex}
 
-                <ul className='picturesProfileContainer'>
+                <ul className='picturesProfileContainer' style={{top: this.state.top}}>
                     {pictures}
                 </ul>
             </div>
