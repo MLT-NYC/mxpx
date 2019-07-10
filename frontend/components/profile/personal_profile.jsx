@@ -1,6 +1,9 @@
 import React from 'react';
 import NavBar from '../navbar/navbar';
 import PersonalEditContainer from './personal_edit_container';
+import PictureItemContainer from '../picture/picture_item_container';
+import PictureCarouselContainer from '../picture/picture_carousel_container';
+import LikeIndexContainer from '../like/like_index_container';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class PersonalProfile extends React.Component {
@@ -9,10 +12,14 @@ class PersonalProfile extends React.Component {
     
         this.state = {
             editProfile: false,
-            isTop: true,
+            showPictureCarousel: false,
+            selectedPictureIndex: null,
+            isTop: true
         };
 
         this.toggleEditProfile = this.toggleEditProfile.bind(this);
+        this.openPictureCarousel = this.openPictureCarousel.bind(this);
+        this.closePictureCarousel = this.closePictureCarousel.bind(this);
     }
 
     toggleEditProfile() {
@@ -20,6 +27,19 @@ class PersonalProfile extends React.Component {
 
         this.setState({
             editProfile: !editProfile
+        });
+    }
+
+    openPictureCarousel(selectedPictureIndex) {
+        this.setState({
+            showPictureCarousel: true,
+            selectedPictureIndex
+        });
+    }
+
+    closePictureCarousel() {
+        this.setState({
+            showPictureCarousel: false
         });
     }
 
@@ -46,9 +66,24 @@ class PersonalProfile extends React.Component {
     render (){
         let pictures = this.props.pictures.map((picture, index) => {
             return (
-                <img key={index} src={picture.img_url} className='personalProfile-pictures'/>
+                <img className='personalProfile-pictures'
+                    key={index} 
+                    src={picture.img_url} 
+                    onClick={() => this.openPictureCarousel(index)}
+                />
             );
         });
+
+        let pictureCarousel;
+        if (this.state.showPictureCarousel) {
+            pictureCarousel = (
+                <PictureCarouselContainer
+                    carouselPictures={this.props.pictures}
+                    currentIndex={this.state.selectedPictureIndex}
+                    closePictureCarousel={this.closePictureCarousel}
+                />
+            );
+        }
 
         let personalPicture;
         if (this.props.navBarPicture) {
@@ -118,6 +153,7 @@ class PersonalProfile extends React.Component {
                 />
 
                 {editProfileModal}
+                {pictureCarousel}
             
                 <div className='personalProfile-top'>
                     {coverPicture}

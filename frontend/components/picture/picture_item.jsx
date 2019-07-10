@@ -63,9 +63,16 @@ class PictureItem extends React.Component {
         } else {
             photographerProfilePicIdImgUrl = defaultProfilePic;
         }
+
+        let className;
+        if (this.props.className) {
+            className = this.props.className;
+        } else {
+            className = 'pictureItem-picture'
+        }
         return (
             <div className='pictureItem'>
-                <img src={this.props.imgUrl} className='pictureItem-picture' onClick={() => this.props.openPictureCarousel(this.props.carouselIndex)}/>
+                <img src={this.props.imgUrl} className={className} onClick={() => this.props.openPictureCarousel(this.props.carouselIndex)}/>
                 <div className='pictureItem-info'>
                     <div className='pictureItem-info-top'>
                         {likeButton}

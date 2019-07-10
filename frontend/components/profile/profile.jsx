@@ -13,7 +13,7 @@ class Profile extends React.Component {
             showLikeIndex: false,
             selectedPictureIndex: null,
             isTop: true,
-            top: window.scrollY,
+            top: window.scrollY
         };
 
         this.openPictureCarousel = this.openPictureCarousel.bind(this);
