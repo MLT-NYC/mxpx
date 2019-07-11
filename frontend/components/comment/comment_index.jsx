@@ -1,4 +1,5 @@
 import React from 'react';
+import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class CommentIndex extends React.Component {
     constructor(props){
@@ -61,9 +62,16 @@ class CommentIndex extends React.Component {
             defaultValue = 'Add a comment';
         }
 
+        let authorProfilePicImgUrl;
+        if (this.props.authorProfilePicImgUrl) {
+            authorProfilePicImgUrl = this.props.authorProfilePicImgUrl;
+        } else {
+            authorProfilePicImgUrl = defaultProfilePic;
+        }
+
         return (
-            <div className='test'>
-                
+            <div className='commentIndexContainer'>
+                <img className='commentIndex-authorProfilePic' src={authorProfilePicImgUrl}/>
                 <form className='createCommentForm' onSubmit={this.handleSubmit}>
                     <textarea className='createCommentField' 
                         type='text' 
@@ -74,7 +82,6 @@ class CommentIndex extends React.Component {
                     {cancelSubmitButton}
                     {submitButton}
                 </form>
-
             </div>
         );
     }
