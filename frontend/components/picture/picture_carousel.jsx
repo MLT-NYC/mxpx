@@ -1,5 +1,6 @@
 import React from 'react';
 import LikeIndexContainer from '../like/like_index_container';
+import CommentIndexContainer from '../comment/comment_index_container';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class PictureCarousel extends React.Component {
@@ -201,10 +202,7 @@ class PictureCarousel extends React.Component {
                         </div>
                     </div>
 
-                    <div className='test'>
-
-                    </div>
-                    {/* comments go here */}
+                    <CommentIndexContainer pictureId={currentPicture.id}/>
                 </div>
             </div>
         )

@@ -7,29 +7,34 @@ export const RECEIVE_ALL_SUB_COMMENTS = 'RECEIVE_ALL_SUB_COMMENTS';
 export const RECEIVE_SUB_COMMENT = 'RECEIVE_SUB_COMMENT';
 export const REMOVE_SUB_COMMENT = 'REMOVE_SUB_COMMENT';
 
+
+const receivePictureComments = pictureComments => ({
+    type: RECEIVE_ALL_PICTURE_COMMENTS,
+    pictureComments
+})
 const receivePictureComment = pictureComment => ({
     type: RECEIVE_PICTURE_COMMENT,
-    pictureComment: pictureComment
+    pictureComment
 });
 
 const removePictureComment = pictureComment => ({
     type: REMOVE_PICTURE_COMMENT,
-    pictureComment: pictureComment
+    pictureComment
 });
 
 const receiveSubComments = subComments => ({
     type: RECEIVE_ALL_SUB_COMMENTS,
-    subComments: subComments
+    subComments
 });
 
 const receiveSubComment = subComment => ({
     type: RECEIVE_SUB_COMMENT,
-    subComment: subComment
+    subComment
 });
 
 const removeSubComment = subComment => ({
     type: REMOVE_SUB_COMMENT,
-    subComment: subComment
+    subComment
 });
 
 export const fetchPictureComments = pictureId => dispatch => {
