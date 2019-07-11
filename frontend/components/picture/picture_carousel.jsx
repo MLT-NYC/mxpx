@@ -8,13 +8,16 @@ class PictureCarousel extends React.Component {
 
         this.state = {
             currentIndex: props.currentIndex,
-            likerIds: props.carouselPictures[props.currentIndex].likerIds
+            likerIds: props.carouselPictures[props.currentIndex].likerIds,
+            showLikeIndex: false,
         };
 
         this.toggleLeft = this.toggleLeft.bind(this);
         this.toggleRight = this.toggleRight.bind(this);
         this.likePicture = this.likePicture.bind(this);
         this.unlikePicture = this.unlikePicture.bind(this);
+        this.openLikeIndex = this.openLikeIndex.bind(this);
+        this.closeLikeIndex = this.closeLikeIndex.bind(this);
     }
 
     toggleLeft() {
@@ -55,6 +58,24 @@ class PictureCarousel extends React.Component {
         };
 
         this.props.unlikePicture(like);
+    }
+
+    openLikeIndex(selectedPictureIndex) {
+        // const top = window.scrollY;
+        this.setState({
+            showLikeIndex: true,
+            selectedPictureIndex,
+            // top
+        });
+    }
+
+    closeLikeIndex() {
+        debugger
+        // const top = window.scrollY;
+        this.setState({
+            showLikeIndex: false,
+            // top
+        });
     }
 
     render(){
@@ -122,16 +143,31 @@ class PictureCarousel extends React.Component {
             );
         }
 
-        let likeIndexButton;
         let likeCount = currentPicture.likerIds.length;
+        let likeIndexButton;
         if (likeCount > 0) {
-            likeIndexButton = <div className='likeIndexButtonActive' onClick={this.toggleLikeIndex}>{likeCount}</div>
+            likeIndexButton = <div className='likeIndexButtonActive' onClick={() => this.openLikeIndex(this.state.currentIndex)}>{likeCount}</div>
         } else {
             likeIndexButton = <div className='likeIndexButtonInactive'>{likeCount}</div> 
         }
 
+        let likeIndex;
+        if (this.state.showLikeIndex) {
+            debugger
+            likeIndex = (
+                <LikeIndexContainer
+                    likerIds={this.props.carouselPictures[this.state.currentIndex].likerIds}
+                    closeLikeIndex={this.closeLikeIndex}
+                    zIndex={1}
+                    // top={this.state.top}
+                />
+            )
+        }
+
         return (
             <div className='pictureCarousel'>
+                {likeIndex}
+
                 <div className='pictureCarousel-top'>
                     {leftNav}   
 

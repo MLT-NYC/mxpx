@@ -28,7 +28,7 @@ class LikeIndex extends React.Component {
                 <div className='likesModal' 
                     onClick={() => this.props.closeLikeIndex()}>
                 </div>
-                <div className='likesContainer'>
+                <div className='likesContainer' style={{zIndex: this.props.zIndex}}>
                     <div className='likesHeader'>
                         <div className='likesHeader-title-container'>
                             <div className='likesHeader-title'>Likes</div>
