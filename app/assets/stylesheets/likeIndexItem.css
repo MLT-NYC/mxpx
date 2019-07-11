@@ -50,3 +50,8 @@
     width: 110px;
     border-radius: 100px;
 }
+
+.likesIndexItem-followButton:hover, .likesIndexItem-unfollowButton:hover {
+    cursor: pointer;
+    background-color: rgb(41, 134, 247);
+}
