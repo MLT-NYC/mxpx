@@ -146,7 +146,6 @@
     min-width: 380px;
     max-width: 450px;
     color: #222222;
-    border: 1px solid red;
 }
 
 .pictureDetails-likes {
@@ -179,11 +178,6 @@
 .pictureDetails-authorship-right {
     display: flex;
     align-items: center;
-}
-
-.test {
-    width: 33%;
-    border: 1px solid red;
 }
 
 .pictureCarousel-photographerProfilePic {

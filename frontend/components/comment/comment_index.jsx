@@ -51,15 +51,19 @@ class CommentIndex extends React.Component {
     }
 
     render () {
-        let defaultValue;
         let submitButton;
         let cancelSubmitButton;
+        let createCommentFormFieldClass;
         if (this.state.submitButtonActive) {
-            defaultValue = this.state.body;
-            submitButton = <input className='commentSubmitButton' type="submit" />;
+            if (this.state.body.length > 0) {
+                submitButton = <input className='commentSubmitButton' type="submit" value='Comment'/>;
+            } else {
+                submitButton = <div className='commentSubmitButton-mock'>Comment</div>
+            }
             cancelSubmitButton = <div className='commentCancelSubmitButton' onClick={this.cancelSubmit}>Cancel</div>
+            createCommentFormFieldClass = 'createCommentForm-field-active';
         } else {
-            defaultValue = 'Add a comment';
+            createCommentFormFieldClass = 'createCommentForm-field-inactive';
         }
 
         let authorProfilePicImgUrl;
@@ -71,16 +75,27 @@ class CommentIndex extends React.Component {
 
         return (
             <div className='commentIndexContainer'>
-                <img className='commentIndex-authorProfilePic' src={authorProfilePicImgUrl}/>
+                {/* INCLUDE COMMENTS COUNT */}
                 <form className='createCommentForm' onSubmit={this.handleSubmit}>
-                    <textarea className='createCommentField' 
-                        type='text' 
-                        value={defaultValue} 
-                        onChange={this.update('body')}>
-                    </textarea>
+                    <div className='createCommentForm-top'>
+                        <img className='commentIndex-authorProfilePic' src={authorProfilePicImgUrl}/>
+                        <div className={createCommentFormFieldClass}>
+                            <textarea className='createFormTextArea'
+                                type='text' 
+                                placeholder='Add a comment'
+                                value={this.state.body} 
+                                onChange={this.update('body')}>
+                            </textarea>
 
-                    {cancelSubmitButton}
-                    {submitButton}
+                            <div className='comment-icon'><i className="far fa-comment"></i></div>
+                        </div>
+                    </div>
+
+
+                    <div className='createCommentForm-bottom'>
+                        {cancelSubmitButton}
+                        {submitButton}
+                    </div>
                 </form>
             </div>
         );

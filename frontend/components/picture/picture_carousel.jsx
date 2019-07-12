@@ -62,20 +62,15 @@ class PictureCarousel extends React.Component {
     }
 
     openLikeIndex(selectedPictureIndex) {
-        // const top = window.scrollY;
         this.setState({
             showLikeIndex: true,
-            selectedPictureIndex,
-            // top
+            selectedPictureIndex
         });
     }
 
     closeLikeIndex() {
-        debugger
-        // const top = window.scrollY;
         this.setState({
-            showLikeIndex: false,
-            // top
+            showLikeIndex: false
         });
     }
 
@@ -154,13 +149,11 @@ class PictureCarousel extends React.Component {
 
         let likeIndex;
         if (this.state.showLikeIndex) {
-            debugger
             likeIndex = (
                 <LikeIndexContainer
                     likerIds={this.props.carouselPictures[this.state.currentIndex].likerIds}
                     closeLikeIndex={this.closeLikeIndex}
                     zIndex={1}
-                    // top={this.state.top}
                 />
             )
         }

@@ -1,0 +1,130 @@
+.commentIndexContainer {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    max-width: 416px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid red;
+}
+
+.createCommentForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.createCommentForm-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.commentIndex-authorProfilePic {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.createCommentForm-field-inactive {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    margin-left: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(109, 115, 120);
+    border-radius: 4px;
+}
+
+.createCommentForm-field-active {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    margin-left: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(8, 112, 209);
+    border-radius: 4px;
+}
+
+.createFormTextArea {
+    border: none;
+    outline: none;
+    resize: none;
+    height: 24px;
+    overflow: auto;
+    background-color: transparent;
+    max-height: 176px;
+    -moz-box-shadow: none;
+    width: 100%;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgb(34, 34, 34);
+    padding: 16px;
+}
+
+.comment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 55px;
+    font-size: 24px;
+    color: #222222;
+}
+
+.createCommentForm-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 16px;
+    border: 1px solid red;
+}
+
+.commentCancelSubmitButton {
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(8, 112, 209);
+    margin-top: 16px;
+    margin-right: 16px;
+}
+
+.commentCancelSubmitButton:hover {
+    color: rgb(41, 134, 247); 
+}
+
+.commentSubmitButton {
+    width: 111px;
+    background-color: rgb(8, 112, 209);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: bold;
+    height: 32px;
+    margin-top: 16px;
+    padding: 0px 16px;
+    border-radius: 100px;
+}
+
+.commentSubmitButton:hover {
+    cursor: pointer;
+    background-color: rgb(41, 134, 247);
+    color: rgb(255, 255, 255);
+}
+
+.commentSubmitButton-mock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    width: 111px;
+    background-color: rgb(197, 220, 243);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: bold;
+    height: 32px;
+    margin-top: 16px;
+    border-radius: 100px;
+}

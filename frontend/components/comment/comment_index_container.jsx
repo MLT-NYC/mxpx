@@ -8,7 +8,6 @@ import {
 const mapStateToProps = (state, props) => {
     let pictureId = props.pictureId;
     let authorId = state.entities.users[state.session.currentUserId].id;
-    // debugger
     let authorProfilePicImgUrl = state.entities.pictures[state.entities.users[state.session.currentUserId].profile_picture_id].img_url;
 
     return ({
