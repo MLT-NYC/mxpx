@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentIndexItemContainer from './comment_index_item_container';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
 class CommentIndex extends React.Component {
@@ -96,6 +97,11 @@ class CommentIndex extends React.Component {
         }
 
         let commentCount = this.state.comments.length;
+        let comments = this.state.comments.map((comment, index) => {
+            return (
+                <CommentIndexItemContainer key={index} comment={comment}/>
+            )
+        })
 
         return (
             <div className='commentIndexContainer'>
@@ -121,6 +127,10 @@ class CommentIndex extends React.Component {
                         {submitButton}
                     </div>
                 </form>
+
+                <ul className='commentIndexItems'>
+                    {comments}
+                </ul>
             </div>
         );
     }
