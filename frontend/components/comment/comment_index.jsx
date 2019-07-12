@@ -6,6 +6,7 @@ class CommentIndex extends React.Component {
         super(props);
 
         this.state = {
+            comments: props.comments,
             body: '',
             picture_id: props.pictureId,
             author_id: props.authorId,
@@ -47,7 +48,12 @@ class CommentIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPictureComments(this.state.picture_id);
+        this.props.fetchPictureComments(this.state.picture_id)
+            .then(() => {
+                this.setState({
+                    comments: this.props.comments
+                });
+            });
     }
 
     render () {
@@ -73,11 +79,14 @@ class CommentIndex extends React.Component {
             authorProfilePicImgUrl = defaultProfilePic;
         }
 
+        let commentCount = this.state.comments.length;
+
         return (
             <div className='commentIndexContainer'>
-                {/* INCLUDE COMMENTS COUNT */}
+                <div className='createCommentForm-top'>{commentCount} Comments</div>
+
                 <form className='createCommentForm' onSubmit={this.handleSubmit}>
-                    <div className='createCommentForm-top'>
+                    <div className='createCommentForm-mid'>
                         <img className='commentIndex-authorProfilePic' src={authorProfilePicImgUrl}/>
                         <div className={createCommentFormFieldClass}>
                             <textarea className='createFormTextArea'
@@ -90,7 +99,6 @@ class CommentIndex extends React.Component {
                             <div className='comment-icon'><i className="far fa-comment"></i></div>
                         </div>
                     </div>
-
 
                     <div className='createCommentForm-bottom'>
                         {cancelSubmitButton}

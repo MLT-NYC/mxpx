@@ -13,6 +13,16 @@
 }
 
 .createCommentForm-top {
+     
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+    margin: 0px 0px 24px;
+
+        font-size: 18px;
+    line-height: 24px;
+}
+
+.createCommentForm-mid {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -81,7 +91,6 @@
     justify-content: flex-end;
     align-items: center;
     margin-top: 16px;
-    border: 1px solid red;
 }
 
 .commentCancelSubmitButton {
