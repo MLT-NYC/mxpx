@@ -78,7 +78,7 @@ class PictureCarousel extends React.Component {
         let currentPicture = this.props.carouselPictures[this.state.currentIndex];
         let currentPhotographer = this.props.allUsers[currentPicture.photographer_id];
         let currentPhotographerProfilePic = this.props.allPictures[currentPhotographer.profile_picture_id];
-
+        // debugger
         let likeButton;
         if (this.props.currentUser.pictureIds.includes(currentPicture.id)) {
             likeButton = (<i className="far fa-heart" />)

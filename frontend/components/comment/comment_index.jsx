@@ -48,12 +48,28 @@ class CommentIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPictureComments(this.state.picture_id)
-            .then(() => {
-                this.setState({
-                    comments: this.props.comments
+        // debugger
+
+        if (this.props.commentIds.length > 0) {
+            this.props.fetchPictureComments(this.state.picture_id)
+                .then(() => {
+                    this.setState({
+                        comments: this.props.comments
+                    });
                 });
-            });
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        // debugger
+        if (prevProps.pictureId != this.props.pictureId) {
+            this.props.fetchPictureComments(this.props.pictureId)
+                .then(() => {
+                    this.setState({
+                        comments: this.props.comments
+                    });
+                }) ;
+        }
     }
 
     render () {

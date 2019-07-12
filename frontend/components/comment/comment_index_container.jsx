@@ -22,7 +22,9 @@ const mapStateToProps = (state, props) => {
         });
     }
 
+    // debugger
     return ({
+        commentIds,
         comments,
         pictureId,
         authorId,
