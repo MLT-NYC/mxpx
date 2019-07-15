@@ -7,10 +7,7 @@ class CommentIndex extends React.Component {
         super(props);
 
         this.state = {
-            comments: props.comments,
             body: '',
-            picture_id: props.pictureId,
-            author_id: props.authorId,
             submitButtonActive: false
         };
 
@@ -28,7 +25,9 @@ class CommentIndex extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        let { picture_id, author_id, body } = this.state;
+        let { picture_id, author_id } = this.props;
+        let { body } =  this.state;
+        
         let comment = { picture_id, author_id, body };
 
         this.props.createPictureComment(comment);
@@ -96,8 +95,8 @@ class CommentIndex extends React.Component {
             authorProfilePicImgUrl = defaultProfilePic;
         }
 
-        let commentCount = this.state.comments.length;
-        let comments = this.state.comments.map((comment, index) => {
+        let commentCount = this.props.comments.length;
+        let comments = this.props.comments.map((comment, index) => {
             return (
                 <CommentIndexItemContainer key={index} comment={comment}/>
             )

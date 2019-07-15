@@ -48,6 +48,7 @@ export const createPictureComment = comment => dispatch => {
 };
 
 export const deletePictureComment = comment => dispatch => {
+    debugger
     return CommentApiUtils.deletePictureComment(comment)
         .then((pictureComment) => dispatch(removePictureComment(pictureComment)));
 };

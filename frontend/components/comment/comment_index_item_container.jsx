@@ -4,10 +4,11 @@ import defaultProfilePic from '../../../app/assets/images/default_profile_pic.pn
 
 import { fetchUsers } from '../../actions/session_actions';
 import { fetchPicture } from '../../actions/pictures_actions';
-import { fetchSubComments } from '../../actions/comment_actions';
+import { deletePictureComment } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, props) => {
     let comment = props.comment;
+    let currentUserId = state.session.currentUserId;
 
     let commentAuthorId = comment.authorId;
     let commentAuthor = state.entities.users[commentAuthorId];
@@ -38,14 +39,16 @@ const mapStateToProps = (state, props) => {
         commentAuthor,
         commentAuthorProfilePicId,
         commentAuthorProfilePicImgUrl,
-        commentAuthorName
+        commentAuthorName,
+        currentUserId
     });
 };
 
 const mapDispatchToProps = dispatch => {
     return ({
         fetchUsers: userIds => dispatch(fetchUsers(userIds)),
-        fetchPicture: pictureId => dispatch(fetchPicture(pictureId))
+        fetchPicture: pictureId => dispatch(fetchPicture(pictureId)),
+        deletePictureComment: comment => dispatch(deletePictureComment(comment))
     });
 };
 

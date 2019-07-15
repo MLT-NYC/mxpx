@@ -7,17 +7,19 @@ export const fetchPictureComments = (pictureId) => {
 };
 
 export const createPictureComment = (comment) => {
+    debugger
     return $.ajax({
         method: 'POST',
-        url: `api/pictures/${comment.pictureId}/comments`,
+        url: `api/pictures/${comment.picture_id}/comments`,
         data: { comment }
     });
 };
 
 export const deletePictureComment = (comment) => {
+    debugger
     return $.ajax({
         method: 'DELETE',
-        url: `api/pictures/${comment.picture_id}/comments/${comment.id}`,
+        url: `api/pictures/${comment.commentable_id}/comments/${comment.id}`,
         data: { comment }
     });
 };
