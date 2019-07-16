@@ -7,7 +7,6 @@ export const fetchPictureComments = (pictureId) => {
 };
 
 export const createPictureComment = (comment) => {
-    debugger
     return $.ajax({
         method: 'POST',
         url: `api/pictures/${comment.commentable_id}/comments`,
@@ -16,7 +15,6 @@ export const createPictureComment = (comment) => {
 };
 
 export const deletePictureComment = (comment) => {
-    debugger
     return $.ajax({
         method: 'DELETE',
         url: `api/pictures/${comment.commentable_id}/comments/${comment.id}`,

@@ -35,8 +35,6 @@ class CommentIndex extends React.Component {
             body 
         };
 
-        debugger
-
         this.props.createPictureComment(comment);
 
         this.setState({

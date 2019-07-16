@@ -43,13 +43,11 @@ export const fetchPictureComments = pictureId => dispatch => {
 };
 
 export const createPictureComment = comment => dispatch => {
-    debugger
     return CommentApiUtils.createPictureComment(comment)
         .then(pictureComment => dispatch(receivePictureComment(pictureComment)));
 };
 
 export const deletePictureComment = comment => dispatch => {
-    debugger
     return CommentApiUtils.deletePictureComment(comment)
         .then((pictureComment) => dispatch(removePictureComment(pictureComment)));
 };

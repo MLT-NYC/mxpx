@@ -19,7 +19,6 @@ class CommentIndexItem extends React.Component {
     toggleOptionsModal() {
         let { showOptionsModal } = this.state;
 
-        debugger
         this.setState({
             showOptionsModal: !showOptionsModal
         });
@@ -30,16 +29,13 @@ class CommentIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
         if (!this.props.commentAuthor) {
             this.props.fetchUsers([this.props.commentAuthorId]);
         }         
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
         if (prevProps.commentAuthorProfilePicId != this.props.commentAuthorProfilePicId) {
-            debugger
             this.props.fetchPicture(this.props.commentAuthorProfilePicId);
         }
     }

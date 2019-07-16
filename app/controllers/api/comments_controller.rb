@@ -12,9 +12,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def create
-        debugger
         @comment = @commentable.comments.new(comment_params)
-        debugger
         if @comment.save
             render 'api/comments/show'
         else
@@ -23,7 +21,6 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-        # debugger
         @comment = @commentable.comments.find(params[:id])
         render 'api/comments/show'
         @comment.destroy
@@ -35,7 +32,6 @@ class Api::CommentsController < ApplicationController
     end
 
     def find_commentable
-        # debugger
         if params[:comment_id]
             @commentable = Comment.find_by(id: params[:comment_id])
         elsif params[:picture_id]
