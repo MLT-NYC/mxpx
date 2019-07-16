@@ -32,6 +32,41 @@ const mapStateToProps = (state, props) => {
         }
     }
     
+    let commentFullDate =  comment.createdDate.split('T')[0];
+    let commentYear = parseInt(commentFullDate.split('-')[0], 10);
+    let commentMonth = parseInt(commentFullDate.split('-')[1], 10) - 1;
+    let commentDate = parseInt(commentFullDate.split('-')[2], 10);
+    
+    let commentFullTime = comment.createdDate.split('T')[1];
+    let commentHour = parseInt(commentFullTime.split(':')[0], 10);
+    let commentMinute = parseInt(commentFullTime.split(':')[1], 10);
+    let commentSecond = parseInt(commentFullTime.split(':')[2].split('.')[0], 10);
+
+    let monthMap = {
+        0: 'Jan',
+        1: 'Feb',
+        2: 'Mar',
+        3: 'Apr',
+        4: 'May',
+        5: 'Jun',
+        6: 'Jul',
+        7: 'Aug',
+        8: 'Sep',
+        9: 'Oct',
+        10: 'Nov',
+        11: 'Dec'
+    };
+
+    let weekMap = {
+        0: 'Mon',
+        1: 'Tue',
+        2: 'Wed',
+        3: 'Thu',
+        4: 'Fri',
+        5: 'Sat',
+        6: 'Sun'
+    };
+
     return ({
         comment,
         commentAuthorId,
@@ -39,7 +74,15 @@ const mapStateToProps = (state, props) => {
         commentAuthorProfilePicId,
         commentAuthorProfilePicImgUrl,
         commentAuthorName,
-        currentUserId
+        currentUserId,
+        commentYear,
+        commentMonth,
+        commentDate,
+        commentHour,
+        commentMinute,
+        commentSecond,
+        monthMap,
+        weekMap
     });
 };
 
