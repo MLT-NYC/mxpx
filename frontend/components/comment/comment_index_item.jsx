@@ -79,7 +79,6 @@ class CommentIndexItem extends React.Component {
             if (this.props.commentHour - currentHour === 1) {
                 date = `1 hour ago`;
             } else {
-                debugger
                 date = `${this.props.commentHour - currentHour} hours ago`;
             }
             
