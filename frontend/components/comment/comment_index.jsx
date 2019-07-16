@@ -25,10 +25,17 @@ class CommentIndex extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        let { picture_id, author_id } = this.props;
+        let { pictureId, authorId } = this.props;
         let { body } =  this.state;
         
-        let comment = { picture_id, author_id, body };
+        let comment = { 
+            commentable_type: 'Picture',
+            commentable_id: pictureId, 
+            author_id: authorId, 
+            body 
+        };
+
+        debugger
 
         this.props.createPictureComment(comment);
 
@@ -48,27 +55,14 @@ class CommentIndex extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
-
         if (this.props.commentIds.length > 0) {
-            this.props.fetchPictureComments(this.state.picture_id)
-                .then(() => {
-                    this.setState({
-                        comments: this.props.comments
-                    });
-                });
+            this.props.fetchPictureComments(this.props.pictureId)
         }
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
         if (prevProps.pictureId != this.props.pictureId) {
-            this.props.fetchPictureComments(this.props.pictureId)
-                .then(() => {
-                    this.setState({
-                        comments: this.props.comments
-                    });
-                }) ;
+            this.props.fetchPictureComments(this.props.pictureId);
         }
     }
 

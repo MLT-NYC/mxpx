@@ -12,6 +12,8 @@ const mapStateToProps = (state, props) => {
     let authorId = state.entities.users[state.session.currentUserId].id;
     let authorProfilePicImgUrl = state.entities.pictures[state.entities.users[state.session.currentUserId].profile_picture_id].img_url;
 
+    debugger
+
     let comments = [];
     if (commentIds.length > 0) {
         commentIds.forEach(commentId => {

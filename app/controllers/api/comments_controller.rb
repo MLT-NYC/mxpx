@@ -12,8 +12,9 @@ class Api::CommentsController < ApplicationController
     end
 
     def create
-        @comment = @commentable.comments.new(params[:comment])
-        
+        debugger
+        @comment = @commentable.comments.new(comment_params)
+        debugger
         if @comment.save
             render 'api/comments/show'
         else
@@ -30,7 +31,7 @@ class Api::CommentsController < ApplicationController
 
     private
     def comment_params
-        params.require(:comment).permit(:body, :author_id)
+        params.require(:comment).permit(:body, :author_id, :commentable_id, :commentable_type)
     end
 
     def find_commentable

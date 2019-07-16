@@ -10,7 +10,7 @@ export const createPictureComment = (comment) => {
     debugger
     return $.ajax({
         method: 'POST',
-        url: `api/pictures/${comment.picture_id}/comments`,
+        url: `api/pictures/${comment.commentable_id}/comments`,
         data: { comment }
     });
 };
@@ -35,7 +35,7 @@ export const fetchSubComments = (commentId) => {
 export const createSubComment = (subComment) => {
     return $.ajax({
         method: 'POST',
-        url: `api/comments/${subComment.comment_id}/comments/`,
+        url: `api/comments/${subComment.commentable_id}/comments/`,
         data: { comment: subComment }
     });
 };
@@ -43,7 +43,7 @@ export const createSubComment = (subComment) => {
 export const deleteSubComment = (subComment) => {
     return $.ajax({
         method: 'DELETE',
-        url: `api/comments/${subComment.comment_id}/comments/${subComment.id}`,
+        url: `api/comments/${subComment.commentable_id}/comments/${subComment.id}`,
         data: { comment: subComment }
     });
 };

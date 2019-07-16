@@ -34,6 +34,12 @@ const picturesReducer = (oldState = {}, action) => {
             newState = merge({}, oldState);
             delete newState[action.picture.id];
             return newState;
+        // case RECEIVE_ALL_PICTURE_COMMENTS:
+        //     newState = merge({}, oldState);
+        //     action.pictureComments.forEach(pictureComment => {
+        //         newState[pictureComment.commentIds].commentIds.push(pictureComment.id);
+        //     });
+        //     return newState;
         case RECEIVE_PICTURE_COMMENT:
             newState = merge({}, oldState);
             newState[action.pictureComment.commentable_id].commentIds.push(action.pictureComment.id);
