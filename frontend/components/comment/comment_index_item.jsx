@@ -46,7 +46,7 @@ class CommentIndexItem extends React.Component {
             currentDate === this.props.commentDate &&
             currentHour === this.props.commentHour &&
             currentMinute === this.props.commentMinute && 
-            currentSecond - this.props.commentSecond < 60
+            this.props.commentSecond - currentSecond < 60
         ) {
 
             if (this.props.commentSecond - currentSecond === 1){
@@ -60,7 +60,7 @@ class CommentIndexItem extends React.Component {
             currentMonth === this.props.commentMonth &&
             currentDate === this.props.commentDate &&
             currentHour === this.props.commentHour &&
-            currentMinute - this.props.commentMinute < 60
+            this.props.commentMinute - currentMinute < 60
         ) {
 
             if (this.props.commentMinute - currentMinute === 1) {
@@ -73,12 +73,13 @@ class CommentIndexItem extends React.Component {
             currentYear === this.props.commentYear &&
             currentMonth === this.props.commentMonth &&
             currentDate === this.props.commentDate &&
-            currentHour - this.props.commentHour < 24
+            this.props.commentHour - currentHour < 24
         ) {
 
             if (this.props.commentHour - currentHour === 1) {
                 date = `1 hour ago`;
             } else {
+                debugger
                 date = `${this.props.commentHour - currentHour} hours ago`;
             }
             
