@@ -27,6 +27,7 @@ class CommentIndexItem extends React.Component {
     }
 
     deleteComment() {
+        this.toggleOptionsModal();
         this.props.deletePictureComment(this.props.comment);
     }
 
