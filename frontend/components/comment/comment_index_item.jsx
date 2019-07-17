@@ -10,11 +10,12 @@ class CommentIndexItem extends React.Component {
 
         this.state = {
             showOptionsModal: false,
-            dateTime: new Date ()
+            presentDate: new Date ()
         };
 
         this.toggleOptionsModal = this.toggleOptionsModal.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
+        this.getCommentTime = this.getCommentTime.bind(this);
     }
 
     toggleOptionsModal() {
@@ -29,83 +30,58 @@ class CommentIndexItem extends React.Component {
         this.props.deletePictureComment(this.props.comment);
     }
 
+    getCommentTime() {
+        let commentDate = this.props.commentDate; 
+        let commentHour = commentDate.getHours();
+        let commentMinute = commentDate.getMinutes() < 10 ? '0' + commentDate.getMinutes() : commentDate.getMinutes().toString();
+        let meridiem = commentHour < 12 || commentHour === 24 ? 'AM' : 'PM';
+       
+        if (commentHour > 12 && commentHour <= 24)  commentHour -= 12;
+
+        commentHour.toString();
+        
+        return commentHour + ':' + commentMinute + ' ' + meridiem;
+    }
+    
     getDisplayedDate() {
-        let { dateTime } = this.state;
+        const month = {
+            0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun', 
+            6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec'
+        };
 
-        let currentYear = dateTime.getFullYear();
-        let currentMonth = dateTime.getMonth();
-        let currentDate = dateTime.getDate();
-        let currentHour = dateTime.getHours();
-        let currentMinute = dateTime.getMinutes();
-        let currentSecond = dateTime.getSeconds();
+        const weekday = {
+            0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri', 6: 'Sat'
+        };
 
-        let commentFullDate = this.props.commentFullDate; 
-        let commentYear = this.props.commentYear;
-        let commentMonth = this.props.commentMonth;
-        let commentDate = this.props.commentDate;
-        let commentHour = this.props.commentHour;
-        let commentMinute = this.props.commentMinute;
-        let commentSecond = this.props.commentSecond;
+        let { presentDate } = this.state;
+        let commentDate = this.props.commentDate; 
+        let timeDifference = presentDate - commentDate;
+        let second = 1000;
+        let minute = second * 60;
+        let hour = minute * 60;
+        let day = hour * 24;
+        let week = day * 7;
 
-
-        let date;
-        debugger
-        if (
-            currentYear === commentYear &&
-            currentMonth === commentMonth &&
-            currentDate === commentDate &&
-            currentHour === commentHour &&
-            currentMinute === commentMinute && 
-            Math.abs(currentSecond - commentSecond) < 60
-        ) {
-            if (Math.abs(currentSecond - commentSecond) === 1){
-                date = `1 second ago`;
-            } else {
-                date = `${Math.abs(currentSecond - commentSecond)} seconds ago`;
-            }
-            
-        } else if (
-            currentYear === commentYear &&
-            currentMonth === commentMonth &&
-            currentDate === commentDate &&
-            currentHour === commentHour &&
-            Math.abs(currentMinute - commentMinute) < 60
-        ) {
-            if (Math.abs(currentMinute - commentMinute) === 1) {
-                date = `1 minute ago`;
-            } else {
-                date = `${Math.abs(currentMinute - commentMinute)} minutes ago`;
-            }
-
-        } else if (
-            currentYear === commentYear &&
-            currentMonth === commentMonth &&
-            currentDate === commentDate &&
-            Math.abs(currentHour - commentHour) < 24
-        ) {
-            if (Math.abs(currentHour - commentHour) === 1) {
-                date = `1 hour ago`;
-            } else {
-                date = `${Math.abs(currentHour - commentHour)} hours ago`;
-            }
-            
-        } else if (
-            currentYear === commentYear &&
-            currentMonth === commentMonth &&
-            currentDate - commentDate < 7
-        ) {
-            date = `${this.props.weekMap[commentFullDate.getDay()]}`;
-        } else if (
-            currentYear === commentYear&&
-            currentMonth === commentMonth &&
-            currentDate - commentDate >= 7
-        ) {
-            date = `${this.props.monthMap[commentMonth]} ${commentDate}`;
-        } else if (currentYear - commentYear > 0) {
-            date = `${this.props.monthMap[commentMonth]} ${commentDate}, ${commentYear}`;
-        } 
-
-        return date;
+        let displayedDate;
+        if (timeDifference <= second) {
+            displayedDate = '1 second ago';
+        } else if (timeDifference < minute) {
+            displayedDate = `${Math.floor(timeDifference/second)} seconds ago`;
+        } else if (timeDifference === minute) {
+            displayedDate = '1 minute ago';
+        } else if (timeDifference > minute && timeDifference < hour) {
+            displayedDate = `${Math.floor(timeDifference/hour)} minutes ago`;
+        } else if (timeDifference < day) {
+            displayedDate = this.getCommentTime();
+        } else if (timeDifference < (2 * day)) {
+            displayedDate = '1 day ago';
+        } else if (timeDifference < week) {
+            displayedDate = `${weekday[commentDate.getDay()]}`;
+        } else {
+            displayedDate = `${month[commmentDate.getMonth()]} ${commentDate.getDate()}, ${commentDate.getFullYear()}`;
+        }
+   
+        return displayedDate;
     }
 
     componentDidMount() {
@@ -115,13 +91,13 @@ class CommentIndexItem extends React.Component {
         
         this.timer = setInterval(
             () => this.tick(),
-            60000
-        )
+            10000
+        );
     }
 
     tick() {
         this.setState({
-            dateTime: new Date ()
+            presentDate: new Date ()
         });
     }
 

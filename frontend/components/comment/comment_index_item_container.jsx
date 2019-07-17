@@ -31,42 +31,8 @@ const mapStateToProps = (state, props) => {
             commentAuthorProfilePicImgUrl = defaultProfilePic;
         }
     }
-
-    debugger
     
-    let commentFullDate =  new Date(comment.createdDate);
-    let commentYear = commentFullDate.getFullYear();
-    let commentMonth = commentFullDate.getMonth();
-    let commentDate = commentFullDate.getDate();
-    let commentHour = commentFullDate.getHours();
-    let commentMinute = commentFullDate.getMinutes();
-    let commentSecond = commentFullDate.getSeconds();
-
-    debugger
-    const monthMap = {
-        0: 'Jan',
-        1: 'Feb',
-        2: 'Mar',
-        3: 'Apr',
-        4: 'May',
-        5: 'Jun',
-        6: 'Jul',
-        7: 'Aug',
-        8: 'Sep',
-        9: 'Oct',
-        10: 'Nov',
-        11: 'Dec'
-    };
-
-    const weekMap = {
-        0: 'Sun',
-        1: 'Mon',
-        2: 'Tue',
-        3: 'Wed',
-        4: 'Thu',
-        5: 'Fri',
-        6: 'Sat',
-    };
+    let commentDate =  new Date(comment.createdDate);
 
     return ({
         comment,
@@ -76,15 +42,7 @@ const mapStateToProps = (state, props) => {
         commentAuthorProfilePicImgUrl,
         commentAuthorName,
         currentUserId,
-        commentFullDate,
-        commentYear,
-        commentMonth,
-        commentDate,
-        commentHour,
-        commentMinute,
-        commentSecond,
-        monthMap,
-        weekMap
+        commentDate
     });
 };
 
