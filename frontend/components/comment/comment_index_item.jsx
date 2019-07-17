@@ -42,7 +42,7 @@ class CommentIndexItem extends React.Component {
         
         return commentHour + ':' + commentMinute + ' ' + meridiem;
     }
-    
+
     getDisplayedDate() {
         const month = {
             0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun', 
@@ -67,10 +67,10 @@ class CommentIndexItem extends React.Component {
             displayedDate = '1 second ago';
         } else if (timeDifference < minute) {
             displayedDate = `${Math.floor(timeDifference/second)} seconds ago`;
-        } else if (timeDifference === minute) {
+        } else if (timeDifference < (minute + (59*second))) {
             displayedDate = '1 minute ago';
-        } else if (timeDifference > minute && timeDifference < hour) {
-            displayedDate = `${Math.floor(timeDifference/hour)} minutes ago`;
+        } else if (timeDifference >= (2*minute) && timeDifference < hour) {
+            displayedDate = `${Math.floor(timeDifference/minute)} minutes ago`;
         } else if (timeDifference < day) {
             displayedDate = this.getCommentTime();
         } else if (timeDifference < (2 * day)) {
