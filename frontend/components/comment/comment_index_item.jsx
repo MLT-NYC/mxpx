@@ -39,63 +39,70 @@ class CommentIndexItem extends React.Component {
         let currentMinute = dateTime.getMinutes();
         let currentSecond = dateTime.getSeconds();
 
-        let date;
-        if (
-            currentYear === this.props.commentYear &&
-            currentMonth === this.props.commentMonth &&
-            currentDate === this.props.commentDate &&
-            currentHour === this.props.commentHour &&
-            currentMinute === this.props.commentMinute && 
-            this.props.commentSecond - currentSecond < 60
-        ) {
+        let commentFullDate = this.props.commentFullDate; 
+        let commentYear = this.props.commentYear;
+        let commentMonth = this.props.commentMonth;
+        let commentDate = this.props.commentDate;
+        let commentHour = this.props.commentHour;
+        let commentMinute = this.props.commentMinute;
+        let commentSecond = this.props.commentSecond;
 
-            if (this.props.commentSecond - currentSecond === 1){
+
+        let date;
+        debugger
+        if (
+            currentYear === commentYear &&
+            currentMonth === commentMonth &&
+            currentDate === commentDate &&
+            currentHour === commentHour &&
+            currentMinute === commentMinute && 
+            Math.abs(currentSecond - commentSecond) < 60
+        ) {
+            if (Math.abs(currentSecond - commentSecond) === 1){
                 date = `1 second ago`;
             } else {
-                date = `${this.props.commentSecond - currentSecond} seconds ago`;
+                date = `${Math.abs(currentSecond - commentSecond)} seconds ago`;
             }
             
         } else if (
-            currentYear === this.props.commentYear &&
-            currentMonth === this.props.commentMonth &&
-            currentDate === this.props.commentDate &&
-            currentHour === this.props.commentHour &&
-            this.props.commentMinute - currentMinute < 60
+            currentYear === commentYear &&
+            currentMonth === commentMonth &&
+            currentDate === commentDate &&
+            currentHour === commentHour &&
+            Math.abs(currentMinute - commentMinute) < 60
         ) {
-
-            if (this.props.commentMinute - currentMinute === 1) {
+            if (Math.abs(currentMinute - commentMinute) === 1) {
                 date = `1 minute ago`;
             } else {
-                date = `${this.props.commentMinute - currentMinute} minutes ago`;
+                date = `${Math.abs(currentMinute - commentMinute)} minutes ago`;
             }
 
         } else if (
-            currentYear === this.props.commentYear &&
-            currentMonth === this.props.commentMonth &&
-            currentDate === this.props.commentDate &&
-            this.props.commentHour - currentHour < 24
+            currentYear === commentYear &&
+            currentMonth === commentMonth &&
+            currentDate === commentDate &&
+            Math.abs(currentHour - commentHour) < 24
         ) {
-
-            if (this.props.commentHour - currentHour === 1) {
+            if (Math.abs(currentHour - commentHour) === 1) {
                 date = `1 hour ago`;
             } else {
-                date = `${this.props.commentHour - currentHour} hours ago`;
+                date = `${Math.abs(currentHour - commentHour)} hours ago`;
             }
             
         } else if (
-            currentYear === this.props.commentYear &&
-            currentMonth === this.props.commentMonth &&
-            currentDate - this.props.commentDate < 7
+            currentYear === commentYear &&
+            currentMonth === commentMonth &&
+            currentDate - commentDate < 7
         ) {
-            date = `${this.props.weekMap[dateTime.getDay()]}`;
+            date = `${this.props.weekMap[commentFullDate.getDay()]}`;
         } else if (
-            currentYear === this.props.commentYear &&
-            currentMonth === this.props.commentMonth &&
-            currentDate - this.props.commentDate >= 7
+            currentYear === commentYear&&
+            currentMonth === commentMonth &&
+            currentDate - commentDate >= 7
         ) {
-            date = `${this.props.monthMap[this.props.commentMonth]} ${this.props.commentDate}`;
-        } else if (currentYear - this.props.commentYear > 0) {
-            date = `${this.props.monthMap[this.props.commentMonth]} ${this.props.commentDate}, ${this.props.commentYear}`;
+            date = `${this.props.monthMap[commentMonth]} ${commentDate}`;
+        } else if (currentYear - commentYear > 0) {
+            date = `${this.props.monthMap[commentMonth]} ${commentDate}, ${commentYear}`;
         } 
 
         return date;

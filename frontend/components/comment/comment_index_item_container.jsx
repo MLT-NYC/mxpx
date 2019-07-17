@@ -31,18 +31,19 @@ const mapStateToProps = (state, props) => {
             commentAuthorProfilePicImgUrl = defaultProfilePic;
         }
     }
-    
-    let commentFullDate =  comment.createdDate.split('T')[0];
-    let commentYear = parseInt(commentFullDate.split('-')[0], 10);
-    let commentMonth = parseInt(commentFullDate.split('-')[1], 10) - 1;
-    let commentDate = parseInt(commentFullDate.split('-')[2], 10);
-    
-    let commentFullTime = comment.createdDate.split('T')[1];
-    let commentHour = parseInt(commentFullTime.split(':')[0], 10);
-    let commentMinute = parseInt(commentFullTime.split(':')[1], 10);
-    let commentSecond = parseInt(commentFullTime.split(':')[2].split('.')[0], 10);
 
-    let monthMap = {
+    debugger
+    
+    let commentFullDate =  new Date(comment.createdDate);
+    let commentYear = commentFullDate.getFullYear();
+    let commentMonth = commentFullDate.getMonth();
+    let commentDate = commentFullDate.getDate();
+    let commentHour = commentFullDate.getHours();
+    let commentMinute = commentFullDate.getMinutes();
+    let commentSecond = commentFullDate.getSeconds();
+
+    debugger
+    const monthMap = {
         0: 'Jan',
         1: 'Feb',
         2: 'Mar',
@@ -57,14 +58,14 @@ const mapStateToProps = (state, props) => {
         11: 'Dec'
     };
 
-    let weekMap = {
-        0: 'Mon',
-        1: 'Tue',
-        2: 'Wed',
-        3: 'Thu',
-        4: 'Fri',
-        5: 'Sat',
-        6: 'Sun'
+    const weekMap = {
+        0: 'Sun',
+        1: 'Mon',
+        2: 'Tue',
+        3: 'Wed',
+        4: 'Thu',
+        5: 'Fri',
+        6: 'Sat',
     };
 
     return ({
@@ -75,6 +76,7 @@ const mapStateToProps = (state, props) => {
         commentAuthorProfilePicImgUrl,
         commentAuthorName,
         currentUserId,
+        commentFullDate,
         commentYear,
         commentMonth,
         commentDate,
