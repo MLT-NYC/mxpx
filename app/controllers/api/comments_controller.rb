@@ -7,7 +7,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def index
-        @comments = @commentable.comments.all 
+        @comments = @commentable.comments.all.reverse
         render :index
     end
 

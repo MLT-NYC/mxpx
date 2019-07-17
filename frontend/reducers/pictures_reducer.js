@@ -42,7 +42,7 @@ const picturesReducer = (oldState = {}, action) => {
         //     return newState;
         case RECEIVE_PICTURE_COMMENT:
             newState = merge({}, oldState);
-            newState[action.pictureComment.commentable_id].commentIds.push(action.pictureComment.id);
+            newState[action.pictureComment.commentable_id].commentIds.unshift(action.pictureComment.id);
             return newState;
         case REMOVE_PICTURE_COMMENT:
             newState = merge({}, oldState);
