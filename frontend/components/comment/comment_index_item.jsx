@@ -90,6 +90,8 @@ class CommentIndexItem extends React.Component {
             this.props.fetchUsers([this.props.commentAuthorId]);
         }
         
+        debugger
+        
         this.timer = setInterval(
             () => this.tick(),
             10000
