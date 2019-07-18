@@ -26,6 +26,7 @@ const mapStateToProps = (state, props) => {
             commentAuthorName = commentAuthor.email;
         }
     }
+    
     let commentAuthorProfilePic = state.entities.pictures[commentAuthorProfilePicId];
     let commentAuthorProfilePicImgUrl;
     if (commentAuthorProfilePic) {
