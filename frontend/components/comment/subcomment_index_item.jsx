@@ -8,8 +8,8 @@ class SubCommentIndexItem extends React.Component {
 
     render() {
         return (
-            <>
-            </>
+            <div className='subComment'>
+            </ div>
         )
     }
 }

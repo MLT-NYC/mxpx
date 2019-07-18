@@ -4,7 +4,10 @@ import defaultProfilePic from '../../../app/assets/images/default_profile_pic.pn
 
 import { fetchUsers } from '../../actions/session_actions';
 import { fetchPicture } from '../../actions/pictures_actions';
-import { deletePictureComment } from '../../actions/comment_actions';
+import { 
+    deletePictureComment,
+    fetchSubComments
+} from '../../actions/comment_actions';
 
 const mapStateToProps = (state, props) => {
     let comment = props.comment;
@@ -34,6 +37,19 @@ const mapStateToProps = (state, props) => {
     
     let commentDate =  new Date(comment.createdDate);
 
+    debugger
+    let subCommentIds = comment.subCommentIds;
+    let subComments = [];
+    if (subCommentIds.length > 0) {
+        subCommentIds.forEach(subCommentId => {
+            let subComment = state.entities.comments[subCommentId];
+            if (subComment) {
+                debugger
+                subComments.push(subComment);
+            }
+        });
+    }
+
     return ({
         comment,
         commentAuthorId,
@@ -42,7 +58,9 @@ const mapStateToProps = (state, props) => {
         commentAuthorProfilePicImgUrl,
         commentAuthorName,
         currentUserId,
-        commentDate
+        commentDate,
+        subCommentIds,
+        subComments
     });
 };
 
@@ -50,7 +68,8 @@ const mapDispatchToProps = dispatch => {
     return ({
         fetchUsers: userIds => dispatch(fetchUsers(userIds)),
         fetchPicture: pictureId => dispatch(fetchPicture(pictureId)),
-        deletePictureComment: comment => dispatch(deletePictureComment(comment))
+        deletePictureComment: comment => dispatch(deletePictureComment(comment)),
+        fetchSubComments: commentId => dispatch(fetchSubComments(commentId))
     });
 };
 

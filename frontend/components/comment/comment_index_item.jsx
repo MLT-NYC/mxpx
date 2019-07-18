@@ -1,12 +1,9 @@
 import React from 'react';
+import SubCommentIndexItemContainer from './subcomment_index_item_container';
 
 class CommentIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        // create subComment component
-        // in componentdidmount, if comment has subCommentIds, fetch those comments.
-        // in container, generate subcomments array
-        // in componentdidupdate, if previous subcomments array is not the same as the current
 
         this.state = {
             showOptionsModal: false,
@@ -91,6 +88,10 @@ class CommentIndexItem extends React.Component {
         }
         
         debugger
+
+        if (this.props.subCommentIds.length > 0) {
+            this.props.fetchSubComments(this.comment.id);
+        }
         
         this.timer = setInterval(
             () => this.tick(),
@@ -107,6 +108,12 @@ class CommentIndexItem extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.commentAuthorProfilePicId != this.props.commentAuthorProfilePicId) {
             this.props.fetchPicture(this.props.commentAuthorProfilePicId);
+        }
+
+        debugger
+        if (prevProps.subCommentIds.toString() === this.props.subCommentIds.toString()){
+            debugger
+            this.props.fetchSubComments(this.comment.id);
         }
     }
 
@@ -144,15 +151,24 @@ class CommentIndexItem extends React.Component {
             </div>
         );
 
+        let subComments = this.props.subComments.map((subComment, index) => {
+            return (
+                <SubCommentIndexItemContainer key={index} subComment={subComment} />
+            )
+        })
+
         return (
-            <>
-                <img className='commentAuthorProfilePic' src={this.props.commentAuthorProfilePicImgUrl}/>
-                <div className='commentAuthorName'>{this.props.commentAuthorName}</div>
-                <div className='commentBody'>{this.props.comment.body}</div>
-                {optionsIcon}
-                {optionsModal}
-                {displayedDate}
-            </>
+            <ul>
+                <div className='pictureComment'>
+                    <img className='commentAuthorProfilePic' src={this.props.commentAuthorProfilePicImgUrl}/>
+                    <div className='commentAuthorName'>{this.props.commentAuthorName}</div>
+                    <div className='commentBody'>{this.props.comment.body}</div>
+                    {optionsIcon}
+                    {optionsModal}
+                    {displayedDate}
+                </div>
+                {subComments}
+            </ul>
         )
     }
 }
