@@ -72,7 +72,7 @@ class CommentIndexItem extends React.Component {
             displayedDate = '1 minute ago';
         } else if (timeDifference >= (2*minute) && timeDifference < hour) {
             displayedDate = `${Math.floor(timeDifference/minute)} minutes ago`;
-        } else if (timeDifference < day) {
+        } else if (timeDifference < day / 2) {
             displayedDate = this.getCommentTime();
         } else if (timeDifference < (2 * day)) {
             displayedDate = '1 day ago';
