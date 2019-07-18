@@ -88,7 +88,7 @@ class CommentIndexItem extends React.Component {
     componentDidMount() {
         if (!this.props.commentAuthor) {
             this.props.fetchUsers([this.props.commentAuthorId]);
-        }     
+        }
         
         this.timer = setInterval(
             () => this.tick(),
