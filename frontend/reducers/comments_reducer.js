@@ -34,6 +34,7 @@ const commentsReducer = (oldState = {}, action) => {
             return newState;
         case RECEIVE_SUB_COMMENT:
             newState = merge({}, oldState, { [action.subComment.id]: action.subComment });
+            newState[action.subComment.commentable_id].subCommentIds.unshift(action.subComment.id);
             return newState;
         case REMOVE_SUB_COMMENT:
             newState = merge({}, oldState);
