@@ -33,7 +33,7 @@ const mapStateToProps = (state, props) => {
         }
     }
 
-    let subCommentDate = new Date(comment.createdDate);
+    let subCommentDate = new Date(subComment.createdDate);
     
     return ({
         subComment,

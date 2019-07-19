@@ -81,6 +81,33 @@ class SubCommentIndexItem extends React.Component {
         return displayedDate;
     }
 
+    tick() {
+        this.setState({
+            presentDate: new Date()
+        });
+    }
+
+    componentDidMount() {
+        if (!this.props.subCommentAuthor) {
+            this.props.fetchUsers([this.props.subCommentAuthorId]);
+        }
+
+        this.timer = setInterval(
+            () => this.tick(),
+            10000
+        );
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.subCommentAuthorProfilePicId != this.props.subCommentAuthorProfilePicId) {
+            this.props.fetchPicture(this.props.subCommentAuthorProfilePicId);
+        }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
+
     render() {
         let optionsIcon;
         if (this.props.currentUserId === this.props.subCommentAuthorId) {

@@ -6,12 +6,14 @@ import { fetchUsers } from '../../actions/session_actions';
 import { fetchPicture } from '../../actions/pictures_actions';
 import { 
     deletePictureComment,
+    createSubComment,
     fetchSubComments
 } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, props) => {
     let comment = props.comment;
     let currentUserId = state.session.currentUserId;
+    let currentUserProfilePicImgUrl = state.entities.pictures[state.entities.users[currentUserId].profile_picture_id].img_url;
 
     let commentAuthorId = comment.authorId;
     let commentAuthor = state.entities.users[commentAuthorId];
@@ -26,7 +28,7 @@ const mapStateToProps = (state, props) => {
             commentAuthorName = commentAuthor.email;
         }
     }
-    
+
     let commentAuthorProfilePic = state.entities.pictures[commentAuthorProfilePicId];
     let commentAuthorProfilePicImgUrl;
     if (commentAuthorProfilePic) {
@@ -38,14 +40,14 @@ const mapStateToProps = (state, props) => {
     
     let commentDate =  new Date(comment.createdDate);
 
-    debugger
+    // debugger
     let subCommentIds = comment.subCommentIds;
     let subComments = [];
     if (subCommentIds.length > 0) {
         subCommentIds.forEach(subCommentId => {
             let subComment = state.entities.comments[subCommentId];
             if (subComment) {
-                debugger
+                // debugger
                 subComments.push(subComment);
             }
         });
@@ -61,7 +63,9 @@ const mapStateToProps = (state, props) => {
         currentUserId,
         commentDate,
         subCommentIds,
-        subComments
+        subComments,
+        currentUserProfilePicImgUrl,
+        defaultProfilePic
     });
 };
 
@@ -70,7 +74,8 @@ const mapDispatchToProps = dispatch => {
         fetchUsers: userIds => dispatch(fetchUsers(userIds)),
         fetchPicture: pictureId => dispatch(fetchPicture(pictureId)),
         deletePictureComment: comment => dispatch(deletePictureComment(comment)),
-        fetchSubComments: commentId => dispatch(fetchSubComments(commentId))
+        fetchSubComments: commentId => dispatch(fetchSubComments(commentId)),
+        createSubComment: subComment => dispatch(createSubComment(subComment))
     });
 };
 

@@ -7,12 +7,18 @@ class CommentIndexItem extends React.Component {
 
         this.state = {
             showOptionsModal: false,
+            showReplyModal: false,
+            submitButtonActive: false,
+            subCommentBody: '',
             presentDate: new Date ()
         };
 
         this.toggleOptionsModal = this.toggleOptionsModal.bind(this);
+        this.toggleReplyModal = this.toggleReplyModal.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
         this.getCommentTime = this.getCommentTime.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.cancelSubmit = this.cancelSubmit.bind(this);
     }
 
     toggleOptionsModal() {
@@ -20,6 +26,14 @@ class CommentIndexItem extends React.Component {
 
         this.setState({
             showOptionsModal: !showOptionsModal
+        });
+    }
+
+    toggleReplyModal () {
+        let { showReplyModal } = this.state;
+
+        this.setState({
+            showReplyModal: !showReplyModal
         });
     }
 
@@ -76,10 +90,49 @@ class CommentIndexItem extends React.Component {
         } else if (timeDifference < week) {
             displayedDate = `${weekday[commentDate.getDay()]}`;
         } else {
-            displayedDate = `${month[commmentDate.getMonth()]} ${commentDate.getDate()}, ${commentDate.getFullYear()}`;
+            displayedDate = `${month[commentDate.getMonth()]} ${commentDate.getDate()}, ${commentDate.getFullYear()}`;
         }
    
         return displayedDate;
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        let { subCommentBody } = this.state;
+
+        let subComment = {
+            commentable_type: 'Comment',
+            commentable_id: this.props.comment.id,
+            author_id: this.props.currentUserId,
+            body: subCommentBody
+        };
+
+        debugger
+        this.props.createSubComment(subComment);
+
+        this.setState({
+            subCommentBody: '',
+            showReplyModal: false,
+            submitButtonActive: false
+        });
+    }
+
+    cancelSubmit(e) {
+        e.preventDefault();
+
+        this.setState({
+            subCommentBody: '',
+            showReplyModal: false,
+            submitButtonActive: false
+        });
+    }
+
+    update(field) {
+        return e => this.setState({
+            [field]: e.target.value,
+            submitButtonActive: true
+        });
     }
 
     componentDidMount() {
@@ -87,10 +140,10 @@ class CommentIndexItem extends React.Component {
             this.props.fetchUsers([this.props.commentAuthorId]);
         }
         
-        debugger
-
+        
         if (this.props.subCommentIds.length > 0) {
-            this.props.fetchSubComments(this.comment.id);
+            debugger
+            this.props.fetchSubComments(this.props.comment.id);
         }
         
         this.timer = setInterval(
@@ -110,10 +163,10 @@ class CommentIndexItem extends React.Component {
             this.props.fetchPicture(this.props.commentAuthorProfilePicId);
         }
 
-        debugger
-        if (prevProps.subCommentIds.toString() === this.props.subCommentIds.toString()){
-            debugger
-            this.props.fetchSubComments(this.comment.id);
+        // debugger
+        if (prevProps.subCommentIds.toString() != this.props.subCommentIds.toString()){
+            // debugger
+            this.props.fetchSubComments(this.props.comment.id);
         }
     }
 
@@ -151,11 +204,61 @@ class CommentIndexItem extends React.Component {
             </div>
         );
 
+        let submitButton;
+        let cancelSubmitButton;
+        let createCommentFormFieldClass;
+        if (this.state.submitButtonActive) {
+            if (this.state.subCommentBody.length > 0) {
+                submitButton = <input className='commentSubmitButton' type="submit" value='Comment' />;
+            } else {
+                submitButton = <div className='commentSubmitButton-mock'>Comment</div>
+            }
+            cancelSubmitButton = <div className='commentCancelSubmitButton' onClick={this.cancelSubmit}>Cancel</div>
+            createCommentFormFieldClass = 'createCommentForm-field-active';
+        } else {
+            createCommentFormFieldClass = 'createCommentForm-field-inactive';
+        }
+
+        let currentUserProfilePicImgUrl;
+        if (this.props.currentUserProfilePicImgUrl) {
+            currentUserProfilePicImgUrl = this.props.currentUserProfilePicImgUrl;
+        } else {
+            currentUserProfilePicImgUrl = this.props.defaultProfilePic;
+        }
+
+        let reply;
+        if (this.state.showReplyModal) {
+            reply = (
+                <form className='createCommentForm' onSubmit={this.handleSubmit}>
+                    <div className='createCommentForm-mid'>
+                        <img className='commentIndex-authorProfilePic' src={currentUserProfilePicImgUrl} />
+                        <div className={createCommentFormFieldClass}>
+                            <textarea className='createFormTextArea'
+                                type='text'
+                                placeholder='Add a comment'
+                                value={this.state.subCommentBody}
+                                onChange={this.update('subCommentBody')}>
+                            </textarea>
+
+                            <div className='comment-icon'><i className="far fa-comment"></i></div>
+                        </div>
+                    </div>
+
+                    <div className='createCommentForm-bottom'>
+                        {cancelSubmitButton}
+                        {submitButton}
+                    </div>
+                </form>
+            )
+        }
+
         let subComments = this.props.subComments.map((subComment, index) => {
             return (
                 <SubCommentIndexItemContainer key={index} subComment={subComment} />
             )
         })
+
+        let replyButton = <div onClick={this.toggleReplyModal}>Reply</div>
 
         return (
             <ul>
@@ -166,7 +269,9 @@ class CommentIndexItem extends React.Component {
                     {optionsIcon}
                     {optionsModal}
                     {displayedDate}
+                    {replyButton}
                 </div>
+                {reply}
                 {subComments}
             </ul>
         )
