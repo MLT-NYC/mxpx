@@ -140,12 +140,19 @@ class SubCommentIndexItem extends React.Component {
 
         return (
             <div className='subComment'>
+                <div className='subConnector'></div>
                 <img className='commentAuthorProfilePic' src={this.props.subCommentAuthorProfilePicImgUrl} />
-                <div className='commentAuthorName'>{this.props.subCommentAuthorName}</div>
-                <div className='commentBody'>{this.props.subComment.body}</div>
-                {optionsIcon}
-                {optionsModal}
-                {displayedDate}
+                <div className='commentInfo'>
+                    <div className='commentAuthorsip'>
+                        <div className='commentAuthorName'>{this.props.subCommentAuthorName}</div>
+                        {displayedDate}
+                    </div>
+                    <div className='commentBody'>{this.props.subComment.body}</div>
+                    <div className='subCommentControls'>
+                        {optionsIcon}
+                        {optionsModal}
+                    </div>
+                </div>
             </ div>
         )
     }

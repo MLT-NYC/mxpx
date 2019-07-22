@@ -1,14 +1,13 @@
 .pictureComment-container {
     /* display: flex; */
     width: 100%;
-    border: 1px solid red;
 }
 
-.pictureComment {
+.pictureComment, .subComment {
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
 }
+
 
 .commentAuthorProfilePic {
     height: 32px;
@@ -22,7 +21,6 @@
     flex-direction: column;
     width: 100%;
     margin-left: 16px;
-    border: 1px solid red;
 }
 
 .commentAuthorsip {
@@ -60,6 +58,18 @@
     height: 20px;
     margin-top: 4px;
     color: rgb(109, 115, 120);
+    cursor: pointer;
+}
+
+.subCommentControls {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    margin-top: 4px;
+    color: rgb(109, 115, 120);
+    cursor: pointer;
 }
 
 .replyButton {
@@ -92,4 +102,12 @@
     width: 208px;
     height: 24px;
     color: rgb(34, 34, 34);
+}
+
+.subConnector {
+    position: absolute;
+    width: 3px;
+    height: 32px;
+    background-color: rgb(238, 239, 242);
+    margin: -36px 0px 0px 14.5px;
 }
