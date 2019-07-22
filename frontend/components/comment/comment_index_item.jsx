@@ -108,7 +108,6 @@ class CommentIndexItem extends React.Component {
             body: subCommentBody
         };
 
-        debugger
         this.props.createSubComment(subComment);
 
         this.setState({
@@ -142,7 +141,6 @@ class CommentIndexItem extends React.Component {
         
         
         if (this.props.subCommentIds.length > 0) {
-            debugger
             this.props.fetchSubComments(this.props.comment.id);
         }
         
@@ -163,9 +161,7 @@ class CommentIndexItem extends React.Component {
             this.props.fetchPicture(this.props.commentAuthorProfilePicId);
         }
 
-        // debugger
         if (prevProps.subCommentIds.toString() != this.props.subCommentIds.toString()){
-            // debugger
             this.props.fetchSubComments(this.props.comment.id);
         }
     }
@@ -258,21 +254,27 @@ class CommentIndexItem extends React.Component {
             )
         })
 
-        let replyButton = <div onClick={this.toggleReplyModal}>Reply</div>
+        let replyButton = <div className='replyButton' onClick={this.toggleReplyModal}>Reply</div>
 
         return (
-            <ul>
+            <ul className='pictureComment-container'>
                 <div className='pictureComment'>
                     <img className='commentAuthorProfilePic' src={this.props.commentAuthorProfilePicImgUrl}/>
-                    <div className='commentAuthorName'>{this.props.commentAuthorName}</div>
-                    <div className='commentBody'>{this.props.comment.body}</div>
-                    {optionsIcon}
-                    {optionsModal}
-                    {displayedDate}
-                    {replyButton}
+                    <div className='commentInfo'>
+                        <div className='commentAuthorsip'>
+                            <div className='commentAuthorName'>{this.props.commentAuthorName}</div>
+                            {displayedDate}
+                        </div>
+                        <div className='commentBody'>{this.props.comment.body}</div>
+                        <div className='commentControls'>
+                            {replyButton}
+                            {optionsModal}
+                            {optionsIcon}
+                        </div>
+                    </div>
                 </div>
-                {reply}
                 {subComments}
+                {reply}
             </ul>
         )
     }

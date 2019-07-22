@@ -40,14 +40,12 @@ const mapStateToProps = (state, props) => {
     
     let commentDate =  new Date(comment.createdDate);
 
-    // debugger
     let subCommentIds = comment.subCommentIds;
     let subComments = [];
     if (subCommentIds.length > 0) {
         subCommentIds.forEach(subCommentId => {
             let subComment = state.entities.comments[subCommentId];
             if (subComment) {
-                // debugger
                 subComments.push(subComment);
             }
         });
