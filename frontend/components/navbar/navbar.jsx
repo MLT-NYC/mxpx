@@ -71,24 +71,15 @@ class NavBar extends React.Component {
                                 
                                 <div className="dropdownMenu">
                                     <Link to={'/profile'} className='dropdownMenuItem-1'>My profile</Link>
-                                    <div className='dropdownMenuItem-2'>My Stats</div>
-                                    <div className='dropdownMenuItem-3'>My Galleries</div>
-                                    <div className='dropdownMenuItem-4'>My liked pictures</div>
-                                    <div className='dropdownMenuItem-5'>Manage pictures</div>
-                                    <div className='dropdownMenuItem-6'>Memberships</div>
-                                    <div className='dropdownMenuItem-7'>My Settings</div>
-                                    <div className='dropdownMenuItem-8'>Support</div>
+                                    {/*<div className='dropdownMenuItem-4'>My liked pictures</div>*/}
+                                    {/*<div className='dropdownMenuItem-5'>Manage pictures</div>*/}
                                     {this.props.navLink}
                                 </div>
                             </>
                         )
-                        : (
-                            null
-                            )
-                        }
+                        : null
+                    }
 
-                    <div className='messageSendIcon'><i className="far fa-paper-plane"></i></div>
-                    <div className='notificationIcon'><i className="far fa-bell"></i></div>
                     <Link to='/pictures/new' onClick={this.props.toggleShowForm} className='pictureCreateIcon'><i className="fas fa-plus"></i></Link>
                 
                 </div>
@@ -103,8 +94,6 @@ class NavBar extends React.Component {
                 <Link to={'/'} className='sessionLogo'>mxpx</Link>
                 <div className='sessionNav-left'>
                     <div className='navBar-session-item'>Discover</div>
-                    <div className='navBar-session-item'>About</div>
-                    <div className='navBar-session-item'>Studio</div>
                 </div>
 
                 <div className='sessionNav-right'>

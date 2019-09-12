@@ -21,11 +21,6 @@ class Welcome extends React.Component {
                             <h1 className='logo'>mxpx</h1>
                             <div className='nav-left'>
                                 <div className='navBar-splash-item'>Discover</div>
-                                <div className='navBar-splash-item'>Licensing</div>
-                                <div className='navBar-splash-item'>Memberships</div>
-                                <div className='navBar-splash-item'>Quests</div>
-                                <div className='navBar-splash-item'>Studio</div>
-                                <div className='navBar-splash-item'>Blog</div>
                             </div>
 
                             <div className='nav-right'>
