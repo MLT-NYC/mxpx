@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import defaultProfilePic from '../../../app/assets/images/default_profile_pic.png';
 
-class NavBar extends React.Component {
+class Legacy_navbar extends React.Component {
     constructor(props) {
         super(props);
 
@@ -107,4 +107,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default Legacy_navbar;

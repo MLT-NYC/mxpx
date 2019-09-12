@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../navbar/navbar';
+import Legacy_navbar from '../navbar/legacy_navbar';
 import PersonalEditContainer from './personal_edit_container';
 import PictureCarouselContainer from '../picture/picture_carousel_container';
 import LikeIndexContainer from '../like/like_index_container';
@@ -144,11 +144,11 @@ class PersonalProfile extends React.Component {
 
         return (
             <div className={modalClassName}>
-                <NavBar currentUser={this.props.currentUser}
-                    navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
-                    navBarPicture={this.props.navBarPicture}
-                    personalProfile={true}
-                    isTop={this.state.isTop}
+                <Legacy_navbar currentUser={this.props.currentUser}
+                               navLink={<div className='dropdownMenuItem-9' onClick={this.props.logOut}>Log out</div>}
+                               navBarPicture={this.props.navBarPicture}
+                               personalProfile={true}
+                               isTop={this.state.isTop}
                 />
 
                 {editProfileModal}

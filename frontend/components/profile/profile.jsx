@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../navbar/navbar';
+import Legacy_navbar from '../navbar/legacy_navbar';
 import PictureItemContainer from '../picture/picture_item_container';
 import PictureCarouselContainer from '../picture/picture_carousel_container';
 import LikeIndexContainer from '../like/like_index_container';
@@ -125,12 +125,12 @@ class Profile extends React.Component {
 
         return (
             <div className={profileContainerClass}>
-                <NavBar currentUser={this.props.currentUser} 
-                    navLink={<div className='dropdownMenuItem-9' 
+                <Legacy_navbar currentUser={this.props.currentUser}
+                               navLink={<div className='dropdownMenuItem-9'
                     onClick={this.props.logOut}>Log out</div>}
-                    navBarPicture={this.props.navBarPicture}
-                    personalProfile={true}
-                    isTop={this.state.isTop}
+                               navBarPicture={this.props.navBarPicture}
+                               personalProfile={true}
+                               isTop={this.state.isTop}
                 />    
 
                 {pictureCarousel}

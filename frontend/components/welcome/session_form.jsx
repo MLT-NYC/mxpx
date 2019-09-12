@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import NavBar from '../navbar/navbar';
+import Legacy_navbar from '../navbar/legacy_navbar';
 import ErrorMessage from '../notification/error_message';
 
 class SessionForm extends React.Component {
@@ -63,7 +63,7 @@ class SessionForm extends React.Component {
                         <ErrorMessage className='session-error' errors={this.props.errors} />   
                     </div>
                 
-                    <NavBar navLink={navLink}/>
+                    <Legacy_navbar navLink={navLink}/>
 
                     <div className='sessionFormBox'>
                         <form className='sessionForm' onSubmit={this.handleSubmit}>

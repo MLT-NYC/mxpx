@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../navbar/navbar';
+import Legacy_navbar from '../navbar/legacy_navbar';
 import PictureFormContainer from '../picture/picture_form_container';
 import PictureShowContainer from '../picture/picture_show_container';
 
@@ -41,11 +41,11 @@ class PictureNew extends React.Component {
         }
         return (
             <div className={modalClassName}>
-                <NavBar currentUser={this.props.currentUser}
-                    navLink={<div className='dropdownMenuItem-9' 
+                <Legacy_navbar currentUser={this.props.currentUser}
+                               navLink={<div className='dropdownMenuItem-9'
                     onClick={this.props.logOut}>Log out</div>}
-                    toggleShowForm={this.toggleShowForm}
-                    navBarPicture={this.props.navBarPicture}
+                               toggleShowForm={this.toggleShowForm}
+                               navBarPicture={this.props.navBarPicture}
                 /> 
                 
                 {modal}
