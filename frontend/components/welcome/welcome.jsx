@@ -19,9 +19,6 @@ class Welcome extends React.Component {
 
                         <nav className='navBar'>
                             <h1 className='logo'>mxpx</h1>
-                            <div className='nav-left'>
-                                <div className='navBar-splash-item'>Discover</div>
-                            </div>
 
                             <div className='nav-right'>
                                 <div className='welcomeButtons'>
@@ -29,7 +26,6 @@ class Welcome extends React.Component {
                                     <Link to={'/signup'} className='signUpButton'>Sign up</Link>
                                 </div>
                             </div>
- 
                         </nav>
 
                         <div className="welcomeMessages">
