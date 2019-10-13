@@ -11,8 +11,11 @@ class PictureItem extends React.Component {
 
     componentDidMount() {
         let photographerProfilePicId = this.props.photographerProfilePicId;
-        
-        if (photographerProfilePicId) {
+        let photographerProfilePicIdImgUrl = this.props.photographerProfilePicIdImgUrl;
+
+        debugger
+        if (photographerProfilePicId && photographerProfilePicIdImgUrl === undefined) {
+            debugger
             this.props.fetchPicture(photographerProfilePicId);
         }
     }
@@ -43,12 +46,12 @@ class PictureItem extends React.Component {
             if (this.props.picture.likerIds.includes(this.props.currentUserId)) {
                 likeButton = (<div className='pictureItem-liked'><i className="fas fa-heart" onClick={() => this.unlikePicture()}></i></div>)
             } else {
-                
+
                 likeButton = (<div className='pictureItem-notLiked'><i className="far fa-heart" onClick={() => this.likePicture()}></i></div>)
             }
         }
 
-        
+
         let likeIndexButton;
         let likeCount = this.props.picture.likerIds.length;
         if (likeCount > 0) {
