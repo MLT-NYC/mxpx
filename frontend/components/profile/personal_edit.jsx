@@ -14,7 +14,7 @@ class PersonalEdit extends React.Component {
             city: props.city,
             country: props.country,
             about: props.about,
-            profile_picture_id: props.profile_picture_id, 
+            profile_picture_id: props.profile_picture_id,
             cover_picture_id: props.cover_picture_id,
             submitButtonActive: false,
             coverModal: false,
@@ -37,7 +37,11 @@ class PersonalEdit extends React.Component {
         const fileReader = new FileReader();
 
         fileReader.onloadend = () => {
-            this.setState({ imgFile: file, imgUrl: fileReader.result });
+            this.setState({
+                imgFile: file,
+                imgUrl: fileReader.result,
+                submitButtonActive: true
+            });
         };
 
         if (file) {
@@ -53,10 +57,10 @@ class PersonalEdit extends React.Component {
 
         let user = { id, first_name, last_name, city, country, about, profile_picture_id, cover_picture_id };
 
-        if (user.first_name === this.props.firstName || user.first_name.length === 0) {delete user.first_name;} 
-        if (user.last_name === this.props.lastName || user.last_name.length === 0) { delete user.last_name;} 
-        if (user.city === this.props.city || user.city.length === 0) {delete user.city;} 
-        if (user.country === this.props.country || user.country.length === 0) {delete user.country;} 
+        if (user.first_name === this.props.firstName || user.first_name.length === 0) {delete user.first_name;}
+        if (user.last_name === this.props.lastName || user.last_name.length === 0) { delete user.last_name;}
+        if (user.city === this.props.city || user.city.length === 0) {delete user.city;}
+        if (user.country === this.props.country || user.country.length === 0) {delete user.country;}
         if (user.about === this.props.about || user.about.length === 0) {delete user.about;}
 
         const picture = new FormData();
@@ -69,6 +73,7 @@ class PersonalEdit extends React.Component {
             picture.append('picture[image]', this.state.imgFile);
         }
 
+        debugger
         this.props.createPicture(picture).then(() => {
             this.setState({
                 imgFile: null,
@@ -90,12 +95,12 @@ class PersonalEdit extends React.Component {
         picture.append('picture[description]', 'coverPicPlaceHolder');
         picture.append('picture[showcase]', false);
         picture.append('picture[cover]', true);
-        
+
         if (file) {
             fileReader.readAsDataURL(file);
             picture.append('picture[image]', file);
         }
- 
+
         this.props.createPicture(picture);
         this.toggleCoverModal();
     }
@@ -191,8 +196,10 @@ class PersonalEdit extends React.Component {
 
         let submitButton;
         if (this.state.submitButtonActive) {
+            debugger
             submitButton = <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
         } else {
+            debugger
             submitButton = <input className='editProfileModal-form-bottom-submit' type="button" value='Save' onClick={this.props.toggleEditProfile} />
         }
 
@@ -212,7 +219,7 @@ class PersonalEdit extends React.Component {
                         {personalPicture}
                         <input className='newPictureInput' onChange={this.handleFile} type="file" />
                     </label>
-                    
+
                         {coverModal}
                         {ownPicturesModal}
 
@@ -220,8 +227,8 @@ class PersonalEdit extends React.Component {
                         <div className='editProfileModal-form-middle-inputs-names'>
                             <div className='editProfileModal-form-middle-inputs-name'>
                                 <label className='editProfileModal-form-middle-inputs-heading'>First name</label>
-                                <input className='editProfileModal-form-middle-inputs-name-input' type='text' 
-                                    value={this.state.first_name} 
+                                <input className='editProfileModal-form-middle-inputs-name-input' type='text'
+                                    value={this.state.first_name}
                                     onChange={this.update('first_name')}/>
                             </div>
 
@@ -259,7 +266,7 @@ class PersonalEdit extends React.Component {
                         </div>
                     </form>
                 </div>
-    
+
             </div>
         )
     }
