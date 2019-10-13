@@ -13,9 +13,7 @@ class PictureItem extends React.Component {
         let photographerProfilePicId = this.props.photographerProfilePicId;
         let photographerProfilePicIdImgUrl = this.props.photographerProfilePicIdImgUrl;
 
-        debugger
         if (photographerProfilePicId && photographerProfilePicIdImgUrl === undefined) {
-            debugger
             this.props.fetchPicture(photographerProfilePicId);
         }
     }

@@ -62,10 +62,11 @@
 
 .navBar-session-item {
     margin: 0px 10px;
+    color: inherit;
 }
 
 .navBar-session-item:hover {
-    color: #0099E5; 
+    color: #0099E5;
     cursor: pointer;
 }
 

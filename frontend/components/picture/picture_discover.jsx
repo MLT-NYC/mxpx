@@ -5,10 +5,14 @@ import LikeIndexContainer from "../like/like_index_container";
 import NavBar from "../navbar/navbar";
 
 class PictureDiscover extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
 
         this.state = {
+            // pictures: props.pictures,
+            // per: 10,
+            // page: 1,
+            totalPages: null,
             showPictureCarousel: false,
             showLikeIndex: false,
             selectedPictureIndex: null,
@@ -52,6 +56,19 @@ class PictureDiscover extends React.Component {
         });
     }
 
+    // loadMorePictures = () => {
+    //     const { per, page, pictures }  = this.state;
+    // };
+    //
+    // handleScroll = () => {
+    //     const lastDiv = document.querySelector("ul.container > div:last-child");
+    //     const lastLiOffset = lastDiv.offsetTop + lastDiv.clientHeight;
+    //     const pageOffset = window.pageYOffset + window.innerHeight;
+    //     if (pageOffset > lastLiOffset) {
+    //         this.loadMorePictures();
+    //     }
+    // };
+
     componentDidMount() {
         document.addEventListener('scroll', () => {
             const isTop = window.scrollY < 1;
@@ -59,7 +76,10 @@ class PictureDiscover extends React.Component {
                 this.setState({
                     isTop
                 });
+                // this.handleScroll()
             }
+
+
         });
 
         this.props.fetchUsers(this.props.userIds)
@@ -84,7 +104,6 @@ class PictureDiscover extends React.Component {
 
 
     render(){
-
         // //LATER
         // // On component did mount,
         // // The component will call to the back end to retrieve 30 pics.

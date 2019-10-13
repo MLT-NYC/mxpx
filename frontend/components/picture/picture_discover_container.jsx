@@ -18,20 +18,16 @@ const mapStateToProps = state => {
     let pictures = [];
 
     if (userIds.length > 0) {
-        debugger
         userIds.forEach(id => {
             let user = state.entities.users[id];
             if (user) users.push(user)
         });
     }
 
-    debugger
     if (users.length > 0) {
-        debugger
         users.forEach(user => {
-            debugger
             let userPictureIds = user.pictureIds;
-            pictureIds += userPictureIds;
+            pictureIds = pictureIds.concat(userPictureIds);
         })
     }
 

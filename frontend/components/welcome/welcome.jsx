@@ -4,7 +4,7 @@ import ProfileContainer from '../profile/profile_container';
 
 class Welcome extends React.Component {
 
-    render() { 
+    render() {
 
         if (this.props.currentUser){
             return (
@@ -13,14 +13,13 @@ class Welcome extends React.Component {
         } else {
             return (
                 <>
-                    <div className='welcomeHeader'> 
+                    <div className='welcomeHeader'>
                         <img className='headerImage'>
                         </img>
 
                         <nav className='navBar'>
                             <h1 className='logo'>mxpx</h1>
                             <div className='nav-left'>
-                                <div className='navBar-splash-item'>Discover</div>
                             </div>
 
                             <div className='nav-right'>
@@ -29,7 +28,7 @@ class Welcome extends React.Component {
                                     <Link to={'/signup'} className='signUpButton'>Sign up</Link>
                                 </div>
                             </div>
- 
+
                         </nav>
 
                         <div className="welcomeMessages">
@@ -38,7 +37,7 @@ class Welcome extends React.Component {
                             <Link to={'/login'} className='joinButton'>Join mxpx</Link>
                         </div>
                     </div>
-                    
+
 
                 </>
             )

@@ -39,7 +39,7 @@ class NavBar extends React.Component {
         } else {
             navBarPicture = <img src={defaultProfilePic} className='navBarPicture' />
         }
-        
+
         let rightItems;
         let navBarClassName;
         if (this.props.currentUser) {
@@ -68,7 +68,7 @@ class NavBar extends React.Component {
                         ? (
                             <>
                                 <div className='dropdownMenuSquare'></div>
-                                
+
                                 <div className="dropdownMenu">
                                     <Link to={'/profile'} className='dropdownMenuItem-1'>My profile</Link>
                                     {/*<div className='dropdownMenuItem-4'>My liked pictures</div>*/}
@@ -81,7 +81,7 @@ class NavBar extends React.Component {
                     }
 
                     <Link to='/pictures/new' onClick={this.props.toggleShowForm} className='pictureCreateIcon'><i className="fas fa-plus"></i></Link>
-                
+
                 </div>
             )
         } else {
@@ -93,7 +93,7 @@ class NavBar extends React.Component {
             <nav className={navBarClassName}>
                 <Link to={'/'} className='sessionLogo'>mxpx</Link>
                 <div className='sessionNav-left'>
-                    <div className='navBar-session-item'>Discover</div>
+                    <Link to={'/pictures/discover'} className='navBar-session-item'>Discover</Link>
                 </div>
 
                 <div className='sessionNav-right'>
@@ -103,7 +103,7 @@ class NavBar extends React.Component {
                 </div>
             </nav>
         )
-        
+
     }
 }
 

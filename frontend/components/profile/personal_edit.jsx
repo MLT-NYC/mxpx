@@ -73,7 +73,6 @@ class PersonalEdit extends React.Component {
             picture.append('picture[image]', this.state.imgFile);
         }
 
-        debugger
         this.props.createPicture(picture).then(() => {
             this.setState({
                 imgFile: null,
@@ -196,10 +195,8 @@ class PersonalEdit extends React.Component {
 
         let submitButton;
         if (this.state.submitButtonActive) {
-            debugger
             submitButton = <input className='editProfileModal-form-bottom-submit' type="submit" value='Save' />
         } else {
-            debugger
             submitButton = <input className='editProfileModal-form-bottom-submit' type="button" value='Save' onClick={this.props.toggleEditProfile} />
         }
 
