@@ -19,6 +19,7 @@ class Welcome extends React.Component {
 
                         <nav className='navBar'>
                             <h1 className='logo'>mxpx</h1>
+
                             <div className='nav-left'>
                             </div>
 
