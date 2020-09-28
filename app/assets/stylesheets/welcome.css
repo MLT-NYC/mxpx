@@ -7,10 +7,10 @@
     width: 100%;
     height: 100%;
     position: fixed;
-    background-image: url("https://assetcdn.500px.org/assets/static_pages/home/cover_bg-121d68d0f30118182be4f9ada6c2c502.jpg");
+    background-image: url('amazon-jungle.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; 
+    background-position: center;
 }
 
 .navBar {
@@ -65,20 +65,21 @@
     padding: 10px 0px;
     width: 300px;
     height: 70px;
-    font-size: 14;
+    font-size: 14px;
 
-};
+}
 
 .logInButton {
+    color: white;
     min-width: 67px;
-    
+
 }
 
 .logInButton:visited {
     color: white;
     width: 67px;
 }
- 
+
 .signUpButton {
     display: flex;
     justify-content: center;
