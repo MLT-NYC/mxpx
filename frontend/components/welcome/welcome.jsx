@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileContainer from '../profile/profile_container';
+import backgroundImage from '../../../app/assets/images/amazon-jungle.jpg';
 
 class Welcome extends React.Component {
 
@@ -14,7 +15,7 @@ class Welcome extends React.Component {
             return (
                 <>
                     <div className='welcomeHeader'>
-                        <img className='headerImage'>
+                        <img className='headerImage' src={backgroundImage}>
                         </img>
 
                         <nav className='navBar'>
