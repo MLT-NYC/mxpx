@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileContainer from '../profile/profile_container';
 import backgroundImage from '../../../app/assets/images/amazon-jungle.jpg';
-
+// Welcomr component
 class Welcome extends React.Component {
 
     render() {
